@@ -14,7 +14,7 @@ or Markdown, so no installation, build, or deployment is required.
 
 | Resource | Type | Purpose |
 | --- | --- | --- |
-| [GitHub Repository Settings Audit](<instruction sets/GitHub-Repository-Settings-Audit.md>) | Instruction set | Inspect a GitHub repository, improve safe settings and files, validate the result, and report anything that still requires approval. |
+| [GitHub Repository Settings Audit](prompts/GitHub-Repository-Settings-Audit.md) | Prompt | Inspect a GitHub repository, improve safe settings and files, validate the result, and report anything that still requires approval. |
 
 ## Use a resource
 
@@ -32,8 +32,8 @@ credentials whenever a connected service is involved.
 
 Prompts and instruction sets are organized in separate directories:
 
-- `prompts/<category>/` for reusable standalone prompts
-- `instruction sets/<tool-or-project>/` for persistent project instruction files
+- `prompts/` for reusable standalone prompts
+- `instruction-sets/` for persistent project instruction files
 - `.github/` for repository governance and automation
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for naming, quality, safety, branch, and
