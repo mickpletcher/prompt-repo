@@ -12,6 +12,11 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-3:start -->
+- **Bump DavidAnson/markdownlint-cli2-action from 4580e1612f6407034edd6c0e4e316d725920867b to 21c1be1b93ad9ed58fa840aacc3f279cde2a72ff in the github-actions group across 1 directory** ([#3](https://github.com/mickpletcher/prompt-repo/pull/3))
+  - Updated `.github/workflows/markdownlint.yml`.
+<!-- changelog:pr-3:end -->
+
 <!-- changelog:pr-4:start -->
 - **Organize prompts and instruction sets** ([#4](https://github.com/mickpletcher/prompt-repo/pull/4))
   - Added `.github/scripts/update-changelog.mjs` to generate pull-request entries.
