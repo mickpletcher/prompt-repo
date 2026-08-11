@@ -1,0 +1,11 @@
+{
+  "config": {
+    // Prompt files intentionally begin with copy-ready instructions.
+    "MD041": false,
+    // Long prompt lines are sometimes clearer when kept intact.
+    "MD013": false
+  },
+  "globs": [
+    "**/*.md"
+  ]
+}
