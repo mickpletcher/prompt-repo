@@ -1,0 +1,39 @@
+name: Content request
+description: Suggest a useful prompt, project instruction file, or category.
+title: "[Request]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Thanks for suggesting an addition. Do not include credentials, private
+        project data, or proprietary instructions.
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: Content type
+      options:
+        - Reusable prompt
+        - Project instruction file
+        - Repository organization or documentation
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What should the resource help someone accomplish?
+    validations:
+      required: true
+  - type: input
+    id: intended-tool
+    attributes:
+      label: Intended tool or audience
+      placeholder: Codex, ChatGPT, GitHub maintainers, automation engineers, etc.
+  - type: textarea
+    id: desired-output
+    attributes:
+      label: Desired output
+      description: What should a successful run produce?
+    validations:
+      required: true
