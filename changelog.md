@@ -12,6 +12,17 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-6:start -->
+- **Automate README resource catalog** ([#6](https://github.com/mickpletcher/prompt-repo/pull/6))
+  - Added `.github/scripts/readme-catalog.mjs`.
+  - Added `.github/scripts/readme-catalog.test.mjs`.
+  - Removed `.github/scripts/update-changelog.mjs`.
+  - Added `.github/scripts/update-repository-metadata.mjs`.
+  - Updated `.github/workflows/changelog.yml`.
+  - Updated `CONTRIBUTING.md`.
+  - Updated `README.md`.
+<!-- changelog:pr-6:end -->
+
 <!-- changelog:pr-5:start -->
 - **Organize prompts and instruction sets** ([#5](https://github.com/mickpletcher/prompt-repo/pull/5))
   - Updated `CONTRIBUTING.md`.
