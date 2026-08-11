@@ -14,7 +14,7 @@ or Markdown, so no installation, build, or deployment is required.
 
 | Resource | Type | Purpose |
 | --- | --- | --- |
-| [GitHub Repository Audit](GitHub-Repository-Audit.md) | Prompt | Inspect a GitHub repository, improve safe settings and files, validate the result, and report anything that still requires approval. |
+| [GitHub Repository Audit](GitHub-Repository-Settings-Audit.md) | Prompt | Inspect a GitHub repository, improve safe settings and files, validate the result, and report anything that still requires approval. |
 
 ## Use a resource
 
