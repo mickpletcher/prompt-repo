@@ -1,4 +1,4 @@
-name: Update changelog
+name: Update repository metadata
 
 on:
   pull_request_target:
@@ -20,9 +20,13 @@ permissions:
   contents: write
   pull-requests: read
 
+concurrency:
+  group: repository-metadata-${{ github.event.pull_request.number || inputs.pr_number }}
+  cancel-in-progress: true
+
 jobs:
-  changelog:
-    name: changelog
+  metadata:
+    name: metadata
     if: >-
       github.event_name == 'workflow_dispatch' ||
       github.event.pull_request.head.repo.full_name == github.repository
@@ -34,10 +38,10 @@ jobs:
         with:
           persist-credentials: false
           ref: ${{ github.event.repository.default_branch }}
-      - name: Update pull request changelog
+      - name: Update README catalog and changelog
         env:
           API_URL: ${{ github.api_url }}
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ inputs.pr_number || github.event.pull_request.number }}
           REPOSITORY: ${{ github.repository }}
-        run: node .github/scripts/update-changelog.mjs
+        run: node .github/scripts/update-repository-metadata.mjs

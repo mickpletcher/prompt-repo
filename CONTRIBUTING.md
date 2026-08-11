@@ -46,21 +46,31 @@ create a release or tag for every content edit.
 
 ## Pull requests
 
-The changelog workflow updates `changelog.md` automatically for
-same-repository pull requests. Verify that its generated entry covers every
-changed file before merging. Changes to GitHub settings must be added manually
-because GitHub does not emit a file-change event for them.
+The repository-metadata workflow updates the generated catalog in `README.md`
+and the pull-request entry in `changelog.md` automatically for same-repository
+pull requests. Do not edit the README catalog between its generated markers.
+Verify that both generated sections are current before merging. Changes to
+GitHub settings must be added to the changelog manually because GitHub does not
+emit a file-change event for them.
 
 1. Create a branch from `main`.
 2. Make one focused change.
-3. Run Markdown lint locally when available:
+3. Refresh and verify the README catalog:
 
    ```shell
+   node .github/scripts/readme-catalog.mjs
+   node .github/scripts/readme-catalog.mjs --check
+   ```
+
+4. Run the catalog tests and Markdown lint locally when available:
+
+   ```shell
+   node --test .github/scripts/readme-catalog.test.mjs
    npx --yes markdownlint-cli2@0.23.2
    ```
 
-4. Complete the pull-request checklist.
-5. Resolve review conversations before merging.
+5. Complete the pull-request checklist.
+6. Resolve review conversations before merging.
 
 Squash merging is preferred so each pull request produces one focused commit.
 
