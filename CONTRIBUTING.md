@@ -5,9 +5,10 @@ accurate, safe, or easier to navigate are welcome.
 
 ## Content types
 
-- Put reusable, copy-ready prompts in `prompts/<category>/`.
-- Put persistent project or tool instruction files in
-  `instruction sets/<tool-or-project>/`.
+- Put reusable, copy-ready prompts in `prompts/`. Use category subdirectories
+  as the collection grows.
+- Put persistent project or tool instruction files in `instruction-sets/`. Use
+  tool or project subdirectories as the collection grows.
 - Keep existing root-level resources in place unless a move has been discussed
   first, so published links remain stable.
 
