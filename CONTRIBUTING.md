@@ -45,6 +45,11 @@ create a release or tag for every content edit.
 
 ## Pull requests
 
+The changelog workflow updates `changelog.md` automatically for
+same-repository pull requests. Verify that its generated entry covers every
+changed file before merging. Changes to GitHub settings must be added manually
+because GitHub does not emit a file-change event for them.
+
 1. Create a branch from `main`.
 2. Make one focused change.
 3. Run Markdown lint locally when available:

@@ -53,6 +53,9 @@ This is an early-stage library. The initial resource is available now, and the
 repository structure supports adding more prompts and instruction files over
 time.
 
+See [changelog.md](changelog.md) for the complete repository content and
+configuration history.
+
 ## License
 
 Released under the [MIT License](LICENSE).
