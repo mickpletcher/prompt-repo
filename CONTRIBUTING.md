@@ -7,7 +7,7 @@ accurate, safe, or easier to navigate are welcome.
 
 - Put reusable, copy-ready prompts in `prompts/<category>/`.
 - Put persistent project or tool instruction files in
-  `instructions/<tool-or-project>/`.
+  `instruction sets/<tool-or-project>/`.
 - Keep existing root-level resources in place unless a move has been discussed
   first, so published links remain stable.
 
