@@ -13,4 +13,5 @@ Explain how you reviewed or tested the content.
 - [ ] Destructive or access-sensitive actions require explicit approval.
 - [ ] No credentials, private data, personal paths, or proprietary content are included.
 - [ ] Links and copy-paste examples were checked.
+- [ ] The changelog entry accurately describes every changed file.
 - [ ] Markdown lint passes.

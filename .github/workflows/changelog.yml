@@ -1,0 +1,43 @@
+name: Update changelog
+
+on:
+  pull_request_target:
+    types:
+      - edited
+      - opened
+      - ready_for_review
+      - reopened
+      - synchronize
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Pull request number to record
+        required: true
+        type: number
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: read
+
+jobs:
+  changelog:
+    name: changelog
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out trusted automation
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.repository.default_branch }}
+      - name: Update pull request changelog
+        env:
+          API_URL: ${{ github.api_url }}
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ inputs.pr_number || github.event.pull_request.number }}
+          REPOSITORY: ${{ github.repository }}
+        run: node .github/scripts/update-changelog.mjs

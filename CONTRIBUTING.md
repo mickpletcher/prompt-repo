@@ -7,7 +7,7 @@ accurate, safe, or easier to navigate are welcome.
 
 - Put reusable, copy-ready prompts in `prompts/<category>/`.
 - Put persistent project or tool instruction files in
-  `instructions/<tool-or-project>/`.
+  `instruction sets/<tool-or-project>/`.
 - Keep existing root-level resources in place unless a move has been discussed
   first, so published links remain stable.
 
@@ -44,6 +44,11 @@ If releases are introduced, use semantic version tags such as `v1.2.0`. Do not
 create a release or tag for every content edit.
 
 ## Pull requests
+
+The changelog workflow updates `changelog.md` automatically for
+same-repository pull requests. Verify that its generated entry covers every
+changed file before merging. Changes to GitHub settings must be added manually
+because GitHub does not emit a file-change event for them.
 
 1. Create a branch from `main`.
 2. Make one focused change.
