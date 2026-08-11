@@ -13,7 +13,7 @@ event and must be recorded manually when they are made.
 <!-- automated-changelog -->
 
 <!-- changelog:pr-5:start -->
-- **Move repository audit to prompts** ([#5](https://github.com/mickpletcher/prompt-repo/pull/5))
+- **Organize prompts and instruction sets** ([#5](https://github.com/mickpletcher/prompt-repo/pull/5))
   - Updated `CONTRIBUTING.md`.
   - Renamed `instruction sets/HVAC-Troubleshooting.md` to `instruction-sets/HVAC-Troubleshooting.md`.
   - Added `instruction-sets/README.md`.
