@@ -12,6 +12,14 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-5:start -->
+- **Move repository audit to prompts** ([#5](https://github.com/mickpletcher/prompt-repo/pull/5))
+  - Updated `CONTRIBUTING.md`.
+  - Added `instruction-sets/README.md`.
+  - Renamed `instruction sets/GitHub-Repository-Settings-Audit.md` to `prompts/GitHub-Repository-Settings-Audit.md`.
+  - Updated `README.md`.
+<!-- changelog:pr-5:end -->
+
 <!-- changelog:pr-3:start -->
 - **Bump DavidAnson/markdownlint-cli2-action from 4580e1612f6407034edd6c0e4e316d725920867b to 21c1be1b93ad9ed58fa840aacc3f279cde2a72ff in the github-actions group across 1 directory** ([#3](https://github.com/mickpletcher/prompt-repo/pull/3))
   - Updated `.github/workflows/markdownlint.yml`.
