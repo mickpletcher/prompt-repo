@@ -15,6 +15,7 @@ event and must be recorded manually when they are made.
 <!-- changelog:pr-5:start -->
 - **Move repository audit to prompts** ([#5](https://github.com/mickpletcher/prompt-repo/pull/5))
   - Updated `CONTRIBUTING.md`.
+  - Renamed `instruction sets/HVAC-Troubleshooting.md` to `instruction-sets/HVAC-Troubleshooting.md`.
   - Added `instruction-sets/README.md`.
   - Renamed `instruction sets/GitHub-Repository-Settings-Audit.md` to `prompts/GitHub-Repository-Settings-Audit.md`.
   - Updated `README.md`.
