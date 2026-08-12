@@ -12,6 +12,21 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+- **Clarify ChatGPT Project instruction set terminology**
+  - Updated `CONTRIBUTING.md` to use the repository's defined term consistently.
+
+- **Organize resources into category directories**
+  - Moved prompts into `prompts/automation/` and `prompts/github/`.
+  - Moved HVAC instructions into `instruction-sets/hvac/`.
+  - Updated the generated resource catalog in `README.md`.
+
+- **Clarify ChatGPT Project instruction set organization**
+  - Updated `README.md`, `CONTRIBUTING.md`, and `instruction-sets/README.md` to define the intended use of instruction sets.
+
+- **Validate generated repository metadata in CI**
+  - Updated `.github/workflows/markdownlint.yml` to check the README catalog and run its tests.
+  - Updated `README.md` to match the generated catalog.
+
 <!-- changelog:pr-7:start -->
 - **Add automation project kickoff prompt** ([#7](https://github.com/mickpletcher/prompt-repo/pull/7))
   - Added `prompts/automation-project-agent-kickoff-prompt.md`.

@@ -3,7 +3,7 @@
 [![Markdown lint](https://github.com/mickpletcher/prompt-repo/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/mickpletcher/prompt-repo/actions/workflows/markdownlint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A growing library of reusable prompts and project instruction files for
+A growing library of reusable prompts and ChatGPT Project instruction sets for
 building, auditing, automating, and maintaining software projects.
 
 The content is intended for developers, automation engineers, maintainers, and
@@ -23,23 +23,23 @@ removes, renames, or updates files in either collection.
 
 | Resource | Type | Purpose |
 | --- | --- | --- |
-| [automation project agent kickoff prompt](prompts/automation-project-agent-kickoff-prompt.md) | Prompt | You are acting as an Automation Engineer. The goal of this project is to remove the human component from any process that doesn't need one — default to full automation over manual steps, scheduled/triggered execution over relying on someone to run something by hand, and self-healing/self-reporting behavior over silent failure. |
-| [GitHub Repository Settings Audit](prompts/GitHub-Repository-Settings-Audit.md) | Prompt | Perform a complete audit and configuration review of this GitHub repository. |
+| [automation project agent kickoff prompt](prompts/automation/automation-project-agent-kickoff-prompt.md) | Prompt | You are acting as an Automation Engineer. The goal of this project is to remove the human component from any process that doesn't need one — default to full automation over manual steps, scheduled/triggered execution over relying on someone to run something by hand, and self-healing/self-reporting behavior over silent failure. |
+| [GitHub Repository Settings Audit](prompts/github/GitHub-Repository-Settings-Audit.md) | Prompt | Perform a complete audit and configuration review of this GitHub repository. |
 | [Prompts Directory Guide](prompts/README.md) | Directory guide | Store reusable, copy-ready prompts in this directory. As the collection grows, group related prompts into category subdirectories and use descriptive, lowercase kebab-case filenames. |
 
 ### Instruction sets
 
 | Resource | Type | Purpose |
 | --- | --- | --- |
-| [HVAC Troubleshooting](instruction-sets/HVAC-Troubleshooting.md) | Instruction set | You are an HVAC troubleshooting and diagnostic assistant. |
-| [Instruction Sets Directory Guide](instruction-sets/README.md) | Directory guide | Store persistent project or tool instruction files in this directory. As the collection grows, group related instruction sets into tool or project subdirectories and use descriptive, lowercase kebab-case filenames. |
+| [HVAC Troubleshooting](instruction-sets/hvac/HVAC-Troubleshooting.md) | Instruction set | You are an HVAC troubleshooting and diagnostic assistant. |
+| [Instruction Sets Directory Guide](instruction-sets/README.md) | Directory guide | Store persistent ChatGPT Project instruction sets in this directory. As the collection grows, group related instruction sets into project or subject subdirectories and use descriptive, lowercase kebab-case filenames. |
 
 <!-- resource-catalog:end -->
 
 ## Use a resource
 
 1. Open the prompt or instruction file you want to use.
-2. Copy its contents.
+2. Copy its contents into the appropriate ChatGPT conversation or Project.
 3. Replace placeholders such as `[INSERT GITHUB REPOSITORY URL]`.
 4. Paste the result into the appropriate AI or automation tool.
 5. Review the proposed actions before approving consequential changes.
@@ -50,10 +50,11 @@ credentials whenever a connected service is involved.
 
 ## Repository organization
 
-Prompts and instruction sets are organized in separate directories:
+Prompts and ChatGPT Project instruction sets are organized in separate
+directories:
 
 - `prompts/` for reusable standalone prompts
-- `instruction-sets/` for persistent project instruction files
+- `instruction-sets/` for persistent ChatGPT Project instructions
 - `.github/` for repository governance and automation
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for naming, quality, safety, branch, and

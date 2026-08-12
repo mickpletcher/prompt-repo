@@ -22,6 +22,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Check generated README catalog
+        run: node .github/scripts/readme-catalog.mjs --check
+      - name: Test README catalog generator
+        run: node --test .github/scripts/readme-catalog.test.mjs
       - name: Lint Markdown
         uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24.2.0
         with:

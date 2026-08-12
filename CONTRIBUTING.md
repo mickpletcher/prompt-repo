@@ -7,8 +7,8 @@ accurate, safe, or easier to navigate are welcome.
 
 - Put reusable, copy-ready prompts in `prompts/`. Use category subdirectories
   as the collection grows.
-- Put persistent project or tool instruction files in `instruction-sets/`. Use
-  tool or project subdirectories as the collection grows.
+- Put persistent ChatGPT Project instruction sets in `instruction-sets/`. Use
+  project or subject subdirectories as the collection grows.
 - Keep existing root-level resources in place unless a move has been discussed
   first, so published links remain stable.
 
@@ -37,7 +37,7 @@ a pull request.
 
 Use one of these branch patterns:
 
-- `content/<short-description>` for prompts and instruction files
+- `content/<short-description>` for prompts and ChatGPT Project instruction sets
 - `docs/<short-description>` for documentation-only work
 - `maintenance/<short-description>` for automation and repository upkeep
 
