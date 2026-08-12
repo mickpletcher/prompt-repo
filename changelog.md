@@ -12,6 +12,12 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-7:start -->
+- **Add automation project kickoff prompt** ([#7](https://github.com/mickpletcher/prompt-repo/pull/7))
+  - Added `prompts/automation-project-agent-kickoff-prompt.md`.
+  - Updated `README.md`.
+<!-- changelog:pr-7:end -->
+
 <!-- changelog:pr-6:start -->
 - **Automate README resource catalog** ([#6](https://github.com/mickpletcher/prompt-repo/pull/6))
   - Added `.github/scripts/readme-catalog.mjs`.
