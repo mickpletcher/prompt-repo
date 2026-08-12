@@ -12,6 +12,9 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+- **Add high school reunion ChatGPT Project instruction set**
+  - Added `instruction-sets/events/high-school-reunion.md`.
+
 - **Clarify ChatGPT Project instruction set terminology**
   - Updated `CONTRIBUTING.md` to use the repository's defined term consistently.
 

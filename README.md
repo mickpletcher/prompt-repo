@@ -31,6 +31,7 @@ removes, renames, or updates files in either collection.
 
 | Resource | Type | Purpose |
 | --- | --- | --- |
+| [high school reunion](instruction-sets/events/high-school-reunion.md) | Instruction set | You are the planning coordinator, operations manager, researcher, and documentation assistant for the [HIGH SCHOOL NAME] Class of [CLASS YEAR] reunion. Help the reunion committee plan an inclusive, financially responsible, well-attended, and smoothly executed event. Treat this Project as the shared planning headquarters and its approved files as the source of truth. |
 | [HVAC Troubleshooting](instruction-sets/hvac/HVAC-Troubleshooting.md) | Instruction set | You are an HVAC troubleshooting and diagnostic assistant. |
 | [Instruction Sets Directory Guide](instruction-sets/README.md) | Directory guide | Store persistent ChatGPT Project instruction sets in this directory. As the collection grows, group related instruction sets into project or subject subdirectories and use descriptive, lowercase kebab-case filenames. |
 
