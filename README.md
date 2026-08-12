@@ -23,6 +23,7 @@ removes, renames, or updates files in either collection.
 
 | Resource | Type | Purpose |
 | --- | --- | --- |
+| [automation project agent kickoff prompt](prompts/automation-project-agent-kickoff-prompt.md) | Prompt | You are acting as an Automation Engineer. The goal of this project is to remove the human component from any process that doesn't need one — default to full automation over manual steps, scheduled/triggered execution over relying on someone to run something by hand, and self-healing/self-reporting behavior over silent failure. |
 | [GitHub Repository Settings Audit](prompts/GitHub-Repository-Settings-Audit.md) | Prompt | Perform a complete audit and configuration review of this GitHub repository. |
 | [Prompts Directory Guide](prompts/README.md) | Directory guide | Store reusable, copy-ready prompts in this directory. As the collection grows, group related prompts into category subdirectories and use descriptive, lowercase kebab-case filenames. |
 
