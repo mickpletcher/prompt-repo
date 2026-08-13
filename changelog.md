@@ -12,6 +12,10 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+- **2026-08-12: Add living project management files**
+  - Added `ASSESSMENT.md`, `FUTURE-UPGRADES.md`, and `COMPLETED-UPGRADES.md`.
+  - Established the current repository assessment and upgrade backlog.
+
 - **Document reusable prompt inputs**
   - Added `prompts/PROJECT-INPUTS.md` with required information, missing context, safe defaults, and sensitive-data warnings for each prompt.
 
