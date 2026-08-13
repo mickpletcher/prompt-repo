@@ -197,7 +197,7 @@ const markdownEntries = treeResponse.tree
   .filter(
     (entry) =>
       entry.type === "blob" &&
-      /^(prompts|instruction-sets)\/.+\.md$/i.test(entry.path),
+      /^(prompts|openai\/instruction-sets)\/.+\.md$/i.test(entry.path),
   )
   .sort((left, right) => left.path.localeCompare(right.path));
 const resources = await Promise.all(

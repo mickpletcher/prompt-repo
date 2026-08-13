@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
@@ -10,7 +10,7 @@ export const CATALOG_END = "<!-- resource-catalog:end -->";
 const COLLECTIONS = [
   { directory: "prompts", heading: "Prompts", type: "Prompt" },
   {
-    directory: "instruction-sets",
+    directory: "openai/instruction-sets",
     heading: "Instruction sets",
     type: "Instruction set",
   },
@@ -176,9 +176,11 @@ async function markdownFiles(directory) {
   for (const entry of entries) {
     const entryPath = path.join(directory, entry.name);
 
-    if (entry.isDirectory()) {
+    const entryStats = await stat(entryPath);
+
+    if (entryStats.isDirectory()) {
       files.push(...(await markdownFiles(entryPath)));
-    } else if (entry.isFile() && entry.name.toLowerCase().endsWith(".md")) {
+    } else if (entryStats.isFile() && entry.name.toLowerCase().endsWith(".md")) {
       files.push(entryPath);
     }
   }

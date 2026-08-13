@@ -7,8 +7,8 @@ accurate, safe, or easier to navigate are welcome.
 
 - Put reusable, copy-ready prompts in `prompts/`. Use category subdirectories
   as the collection grows.
-- Put persistent ChatGPT Project instruction sets in `instruction-sets/`. Use
-  project or subject subdirectories as the collection grows.
+- Put persistent ChatGPT Project instruction sets in `openai/instruction-sets/`.
+  Use project or subject subdirectories as the collection grows.
 - Keep existing root-level resources in place unless a move has been discussed
   first, so published links remain stable.
 

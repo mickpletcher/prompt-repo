@@ -12,7 +12,7 @@ or Markdown, so no installation, build, or deployment is required.
 
 ## Catalog
 
-Every Markdown file under `prompts/` and `instruction-sets/` is listed below.
+Every Markdown file under `prompts/` and `openai/instruction-sets/` is listed below.
 The generated catalog is refreshed automatically when a pull request adds,
 removes, renames, or updates files in either collection.
 
@@ -25,15 +25,27 @@ removes, renames, or updates files in either collection.
 | --- | --- | --- |
 | [automation project agent kickoff prompt](prompts/automation/automation-project-agent-kickoff-prompt.md) | Prompt | You are acting as an Automation Engineer. The goal of this project is to remove the human component from any process that doesn't need one — default to full automation over manual steps, scheduled/triggered execution over relying on someone to run something by hand, and self-healing/self-reporting behavior over silent failure. |
 | [GitHub Repository Settings Audit](prompts/github/GitHub-Repository-Settings-Audit.md) | Prompt | Perform a complete audit and configuration review of this GitHub repository. |
+| [PROJECT INPUTS](prompts/PROJECT-INPUTS.md) | Prompt | This file records the information each reusable prompt needs before use. Replace placeholders before pasting a prompt into an AI tool. Do not treat examples, defaults, or prompt instructions as confirmed facts. |
 | [Prompts Directory Guide](prompts/README.md) | Directory guide | Store reusable, copy-ready prompts in this directory. As the collection grows, group related prompts into category subdirectories and use descriptive, lowercase kebab-case filenames. |
 
 ### Instruction sets
 
 | Resource | Type | Purpose |
 | --- | --- | --- |
-| [high school reunion](instruction-sets/events/high-school-reunion.md) | Instruction set | You are the planning coordinator, operations manager, researcher, and documentation assistant for the [HIGH SCHOOL NAME] Class of [CLASS YEAR] reunion. Help the reunion committee plan an inclusive, financially responsible, well-attended, and smoothly executed event. Treat this Project as the shared planning headquarters and its approved files as the source of truth. |
-| [HVAC Troubleshooting](instruction-sets/hvac/HVAC-Troubleshooting.md) | Instruction set | You are an HVAC troubleshooting and diagnostic assistant. |
-| [Instruction Sets Directory Guide](instruction-sets/README.md) | Directory guide | Store persistent ChatGPT Project instruction sets in this directory. As the collection grows, group related instruction sets into project or subject subdirectories and use descriptive, lowercase kebab-case filenames. |
+| [ai cad design book](openai/instruction-sets/cad/ai-cad-design-book.md) | Instruction set | Show how to drive CAD from clean text using ChatGPT as a drafting partner. Use the shipping container house upgrade as the live example. Readers should be able to export STEP, STL, DXF, and a BOM from written specifications. |
+| [ats resume and cover letter](openai/instruction-sets/career/ats-resume-and-cover-letter.md) | Instruction set | Help candidates build ATS-safe resumes and tailored cover letters aligned to a specific job description, using verified accomplishments and measurable evidence. |
+| [container home expansion](openai/instruction-sets/container-home/container-home-expansion.md) | Instruction set | Assist with planning, designing, and building the permanent expansion of a shipping container house at the user's site. The project adds two containers, expands the living area, and adds amenities for long-term living. |
+| [ai prompt engineering media creator](openai/instruction-sets/content/ai-prompt-engineering-media-creator.md) | Instruction set | Create podcast and YouTube content about AI prompt engineering. Educate and empower curious beginners through advanced users to get better results from ChatGPT, Midjourney, and other AI tools. Prioritize practical examples, reproducible results, creative experimentation, and clear explanations. Support batch production and multi-platform publishing. |
+| [high school reunion](openai/instruction-sets/events/high-school-reunion.md) | Instruction set | You are the planning coordinator, operations manager, researcher, and documentation assistant for the [HIGH SCHOOL NAME] Class of [CLASS YEAR] reunion. Help the reunion committee plan an inclusive, financially responsible, well-attended, and smoothly executed event. Treat this Project as the shared planning headquarters and its approved files as the source of truth. |
+| [ai trainer nutrition health](openai/instruction-sets/fitness/ai-trainer-nutrition-health.md) | Instruction set | Build a personal AI that designs workouts, programs nutrition, interprets InBody results, ingests daily nutrition data, evaluates outcomes, and safely adapts plans while accounting for medical conditions, medications, and supplements. |
+| [post bariatric ai coach](openai/instruction-sets/fitness/post-bariatric-ai-coach.md) | Instruction set | You are a high-performance coach and planner during medically prescribed post-bariatric Phase 4. Generate, adapt, and explain training and nutrition plans that honor clinical constraints while preserving or improving strength. |
+| [voice strength conditioning coach](openai/instruction-sets/fitness/voice-strength-conditioning-coach.md) | Instruction set | Be a blunt, no-BS strength and conditioning coach. Use short commands. Reward effort and call out sandbagging. Match the user's energy: push when they drag and escalate when they surge. Swearing is permitted only when the user opts in. |
+| [hvac troubleshooting](openai/instruction-sets/hvac/hvac-troubleshooting.md) | Instruction set | You are an HVAC troubleshooting and diagnostic assistant. |
+| [patent development assistant](openai/instruction-sets/legal/patent-development-assistant.md) | Instruction set | You are an expert in United States patent law, patent drafting, and filing procedures. Assist with the end-to-end development of patent materials, including prior-art research, claim drafting, and preparation of USPTO forms. Understand formatting expectations for utility and design patent applications and relevant PCT materials. |
+| [bariatric recipe meal planner](openai/instruction-sets/nutrition/bariatric-recipe-meal-planner.md) | Instruction set | You are a bariatric-aware recipe generator and meal planner. Create stage-appropriate, high-protein, low-sugar recipes and weekly plans for post-bariatric patients. Prioritize safety, texture progression, portion control, hydration, and evidence-aligned guidance. Never give medical advice; defer to the user's care team when uncertain. |
+| [Instruction Sets Directory Guide](openai/instruction-sets/README.md) | Directory guide | Store persistent ChatGPT Project instruction sets in this directory. As the collection grows, group related instruction sets into project or subject subdirectories and use descriptive, lowercase kebab-case filenames. |
+| [truck bed rack designer](openai/instruction-sets/vehicle/truck-bed-rack-designer.md) | Instruction set | Design a modular, elevated truck bed rack for a Toyota Tacoma that supports a Yakima roof basket above the bed rails and below roof height. Make the design adaptable to other trucks through adjustable width and length. Plan future mounts for lights, tie-downs, and a solar panel. |
+| [epilepsy memoir development](openai/instruction-sets/writing/epilepsy-memoir-development.md) | Instruction set | Help develop a compelling, accurate, and professionally polished memoir about living with epilepsy and navigating treatment, including procedures such as EEG mapping and temporal lobectomy when relevant to the author's story. Support the author from outline through publication and promotion while preserving the author's voice, agency, privacy, and lived experience. |
 
 <!-- resource-catalog:end -->
 
@@ -55,7 +67,7 @@ Prompts and ChatGPT Project instruction sets are organized in separate
 directories:
 
 - `prompts/` for reusable standalone prompts
-- `instruction-sets/` for persistent ChatGPT Project instructions
+- `openai/instruction-sets/` for persistent ChatGPT Project instructions
 - `.github/` for repository governance and automation
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for naming, quality, safety, branch, and

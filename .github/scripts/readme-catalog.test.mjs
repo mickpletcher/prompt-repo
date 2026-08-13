@@ -22,11 +22,11 @@ const resources = [
     content: "Perform a complete audit of this GitHub repository.\n",
   },
   {
-    path: "instruction-sets/README.md",
+    path: "openai/instruction-sets/README.md",
     content: "# Instruction Sets\n\nStore persistent instructions here.\n",
   },
   {
-    path: "instruction-sets/HVAC-Troubleshooting.md",
+    path: "openai/instruction-sets/hvac/hvac-troubleshooting.md",
     content: "# Role\n\nYou are an HVAC troubleshooting assistant.\n",
   },
 ];
@@ -36,7 +36,7 @@ test("renderCatalog lists every Markdown resource in its collection", () => {
 
   assert.match(catalog, /GitHub Repository Settings Audit/);
   assert.match(catalog, /Prompts Directory Guide/);
-  assert.match(catalog, /HVAC Troubleshooting/);
+  assert.match(catalog, /hvac troubleshooting/);
   assert.match(catalog, /Instruction Sets Directory Guide/);
   assert.equal((catalog.match(/^\| \[/gm) ?? []).length, resources.length);
   assert.ok(
@@ -75,7 +75,7 @@ test("replaceCatalog updates only the generated marker block", () => {
 
 test("removed resources disappear from the generated catalog", () => {
   const withoutHvac = resources.filter(
-    (resource) => resource.path !== "instruction-sets/HVAC-Troubleshooting.md",
+    (resource) => resource.path !== "openai/instruction-sets/hvac/hvac-troubleshooting.md",
   );
 
   assert.doesNotMatch(renderCatalog(withoutHvac), /HVAC Troubleshooting/);
@@ -96,7 +96,7 @@ test("collectLocalResources discovers additions and removals recursively", async
     await mkdir(path.join(repositoryRoot, "prompts", "github"), {
       recursive: true,
     });
-    await mkdir(path.join(repositoryRoot, "instruction-sets"), {
+    await mkdir(path.join(repositoryRoot, "openai", "instruction-sets"), {
       recursive: true,
     });
     await writeFile(
@@ -104,21 +104,21 @@ test("collectLocalResources discovers additions and removals recursively", async
       "Audit a repository.\n",
     );
     await writeFile(
-      path.join(repositoryRoot, "instruction-sets", "assistant.md"),
+      path.join(repositoryRoot, "openai", "instruction-sets", "assistant.md"),
       "Configure an assistant.\n",
     );
 
     const added = await collectLocalResources(repositoryRoot);
     assert.deepEqual(
       added.map((resource) => resource.path),
-      ["instruction-sets/assistant.md", "prompts/github/audit.md"],
+      ["openai/instruction-sets/assistant.md", "prompts/github/audit.md"],
     );
 
     await rm(path.join(repositoryRoot, "prompts", "github", "audit.md"));
     const removed = await collectLocalResources(repositoryRoot);
     assert.deepEqual(
       removed.map((resource) => resource.path),
-      ["instruction-sets/assistant.md"],
+      ["openai/instruction-sets/assistant.md"],
     );
   } finally {
     await rm(repositoryRoot, { recursive: true, force: true });

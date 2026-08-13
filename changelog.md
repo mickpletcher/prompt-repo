@@ -12,8 +12,70 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+- **Document reusable prompt inputs**
+  - Added `prompts/PROJECT-INPUTS.md` with required information, missing context, safe defaults, and sensitive-data warnings for each prompt.
+
+- **Document missing OpenAI Project inputs**
+  - Added `openai/PROJECT-INPUTS.md` with required information, missing context, safe defaults, and personal-data flags for each instruction set.
+
+- **Strengthen instruction set contracts**
+  - Added a purpose section to the ATS resume instruction set.
+  - Added response and change-control requirements to the CAD instruction set.
+  - Required the patent assistant to report its current workflow stage.
+
+- **Normalize instruction set naming**
+  - Renamed `openai/instruction-sets/hvac/HVAC-Troubleshooting.md` to `openai/instruction-sets/hvac/hvac-troubleshooting.md`.
+
+- **Add epilepsy memoir development instruction set**
+  - Added `openai/instruction-sets/writing/epilepsy-memoir-development.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Add AI prompt engineering media creator instruction set**
+  - Added `openai/instruction-sets/content/ai-prompt-engineering-media-creator.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Add modular truck bed rack designer instruction set**
+  - Added `openai/instruction-sets/vehicle/truck-bed-rack-designer.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Add patent development assistant instruction set**
+  - Added `openai/instruction-sets/legal/patent-development-assistant.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Add ATS resume and cover letter instruction set**
+  - Added `openai/instruction-sets/career/ats-resume-and-cover-letter.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Add container home expansion instruction set**
+  - Added `openai/instruction-sets/container-home/container-home-expansion.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Add AI CAD Design Book instruction set**
+  - Added `openai/instruction-sets/cad/ai-cad-design-book.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Add bariatric recipe and meal planner instruction set**
+  - Added `openai/instruction-sets/nutrition/bariatric-recipe-meal-planner.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Add voice strength and conditioning coach instruction set**
+  - Added `openai/instruction-sets/fitness/voice-strength-conditioning-coach.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Group instruction sets under the OpenAI directory**
+  - Moved event, fitness, and HVAC instruction sets under `openai/instruction-sets/`.
+  - Updated the README catalog and repository layout guidance.
+
+- **Add post-bariatric Phase 4 AI coach instruction set**
+  - Added `openai/instruction-sets/fitness/post-bariatric-ai-coach.md`.
+  - Updated `README.md` with the generated catalog entry.
+
+- **Add AI trainer, nutritionist, and health analyst instruction set**
+  - Added `openai/instruction-sets/fitness/ai-trainer-nutrition-health.md`.
+  - Updated `README.md` with the generated catalog entry.
+
 - **Add high school reunion ChatGPT Project instruction set**
-  - Added `instruction-sets/events/high-school-reunion.md`.
+  - Added `openai/instruction-sets/events/high-school-reunion.md`.
 
 - **Clarify ChatGPT Project instruction set terminology**
   - Updated `CONTRIBUTING.md` to use the repository's defined term consistently.
