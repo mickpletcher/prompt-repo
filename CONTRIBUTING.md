@@ -46,6 +46,10 @@ create a release or tag for every content edit.
 
 ## Pull requests
 
+Create changes through pull requests rather than pushing directly to `main`.
+The administrator ruleset bypass is reserved for recovery when the normal
+pull-request path cannot be used safely.
+
 The repository-metadata workflow updates the generated catalog in `README.md`
 and the pull-request entry in `changelog.md` automatically for same-repository
 pull requests. Do not edit the README catalog between its generated markers.
@@ -62,10 +66,11 @@ emit a file-change event for them.
    node .github/scripts/readme-catalog.mjs --check
    ```
 
-4. Run the catalog tests and Markdown lint locally when available:
+4. Run the repository tests, local-link check, and Markdown lint when available:
 
    ```shell
-   node --test .github/scripts/readme-catalog.test.mjs
+   node --test .github/scripts/*.test.mjs
+   node .github/scripts/check-markdown-links.mjs
    npx --yes markdownlint-cli2@0.23.2
    ```
 

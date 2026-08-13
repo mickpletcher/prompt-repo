@@ -1,6 +1,7 @@
 # Prompt Repo
 
 [![Markdown lint](https://github.com/mickpletcher/prompt-repo/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/mickpletcher/prompt-repo/actions/workflows/markdownlint.yml)
+[![CodeQL](https://github.com/mickpletcher/prompt-repo/actions/workflows/codeql.yml/badge.svg)](https://github.com/mickpletcher/prompt-repo/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A growing library of reusable prompts and ChatGPT Project instruction sets for
@@ -85,7 +86,8 @@ pull-request guidance.
 
 This is an actively maintained, growing library. Its generated catalog and
 changelog keep the repository index aligned with pull-request changes over
-time.
+time. CI also tests the catalog generator, validates local Markdown links,
+lints Markdown, and scans the JavaScript automation with CodeQL.
 
 See [changelog.md](changelog.md) for the complete repository content and
 configuration history.
