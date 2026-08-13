@@ -11,6 +11,7 @@ import {
   renderCatalog,
   replaceCatalog,
 } from "./readme-catalog.mjs";
+import { githubApiUrl } from "./update-repository-metadata.mjs";
 
 const resources = [
   {
@@ -86,6 +87,25 @@ test("replaceCatalog rejects missing or incomplete markers", () => {
   assert.throws(
     () => replaceCatalog(`${CATALOG_START}\n`, resources),
     /must contain/,
+  );
+});
+
+test("githubApiUrl keeps requests on the configured GitHub API host", () => {
+  assert.equal(
+    githubApiUrl("/repos/owner/repo/issues/1", "https://api.github.com"),
+    "https://api.github.com/repos/owner/repo/issues/1",
+  );
+  assert.equal(
+    githubApiUrl("/repos/owner/repo/issues/1", "https://github.example.com/api/v3"),
+    "https://github.example.com/api/v3/repos/owner/repo/issues/1",
+  );
+  assert.throws(
+    () => githubApiUrl("//evil.example.com/", "https://api.github.com"),
+    /relative|Invalid GitHub API path/,
+  );
+  assert.throws(
+    () => githubApiUrl("https://evil.example.com/", "https://api.github.com"),
+    /relative|Invalid GitHub API path/,
   );
 });
 

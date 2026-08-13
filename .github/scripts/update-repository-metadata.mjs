@@ -1,30 +1,58 @@
+import path from "node:path";
+import { pathToFileURL } from "node:url";
+
 import { replaceCatalog } from "./readme-catalog.mjs";
 
-const {
-  API_URL = "https://api.github.com",
-  GH_TOKEN,
-  PR_NUMBER,
-  REPOSITORY,
-} = process.env;
+let pullNumber;
+let repositoryPath;
 
-if (!GH_TOKEN || !REPOSITORY || !PR_NUMBER) {
-  throw new Error("GH_TOKEN, REPOSITORY, and PR_NUMBER are required.");
+const DEFAULT_API_URL = "https://api.github.com";
+
+export function normalizeGithubApiUrl(url) {
+  const parsed = new URL(url);
+
+  if (!/^(https?:)$/.test(parsed.protocol)) {
+    throw new Error(`Unsupported GitHub API URL protocol: ${parsed.protocol}`);
+  }
+
+  return parsed.toString().replace(/\/$/, "");
 }
 
-const pullNumber = Number.parseInt(PR_NUMBER, 10);
-if (!Number.isInteger(pullNumber) || pullNumber < 1) {
-  throw new Error(`Invalid pull request number: ${PR_NUMBER}`);
+export function githubApiUrl(pathname, baseUrl = process.env.API_URL ?? DEFAULT_API_URL) {
+  if (typeof pathname !== "string" || !pathname.startsWith("/")) {
+    throw new Error(`Invalid GitHub API path: ${pathname}`);
+  }
+
+  if (pathname.startsWith("//") || /^https?:\/\//i.test(pathname)) {
+    throw new Error(`GitHub API path must be relative: ${pathname}`);
+  }
+
+  const base = new URL(normalizeGithubApiUrl(baseUrl));
+  const candidate = new URL(`${base.pathname.replace(/\/$/, "")}${pathname}`, base);
+
+  if (candidate.origin !== base.origin) {
+    throw new Error(`GitHub API path must stay on the configured host: ${pathname}`);
+  }
+
+  return candidate.toString();
 }
 
-const repositoryPath = REPOSITORY.split("/").map(encodeURIComponent).join("/");
-const headers = {
-  Accept: "application/vnd.github+json",
-  Authorization: `Bearer ${GH_TOKEN}`,
-  "X-GitHub-Api-Version": "2022-11-28",
-};
+const API_URL = normalizeGithubApiUrl(process.env.API_URL ?? DEFAULT_API_URL);
 
 async function github(path, { method = "GET", body } = {}) {
-  const response = await fetch(`${API_URL}${path}`, {
+  const { GH_TOKEN } = process.env;
+
+  if (!GH_TOKEN) {
+    throw new Error("GH_TOKEN is required.");
+  }
+
+  const headers = {
+    Accept: "application/vnd.github+json",
+    Authorization: `Bearer ${GH_TOKEN}`,
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+
+  const response = await fetch(githubApiUrl(path), {
     method,
     headers: {
       ...headers,
@@ -167,120 +195,143 @@ async function createBlob(content) {
   return blob.sha;
 }
 
-const pullRequest = await github(
-  `/repos/${repositoryPath}/pulls/${pullNumber}`,
-);
+async function main() {
+  const { GH_TOKEN, PR_NUMBER, REPOSITORY } = process.env;
 
-if (pullRequest.state !== "open") {
-  throw new Error(`Pull request #${pullNumber} is not open.`);
-}
+  if (!GH_TOKEN || !REPOSITORY || !PR_NUMBER) {
+    throw new Error("GH_TOKEN, REPOSITORY, and PR_NUMBER are required.");
+  }
 
-if (pullRequest.head.repo.full_name !== REPOSITORY) {
-  throw new Error(
-    `Pull request #${pullNumber} is from a fork and cannot be updated automatically.`,
+  pullNumber = Number.parseInt(PR_NUMBER, 10);
+  if (!Number.isInteger(pullNumber) || pullNumber < 1) {
+    throw new Error(`Invalid pull request number: ${PR_NUMBER}`);
+  }
+
+  repositoryPath = REPOSITORY.split("/").map(encodeURIComponent).join("/");
+
+  const pullRequest = await github(
+    `/repos/${repositoryPath}/pulls/${pullNumber}`,
   );
-}
 
-const headSha = pullRequest.head.sha;
-const headCommit = await github(
-  `/repos/${repositoryPath}/git/commits/${encodeURIComponent(headSha)}`,
-);
-const treeResponse = await github(
-  `/repos/${repositoryPath}/git/trees/${encodeURIComponent(headCommit.tree.sha)}?recursive=1`,
-);
+  if (pullRequest.state !== "open") {
+    throw new Error(`Pull request #${pullNumber} is not open.`);
+  }
 
-if (treeResponse.truncated) {
-  throw new Error("Repository tree is too large to generate a complete catalog.");
-}
+  if (pullRequest.head.repo.full_name !== REPOSITORY) {
+    throw new Error(
+      `Pull request #${pullNumber} is from a fork and cannot be updated automatically.`,
+    );
+  }
 
-const markdownEntries = treeResponse.tree
-  .filter(
-    (entry) =>
-      entry.type === "blob" &&
-      /^(prompts|openai\/instruction-sets)\/.+\.md$/i.test(entry.path),
-  )
-  .sort((left, right) => left.path.localeCompare(right.path));
-const resources = await Promise.all(
-  markdownEntries.map(async (entry) => ({
-    path: entry.path,
-    content: await blobContent(entry.sha),
-  })),
-);
-const readmeEntry = treeEntry(treeResponse.tree, "README.md");
-const changelogEntry = treeEntry(treeResponse.tree, "changelog.md");
-const currentReadme = await blobContent(readmeEntry.sha);
-const currentChangelog = await blobContent(changelogEntry.sha);
-const updatedReadme = replaceCatalog(currentReadme, resources);
-const readmeChanged = updatedReadme !== currentReadme;
-const files = (await pullRequestFiles())
-  .filter((file) => file.filename !== "changelog.md")
-  .sort((left, right) => left.filename.localeCompare(right.filename));
-
-if (readmeChanged && !files.some((file) => file.filename === "README.md")) {
-  files.push({ filename: "README.md", status: "modified" });
-  files.sort((left, right) => left.filename.localeCompare(right.filename));
-}
-
-const updatedChangelog = updateChangelog(currentChangelog, pullRequest, files);
-const changelogChanged = updatedChangelog !== currentChangelog;
-
-if (!readmeChanged && !changelogChanged) {
-  console.log(
-    `README catalog and changelog for pull request #${pullNumber} are current.`,
+  const headSha = pullRequest.head.sha;
+  const headCommit = await github(
+    `/repos/${repositoryPath}/git/commits/${encodeURIComponent(headSha)}`,
   );
-  process.exit(0);
-}
+  const treeResponse = await github(
+    `/repos/${repositoryPath}/git/trees/${encodeURIComponent(headCommit.tree.sha)}?recursive=1`,
+  );
 
-const tree = [];
+  if (treeResponse.truncated) {
+    throw new Error("Repository tree is too large to generate a complete catalog.");
+  }
 
-if (readmeChanged) {
-  tree.push({
-    path: "README.md",
-    mode: readmeEntry.mode,
-    type: "blob",
-    sha: await createBlob(updatedReadme),
-  });
-}
+  const markdownEntries = treeResponse.tree
+    .filter(
+      (entry) =>
+        entry.type === "blob" &&
+        /^(prompts|openai\/instruction-sets)\/.+\.md$/i.test(entry.path),
+    )
+    .sort((left, right) => left.path.localeCompare(right.path));
+  const resources = await Promise.all(
+    markdownEntries.map(async (entry) => ({
+      path: entry.path,
+      content: await blobContent(entry.sha),
+    })),
+  );
+  const readmeEntry = treeEntry(treeResponse.tree, "README.md");
+  const changelogEntry = treeEntry(treeResponse.tree, "changelog.md");
+  const currentReadme = await blobContent(readmeEntry.sha);
+  const currentChangelog = await blobContent(changelogEntry.sha);
+  const updatedReadme = replaceCatalog(currentReadme, resources);
+  const readmeChanged = updatedReadme !== currentReadme;
+  const files = (await pullRequestFiles())
+    .filter((file) => file.filename !== "changelog.md")
+    .sort((left, right) => left.filename.localeCompare(right.filename));
 
-if (changelogChanged) {
-  tree.push({
-    path: "changelog.md",
-    mode: changelogEntry.mode,
-    type: "blob",
-    sha: await createBlob(updatedChangelog),
-  });
-}
+  if (readmeChanged && !files.some((file) => file.filename === "README.md")) {
+    files.push({ filename: "README.md", status: "modified" });
+    files.sort((left, right) => left.filename.localeCompare(right.filename));
+  }
 
-const newTree = await github(`/repos/${repositoryPath}/git/trees`, {
-  method: "POST",
-  body: { base_tree: headCommit.tree.sha, tree },
-});
-const newCommit = await github(`/repos/${repositoryPath}/git/commits`, {
-  method: "POST",
-  body: {
-    message: `Update repository metadata for #${pullNumber}`,
-    tree: newTree.sha,
-    parents: [headSha],
-  },
-});
-const encodedBranch = pullRequest.head.ref
-  .split("/")
-  .map(encodeURIComponent)
-  .join("/");
+  const updatedChangelog = updateChangelog(currentChangelog, pullRequest, files);
+  const changelogChanged = updatedChangelog !== currentChangelog;
 
-await github(`/repos/${repositoryPath}/git/refs/heads/${encodedBranch}`, {
-  method: "PATCH",
-  body: { sha: newCommit.sha, force: false },
-});
+  if (!readmeChanged && !changelogChanged) {
+    console.log(
+      `README catalog and changelog for pull request #${pullNumber} are current.`,
+    );
+    process.exit(0);
+  }
 
-console.log(`Updated repository metadata at ${newCommit.sha}.`);
+  const tree = [];
 
-await github(
-  `/repos/${repositoryPath}/actions/workflows/markdownlint.yml/dispatches`,
-  {
+  if (readmeChanged) {
+    tree.push({
+      path: "README.md",
+      mode: readmeEntry.mode,
+      type: "blob",
+      sha: await createBlob(updatedReadme),
+    });
+  }
+
+  if (changelogChanged) {
+    tree.push({
+      path: "changelog.md",
+      mode: changelogEntry.mode,
+      type: "blob",
+      sha: await createBlob(updatedChangelog),
+    });
+  }
+
+  const newTree = await github(`/repos/${repositoryPath}/git/trees`, {
     method: "POST",
-    body: { ref: pullRequest.head.ref },
-  },
-);
+    body: { base_tree: headCommit.tree.sha, tree },
+  });
+  const newCommit = await github(`/repos/${repositoryPath}/git/commits`, {
+    method: "POST",
+    body: {
+      message: `Update repository metadata for #${pullNumber}`,
+      tree: newTree.sha,
+      parents: [headSha],
+    },
+  });
+  const encodedBranch = pullRequest.head.ref
+    .split("/")
+    .map(encodeURIComponent)
+    .join("/");
 
-console.log(`Dispatched Markdown lint for ${pullRequest.head.ref}.`);
+  await github(`/repos/${repositoryPath}/git/refs/heads/${encodedBranch}`, {
+    method: "PATCH",
+    body: { sha: newCommit.sha, force: false },
+  });
+
+  console.log(`Updated repository metadata at ${newCommit.sha}.`);
+
+  await github(
+    `/repos/${repositoryPath}/actions/workflows/markdownlint.yml/dispatches`,
+    {
+      method: "POST",
+      body: { ref: pullRequest.head.ref },
+    },
+  );
+
+  console.log(`Dispatched Markdown lint for ${pullRequest.head.ref}.`);
+}
+
+const invokedPath = process.argv[1]
+  ? pathToFileURL(path.resolve(process.argv[1])).href
+  : undefined;
+
+if (invokedPath === import.meta.url) {
+  await main();
+}

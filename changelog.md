@@ -10,6 +10,10 @@ event and must be recorded manually when they are made.
 
 ## Unreleased
 
+- **Fix GitHub API request validation in metadata automation**
+  - Hardened the repository metadata workflow to validate the GitHub API base URL and reject path injection attempts before making API requests.
+  - Updated the automated metadata script to keep requests scoped to the configured GitHub host.
+
 <!-- automated-changelog -->
 
 - **2026-08-12: Add living project management files**
