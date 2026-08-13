@@ -4,8 +4,22 @@ Desktop.ini
 Thumbs.db
 
 # Editor and temporary files
+.idea/
+.vscode/
 *.bak
 *.swp
 *.swo
 *.tmp
 *~
+
+# Local dependencies and test output
+.nyc_output/
+coverage/
+node_modules/
+
+# Environment files and private keys
+.env
+.env.*
+!.env.example
+*.key
+*.pem
