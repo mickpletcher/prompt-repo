@@ -16,6 +16,20 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-8:start -->
+- **Improve repository security and validation** ([#8](https://github.com/mickpletcher/prompt-repo/pull/8))
+  - Added `.github/scripts/check-markdown-links.mjs`.
+  - Added `.github/scripts/check-markdown-links.test.mjs`.
+  - Added `.github/workflows/codeql.yml`.
+  - Updated `.github/workflows/markdownlint.yml`.
+  - Updated `.gitignore`.
+  - Updated `ASSESSMENT.md`.
+  - Updated `COMPLETED-UPGRADES.md`.
+  - Updated `CONTRIBUTING.md`.
+  - Updated `FUTURE-UPGRADES.md`.
+  - Updated `README.md`.
+<!-- changelog:pr-8:end -->
+
 - **2026-08-12: Add living project management files**
   - Added `ASSESSMENT.md`, `FUTURE-UPGRADES.md`, and `COMPLETED-UPGRADES.md`.
   - Established the current repository assessment and upgrade backlog.
