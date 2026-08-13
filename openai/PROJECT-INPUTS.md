@@ -127,6 +127,21 @@ Missing from repository: all equipment identity, wiring diagrams, readings, faul
 
 Safe default: begin with non-invasive observations and safety checks. Do not advise live electrical testing unless the user is qualified and the risk is appropriate.
 
+## Hot tub modernization and component upgrade
+
+File: `openai/instruction-sets/hot-tub/hot-tub-project-instructions.md`
+
+Required inputs:
+
+- Tub age, shell condition, current photos, equipment labels, brand/model data, installed control pack, heater, pumps, blower, ozone or UV system, sanitizer setup, filter type, cover, jet count, plumbing layout, and service history.
+- Existing electrical details: service voltage, breaker size, feeder conductor and length, GFCI type, disconnect, grounding and bonding, load calculations, and current label data.
+- Compatibility measurements: heater union size and face-to-face length, pump suction and discharge sizes, PVC outside diameter, equipment-bay dimensions, topside cutout size, pump centerline height, breaker rating, supply voltage, conductor size, and pump nameplate data.
+- Project goals, budget target, reliability priorities, desired automation, whether the shell and existing plumbing should be retained, and any local code or permit requirements.
+
+Missing from repository: exact manufacturer/model data, current wiring and breaker details, actual measurements, photos, leak history, and verified code-compliance status.
+
+Safe default: treat all major electrical and plumbing upgrades as unapproved until measured and verified. Prefer modern UL/ETL-listed control packs and heaters that match the existing shell and service, but never assume the 1994 label is code-compliant or safe without verification.
+
 ## Patent development assistant
 
 File: `openai/instruction-sets/legal/patent-development-assistant.md`

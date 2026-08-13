@@ -10,6 +10,18 @@ event and must be recorded manually when they are made.
 
 ## Unreleased
 
+- **Add hot tub modernization project instruction set**
+  - Added `openai/instruction-sets/hot-tub/hot-tub-project-instructions.md` with the hot-tub modernization strategy, electrical-safety rules, compatibility checks, troubleshooting workflow, and upgrade recommendation format.
+  - Updated the generated README catalog to include the new instruction set.
+
+- **Add outdoor gym project instruction set**
+  - Added `openai/instruction-sets/outdoor-gym/outdoor-gym-project-instructions.md` with the current project baseline, decision-state rules, design priorities, safety requirements, and repository expectations for the Highland Reserves outdoor gym.
+  - Updated the generated README catalog to include the new instruction set.
+
+- **Add Tennessee LLE exam prep instruction set**
+  - Added `openai/instruction-sets/tennessee-lle/tennessee-lle-exam-prep-instructions.md` with the exam matrix, source hierarchy, practice modes, and remediation workflow for the Tennessee LLE study plan.
+  - Updated the generated README catalog to include the new instruction set.
+
 - **Fix GitHub API request validation in metadata automation**
   - Hardened the repository metadata workflow to validate the GitHub API base URL and reject path injection attempts before making API requests.
   - Updated the automated metadata script to keep requests scoped to the configured GitHub host.
