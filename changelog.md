@@ -26,6 +26,10 @@ event and must be recorded manually when they are made.
   - Hardened the repository metadata workflow to validate the GitHub API base URL and reject path injection attempts before making API requests.
   - Updated the automated metadata script to keep requests scoped to the configured GitHub host.
 
+- **Sync generated README catalog with repository contents**
+  - Refreshed the generated resource catalog in `README.md` after adding the new instruction-set files.
+  - Verified the markdown lint workflow checks pass locally for the README catalog, local-link validation, and script tests.
+
 <!-- automated-changelog -->
 
 <!-- changelog:pr-8:start -->
