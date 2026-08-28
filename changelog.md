@@ -10,6 +10,10 @@ event and must be recorded manually when they are made.
 
 ## Unreleased
 
+- **Add software project living documentation standard prompt**
+  - Added `prompts/project-governance/software-project-living-documentation-standard.md` with the reusable repository documentation standard and bootstrap instructions.
+  - Updated the generated README catalog to include the new prompt.
+
 - **Add hot tub modernization project instruction set**
   - Added `openai/instruction-sets/hot-tub/hot-tub-project-instructions.md` with the hot-tub modernization strategy, electrical-safety rules, compatibility checks, troubleshooting workflow, and upgrade recommendation format.
   - Updated the generated README catalog to include the new instruction set.
