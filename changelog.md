@@ -10,6 +10,9 @@ event and must be recorded manually when they are made.
 
 ## Unreleased
 
+- **Fix OpenClaw runbook Markdown lint**
+  - Converted primary reference URLs in `prompts/automation/openclaw-secure-setup-runbook.md` to Markdown links.
+
 - **Add software project living documentation standard prompt**
   - Added `prompts/project-governance/software-project-living-documentation-standard.md` with the reusable repository documentation standard and bootstrap instructions.
   - Updated the generated README catalog to include the new prompt.

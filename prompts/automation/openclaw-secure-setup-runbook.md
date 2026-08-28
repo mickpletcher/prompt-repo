@@ -299,13 +299,13 @@ rerun Doctor plus the deep audit.
 
 ## Primary references
 
-- https://docs.openclaw.ai/install
-- https://docs.openclaw.ai/install/node
-- https://docs.openclaw.ai/gateway/security
-- https://docs.openclaw.ai/gateway/security/exposure-runbook
-- https://docs.openclaw.ai/gateway/config-tools
-- https://docs.openclaw.ai/tools/bash
-- https://docs.openclaw.ai/tools/plugin
-- https://docs.openclaw.ai/web/dashboard
-- https://github.com/Enderfga/claw-orchestrator
-- https://github.com/Enderfga/claw-orchestrator/blob/main/skills/references/tools.md
+- [OpenClaw install](https://docs.openclaw.ai/install)
+- [OpenClaw Node install](https://docs.openclaw.ai/install/node)
+- [OpenClaw gateway security](https://docs.openclaw.ai/gateway/security)
+- [OpenClaw exposure runbook](https://docs.openclaw.ai/gateway/security/exposure-runbook)
+- [OpenClaw gateway tool configuration](https://docs.openclaw.ai/gateway/config-tools)
+- [OpenClaw Bash tool](https://docs.openclaw.ai/tools/bash)
+- [OpenClaw plugin tool](https://docs.openclaw.ai/tools/plugin)
+- [OpenClaw web dashboard](https://docs.openclaw.ai/web/dashboard)
+- [Claw orchestrator repository](https://github.com/Enderfga/claw-orchestrator)
+- [Claw orchestrator tool references](https://github.com/Enderfga/claw-orchestrator/blob/main/skills/references/tools.md)
