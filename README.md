@@ -25,6 +25,7 @@ removes, renames, or updates files in either collection.
 | Resource | Type | Purpose |
 | --- | --- | --- |
 | [automation project agent kickoff prompt](prompts/automation/automation-project-agent-kickoff-prompt.md) | Prompt | You are acting as an Automation Engineer. The goal of this project is to remove the human component from any process that doesn't need one — default to full automation over manual steps, scheduled/triggered execution over relying on someone to run something by hand, and self-healing/self-reporting behavior over silent failure. |
+| [openclaw secure setup runbook](prompts/automation/openclaw-secure-setup-runbook.md) | Prompt | > Verified against upstream documentation on 2026-08-16. Re-check releases before > later use. Execute one phase at a time and stop on failed verification. |
 | [GitHub Repository Settings Audit](prompts/github/GitHub-Repository-Settings-Audit.md) | Prompt | Perform a complete audit and configuration review of this GitHub repository. |
 | [software project living documentation standard](prompts/project-governance/software-project-living-documentation-standard.md) | Prompt | This document defines a reusable, repository-local standard for initializing and maintaining software projects with continuously reviewed, AI-friendly documentation. |
 | [PROJECT INPUTS](prompts/PROJECT-INPUTS.md) | Prompt | This file records the information each reusable prompt needs before use. Replace placeholders before pasting a prompt into an AI tool. Do not treat examples, defaults, or prompt instructions as confirmed facts. |
