@@ -48,7 +48,13 @@ privacy-safe evidence needed:
 - dependent services or policies;
 - current health and recent failures;
 - resource counts rather than private records where possible;
-- configuration export, backup, or restore point needed for rollback.
+- existing configuration export, backup, or restore point and any recovery
+  artifact still needed for rollback.
+
+In `PLAN ONLY` mode, inspect existing recovery artifacts and report missing
+ones. Do not create or modify backups, snapshots, restore points, exports, or
+retention settings. In `APPLY EXACT CHANGE` mode, create a required recovery
+artifact only when the approved change scope explicitly covers it.
 
 Distinguish configured state, effective state, cached state, and observed
 behavior. A successful setting read does not prove the system currently behaves
