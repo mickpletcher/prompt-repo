@@ -39,6 +39,19 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-9:start -->
+- **Add reusable engineering workflow prompts** ([#9](https://github.com/mickpletcher/prompt-repo/pull/9))
+  - Updated `ASSESSMENT.md`.
+  - Added `prompts/automation/unattended-automation-reliability-audit.md`.
+  - Added `prompts/hardware/physical-device-change-readiness-gate.md`.
+  - Added `prompts/implementation/safe-backlog-item-implementation.md`.
+  - Added `prompts/powershell/powershell-rest-api-production-readiness.md`.
+  - Updated `prompts/PROJECT-INPUTS.md`.
+  - Added `prompts/project-review/software-project-assessment-and-remediation.md`.
+  - Added `prompts/security/privacy-first-local-tool-safety-review.md`.
+  - Updated `README.md`.
+<!-- changelog:pr-9:end -->
+
 <!-- changelog:pr-8:start -->
 - **Improve repository security and validation** ([#8](https://github.com/mickpletcher/prompt-repo/pull/8))
   - Added `.github/scripts/check-markdown-links.mjs`.
