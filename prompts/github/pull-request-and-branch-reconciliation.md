@@ -111,7 +111,8 @@ unique commits first.
 
 ### 6. Reconcile final branch state
 
-After processing approved items:
+Perform the following final synchronization operations only in `PROCESS ALL SAFE
+ITEMS` mode or when each operation is explicitly included in the named approval:
 
 - fetch and prune remote-tracking refs;
 - switch to the expected default branch;
@@ -123,6 +124,9 @@ After processing approved items:
 
 Do not claim cleanup is complete until remote branch deletion is checked
 directly.
+
+In `PROCESS NAMED APPROVED ITEMS` mode, leave every unlisted synchronization
+operation unchanged and report it as outstanding.
 
 In `ASSESS ONLY` mode, do not switch branches, pull, fetch, prune, or change
 refs. Report the observed local and remote state and the synchronization or
