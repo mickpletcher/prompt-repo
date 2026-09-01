@@ -14,11 +14,16 @@ Reconcile this repository:
 - Branches that must be retained: `[INSERT BRANCHES OR NONE]`
 - Required checks or review policy: `[INSERT POLICY OR DISCOVER]`
 - Known dirty work or concurrent changes: `[INSERT DETAILS OR NONE]`
-- Authorization: `[ASSESS ONLY | PROCESS APPROVED ITEMS | PROCESS ALL SAFE ITEMS]`
+- Approved items and permitted operations: `[NONE | INSERT PRS, BRANCHES, AND ACTIONS]`
+- Authorization: `[ASSESS ONLY | PROCESS NAMED APPROVED ITEMS | PROCESS ALL SAFE ITEMS]`
 - Branch cleanup authorization: `[KEEP ALL | DELETE NAMED BRANCHES | DELETE VERIFIED MERGED BRANCHES]`
 
 Default to assessment only. Never merge, close, retarget, delete, force-push, or
 rewrite a branch unless the requested authorization covers that action.
+
+In `PROCESS NAMED APPROVED ITEMS` mode, act only on the pull requests, branches,
+and operations named in the approval input. A review approval or a `ready to
+merge` classification is not user authorization to process an item.
 
 ### 1. Build a complete inventory
 
@@ -90,7 +95,7 @@ the queue.
 
 ### 5. Process approved pull requests
 
-When authorized:
+For items covered by the named approval input or `PROCESS ALL SAFE ITEMS`:
 
 1. Update or rebase a source branch only when necessary and safe.
 2. Resolve conflicts explicitly, retaining all intended changes.

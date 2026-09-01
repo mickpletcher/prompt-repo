@@ -14,11 +14,16 @@ Triage dependency updates in this repository:
 - Release and compatibility policy: `[INSERT POLICY]`
 - Required checks: `[INSERT CHECKS OR DISCOVER]`
 - Merge method: `[SQUASH | MERGE | REBASE]`
-- Authorization: `[ASSESS ONLY | MERGE APPROVED UPDATES | PROCESS ALL SAFE UPDATES]`
+- Approved pull requests and permitted operations: `[NONE | INSERT PR NUMBERS AND ACTIONS]`
+- Authorization: `[ASSESS ONLY | PROCESS NAMED APPROVED UPDATES | PROCESS ALL SAFE UPDATES]`
 - Branch cleanup authorization: `[KEEP ALL | DELETE NAMED BRANCHES | DELETE MERGED UPDATE BRANCHES]`
 
 Default to assessment only. Do not assume an automated update is safe because
 it was opened by Dependabot, Renovate, or another trusted bot.
+
+In `PROCESS NAMED APPROVED UPDATES` mode, act only on the pull requests and
+operations named in the approval input. A `MERGE` disposition, bot-authored pull
+request, or GitHub review approval is not user authorization to merge.
 
 ### 1. Inventory the complete update set
 
@@ -116,7 +121,7 @@ Include the evidence and required next action for every non-merge result.
 
 ### 7. Merge and clean up when authorized
 
-For each approved merge:
+For each merge covered by the named approval input or `PROCESS ALL SAFE UPDATES`:
 
 1. Confirm current head SHA and checks.
 2. Resolve review conversations.
