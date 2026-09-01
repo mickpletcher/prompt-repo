@@ -13,7 +13,7 @@ Compare these options:
 - Required features: `[INSERT REQUIREMENTS]`
 - Nice-to-have features: `[INSERT PREFERENCES]`
 - Budget and currency: `[INSERT BUDGET]`
-- Location and market: `[INSERT LOCATION]`
+- Country, state or province, and market: `[INSERT MINIMUM NON-IDENTIFYING REGION]`
 - Purchase deadline: `[INSERT DATE OR NONE]`
 - Existing equipment or ecosystem: `[INSERT DETAILS OR NONE]`
 - Physical, medical, accessibility, installation, or compatibility constraints: `[INSERT MINIMUM NON-IDENTIFYING FUNCTIONAL CONSTRAINTS]`
@@ -23,6 +23,10 @@ Do not provide diagnoses, medical history, records, medication lists, account
 identifiers, or other health information. State only the minimum non-identifying
 functional requirement needed for comparison, such as a temperature range,
 weight limit, control type, or accessibility feature.
+
+Do not provide a street address, coordinates, or another precise home location.
+Use only the minimum country, state or province, or broad market needed for
+pricing, availability, compatibility, or regulation.
 
 Do not recommend a product until the requirements and disqualifying constraints
 are clear. Ask only for missing information that would materially change the

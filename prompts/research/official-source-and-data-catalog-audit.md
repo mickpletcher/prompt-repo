@@ -16,7 +16,7 @@ Audit this source catalog:
 - Allow, deny, include, or exclude policy: `[INSERT POLICY]`
 - Licensing requirements: `[INSERT REQUIREMENTS]`
 - Approved isolated source and parser environment: `[NONE | INSERT ENVIRONMENT]`
-- Approved source and policy mutations: `[NONE | INSERT EXACT CHANGES]`
+- Approved catalog, output, and documentation mutations: `[NONE | INSERT EXACT CHANGES]`
 - Approved changes: `[ASSESS ONLY | UPDATE CATALOG | UPDATE AND PUBLISH]`
 
 Default to assessment only. Do not contact private systems, upload local data,
@@ -24,9 +24,9 @@ change live filtering policy, or publish generated outputs unless authorized.
 
 The update mode controls the delivery path. It does not authorize the
 recommended dispositions. Apply only source additions, removals, replacements,
-enablement changes, policy changes, and output replacements named in the
-approved mutation input. If none are named, report recommendations and stop
-before editing or publishing.
+enablement changes, policy changes, output replacements, and documentation edits
+named in the approved mutation input. If none are named, report recommendations
+and stop before editing or publishing.
 
 ### 1. Understand the catalog contract
 
@@ -157,7 +157,9 @@ For each exact catalog mutation named in the approved input:
    succeeds and only when that exact output target and replacement are named in
    the approved mutation input. Otherwise retain the regenerated output locally
    and report publication as outstanding.
-7. Update README, assessment, changelog, and policy documentation as required.
+7. Update only the README, assessment, changelog, or policy documentation files
+   and exact content named in the approved mutation input. Report every other
+   required documentation update without editing it.
 
 In `UPDATE CATALOG` mode, keep regenerated output in a separate local location
 for validation and report publication as outstanding. Do not replace external or

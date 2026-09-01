@@ -333,7 +333,7 @@ Required inputs:
 - A disposable credential-free source-probe and parser environment with storage,
   response, redirect, and time limits plus allowlisted network access.
 - The exact approved source additions, removals, replacements, enablement
-  changes, policy changes, and output replacements.
+  changes, policy changes, output replacements, and documentation edits.
 - Authorization to assess, update the catalog, or update and publish it.
 
 Missing from the prompt: the current source inventory, official-source evidence, live availability, parser behavior, coverage gaps, licensing status, generated outputs, and publication authority.

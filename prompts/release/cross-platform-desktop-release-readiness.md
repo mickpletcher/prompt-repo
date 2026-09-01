@@ -196,11 +196,14 @@ covers publication and the verdict is `READY`:
 
 1. Confirm the exact commit, version, tag, release notes, target repository, and
    intended artifact set.
-2. Rebuild any artifact not preserved from the verified candidate, then complete
-   every approved signing or notarization stage that changes artifact bytes.
-3. Rerun applicable artifact gates on the final downloadable files and generate
-   fresh checksums after all byte-changing stages. Never reuse a pre-signing
-   checksum.
+2. Use the exact preserved artifacts that received the `READY` verdict, including
+   every byte-changing signing and notarization stage. If an artifact is missing,
+   rebuilt, re-signed, re-notarized, or otherwise changed, stop publication,
+   reset readiness to `BLOCKED`, and rerun every required automated, manual,
+   physical-platform, installation, upgrade, and integration gate on the new
+   files. Resume only after those exact files receive a new `READY` verdict.
+3. Generate fresh checksums for the final downloadable files after all
+   byte-changing stages. Never reuse a pre-signing checksum.
 4. Confirm the final artifacts, checksums, signatures, and notarization results.
 5. Create the authorized tag and release using only those verified files.
 6. Read back the published release, asset set, sizes, and checksums.

@@ -161,6 +161,13 @@ content and report validation as outstanding.
 After isolated validation, review the final diff for scope, private data,
 generated junk, unfinished placeholders, and unrelated changes.
 
+Before pushing a branch or opening either pull-request type, inspect every
+workflow or external integration triggered by branch publication or pull-request
+creation. Require disposable workers, no secrets, a least-privilege token, no
+privileged self-hosted runner, restricted network and filesystem access, and no
+privileged event that executes untrusted head code. If that boundary fails,
+leave delivery local and report branch and pull-request publication as blocked.
+
 Follow the requested branch, commit, pull request, review, check, merge, and
 synchronization workflow. Delete the delivered source branch only when branch
 cleanup authorization permits it and the merge is verified. A `DRAFT PR` may be
