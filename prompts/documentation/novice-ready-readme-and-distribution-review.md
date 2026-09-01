@@ -14,6 +14,7 @@ Review and improve this project's public onboarding:
 - Primary user workflow: `[INSERT WORKFLOW]`
 - Required permissions or external accounts: `[INSERT REQUIREMENTS]`
 - Known limitations: `[INSERT LIMITATIONS]`
+- Approved execution and test scope: `[NONE | EXISTING EVIDENCE ONLY | INSERT EXACT TESTS AND ENVIRONMENT]`
 - Approved file and packaging changes: `[NONE | INSERT SCOPE]`
 - Requested outcome: `[ASSESSMENT | README UPDATE | README AND DISTRIBUTION PR]`
 
@@ -36,7 +37,12 @@ clickable artifact and state when one does not exist.
 
 ### 2. Verify every documented instruction
 
-Test the README from a clean or representative environment. Confirm:
+Execute project code, installers, or artifacts only when the approved execution
+and test scope covers the exact test and environment. Otherwise inspect the
+README and existing evidence, then mark runtime steps unverified.
+
+When authorized, test the README from a clean or representative environment.
+Confirm:
 
 - links resolve;
 - artifact names and release locations exist;
@@ -124,7 +130,11 @@ identifiers, private URLs, tokens, and user data.
 
 ### 7. Validate the final experience
 
-Run:
+Run only validation covered by the approved execution and test scope. With
+`NONE` or `EXISTING EVIDENCE ONLY`, inspect existing results and report the
+unexecuted gates.
+
+When authorized, run:
 
 - Markdown lint and local-link checks;
 - clean installation or artifact smoke tests;
@@ -139,7 +149,9 @@ knowledge when practical.
 ### 8. Deliver the authorized outcome
 
 In `ASSESSMENT` mode, report findings and proposed content only. Do not edit
-files, build artifacts, commit, push, or open a pull request.
+files, execute project code or installers, build artifacts, commit, push, or
+open a pull request unless the separate execution and test scope explicitly
+permits the named tests.
 
 In `README UPDATE` mode, apply only the approved documentation changes and run
 the applicable validation. Leave the result as a local change unless separate

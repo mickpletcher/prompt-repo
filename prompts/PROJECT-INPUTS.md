@@ -147,6 +147,8 @@ Required inputs:
 
 - Repository URL or path, failed run URL or ID, and expected branch and commit.
 - Workflow and job name, reported symptom, supported runners, and known environment constraints.
+- A disposable credential-free reproduction environment when failed-head code
+  must be executed.
 - Repair authorization and requested delivery target.
 - Access to complete logs, annotations, repository files, checks, and relevant settings.
 
@@ -255,6 +257,7 @@ Required inputs:
 
 - Repository path or URL, intended users, supported operating systems, and primary user workflow.
 - Available installers or artifacts, required permissions or external accounts, and known limitations.
+- Approved execution and test scope with an isolated representative environment.
 - Approved documentation, screenshot, packaging, and release changes.
 - Requested assessment, README update, or README and distribution pull request.
 

@@ -15,6 +15,7 @@ Diagnose this GitHub Actions failure:
 - Reported symptom: `[INSERT SYMPTOM]`
 - Supported runner platforms: `[INSERT PLATFORMS]`
 - Known environment constraints: `[INSERT CONSTRAINTS]`
+- Approved isolated reproduction environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved repair scope: `[NONE | INSERT SCOPE]`
 - Requested delivery: `[DIAGNOSIS ONLY | LOCAL FIX | PULL REQUEST | MERGE]`
 
@@ -61,7 +62,15 @@ must not replace it with a secondary failure.
 
 ### 3. Reproduce the failing step
 
-Run the smallest safe local command that matches the failing step. Match:
+Treat the failed SHA, fork, workflow, dependencies, and build scripts as
+untrusted. Execute them only in the approved disposable reproduction environment
+with no repository, cloud, registry, or signing credentials and with restricted
+network and filesystem access. If that environment is unavailable, do not run
+the code; inspect logs and source statically and report the missing reproduction
+evidence.
+
+In the isolated environment, run the smallest command that matches the failing
+step. Match:
 
 - tool and runtime versions;
 - working directory;
