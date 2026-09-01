@@ -6,9 +6,14 @@ the image alone.
 
 ## Prompt
 
+Before attaching an image, redact tokens, credentials, private messages,
+customer data, names, email addresses, account identifiers, private URLs, local
+paths, and unrelated browser or desktop content. If safe redaction is not
+possible, do not upload the image; provide a sanitized text description instead.
+
 Analyze this screenshot as diagnostic evidence:
 
-- Screenshot or image: `[ATTACH IMAGE OR INSERT PATH]`
+- Screenshot or image: `[ATTACH REDACTED IMAGE OR INSERT SANDBOX-SAFE PATH]`
 - User's actual request: `[INSERT REQUEST]`
 - Application, service, or repository: `[INSERT CONTEXT]`
 - Approximate capture time: `[INSERT TIME OR UNKNOWN]`

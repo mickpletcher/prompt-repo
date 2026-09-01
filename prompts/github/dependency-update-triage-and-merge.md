@@ -126,8 +126,13 @@ For each approved merge:
    it and the merge is verified.
 6. Refresh the remaining dependency queue.
 
-Finish with clean synchronized `main`, an explicit list of remaining dependency
-PRs, and verification that no stale automated branches remain.
+After authorized processing, synchronize `main` only when the processing scope
+includes local checkout reconciliation. Delete branches only as allowed by the
+branch cleanup authorization.
+
+In `ASSESS ONLY` mode, do not switch branches, pull, fetch, prune, or change
+refs. Report observed divergence, remaining dependency pull requests, and stale
+automated branches without modifying them.
 
 ### Completion report
 

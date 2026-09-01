@@ -165,7 +165,8 @@ Required inputs:
 - Repository URL or path, expected default branch, and reconciliation scope.
 - Preferred merge method, protected branches, required checks, and review policy.
 - Known dirty work, worktrees, concurrent changes, and branches that must be retained.
-- Authorization to assess, process approved items, or process all safe items.
+- Authorization to assess, process approved items, or process all safe items,
+  plus separate branch-cleanup authorization.
 
 Missing from the prompt: the current complete pull request and branch inventory, mergeability, pending checks, unresolved reviews, dirty work, protection rules, and deletion authority.
 
@@ -199,7 +200,8 @@ Required inputs:
 - Repository path or URL and the approved specification path or attachment.
 - Project purpose, intended users, required stack and platforms, explicit non-goals, and acceptance criteria.
 - External services, integration environments, existing files or dirty work to preserve, and repository instructions.
-- Delivery target and authorization for external systems, publication, deployment, or merge.
+- Delivery target, external-system authorization, and separate branch-cleanup
+  authorization.
 
 Missing from the prompt: the real specification, current implementation state, ambiguous requirements, credentials capability, test environments, deployment target, and publication authority.
 
@@ -215,7 +217,8 @@ Required inputs:
 
 - Exact target system, environment, management interface, and requested configuration change.
 - Reason, expected outcome, current known state, affected scope, and maintenance window.
-- Nonsecret description of approved credentials and permissions, rollback method, and change-control requirements.
+- Nonsecret description of approved credentials and permissions, rollback
+  method, rollback execution authorization, and change-control requirements.
 - Explicit authorization to plan only or apply the exact change.
 
 Missing from the prompt: verified target identity, authoritative current state, blast radius, permission capability, maintenance approval, rollback proof, and live-write authorization.

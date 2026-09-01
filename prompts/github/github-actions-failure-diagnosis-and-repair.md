@@ -116,27 +116,46 @@ When repair is approved:
 Do not create credentials, approve organization policy changes, or modify
 protected settings unless separately authorized.
 
-### 6. Verify the correction
+### 6. Verify the correction locally
 
-Run the full relevant local suite. When the requested delivery is `PULL REQUEST`
-or `MERGE`, verify the automatically triggered GitHub run on the corrected
-commit. In `LOCAL FIX` mode, do not publish the commit or trigger a hosted
-workflow; report hosted verification as an outstanding gate. Rerun an existing
-workflow only when the approved repair scope covers that exact rerun.
+Run the full relevant local suite. Confirm:
 
-For every available verification layer, confirm:
-
-- the original failed step now passes;
-- later steps also run and pass;
-- required checks attach to the expected pull request and SHA;
-- generated files and artifacts are correct;
-- permissions remain least privilege;
+- the locally reproducible failed step now passes;
+- later local validation also passes;
+- generated files and local artifacts are correct;
+- workflow permissions remain least privilege;
 - no new warnings or skipped gates hide remaining work.
 
-If GitHub reports `action_required`, determine whether approval, policy,
-permissions, or an event restriction is responsible. Do not call the workflow
-successful because a separate manual run passed unless required-check behavior
-is also understood and documented.
+Do not present local success as proof that a GitHub runner or another operating
+system passed.
+
+### 7. Deliver and verify the authorized outcome
+
+In `DIAGNOSIS ONLY` mode, report the root cause and proposed repair. Do not edit,
+commit, push, open a pull request, rerun a workflow, or merge.
+
+In `LOCAL FIX` mode, leave the validated change local. Do not publish the commit
+or trigger a hosted workflow. Report hosted verification as outstanding.
+
+For `PULL REQUEST`, proceed only when the approved repair scope covers the file
+changes and pull-request publication:
+
+1. Commit the focused change and push its branch.
+2. Open the pull request against the verified base branch.
+3. Confirm the required checks attach to the expected pull request and head SHA.
+4. Wait for the automatically triggered run and inspect the original failed
+   step, later steps, generated output, and artifacts.
+
+For `MERGE`, complete the pull-request steps first, resolve review conversations,
+wait for all required checks on the current head SHA, and merge using the
+repository's permitted method. Delete the source branch only when separately
+authorized.
+
+Rerun an existing hosted workflow only when the approved repair scope covers
+that exact rerun. If GitHub reports `action_required`, determine whether
+approval, policy, permissions, or an event restriction is responsible. Do not
+call the workflow successful because a separate manual run passed unless
+required-check behavior is also understood and documented.
 
 ### Completion report
 

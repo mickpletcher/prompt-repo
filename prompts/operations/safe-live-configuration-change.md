@@ -16,6 +16,7 @@ Handle this live configuration change:
 - Maintenance window: `[INSERT WINDOW OR NONE]`
 - Approved credentials and permissions: `[INSERT NONSECRET DESCRIPTION]`
 - Rollback mechanism: `[INSERT METHOD OR UNKNOWN]`
+- Rollback execution authorization: `[PLAN ONLY | EXECUTE WHEN TRIGGERED]`
 - Requested mode: `[PLAN ONLY | APPLY EXACT CHANGE]`
 
 Default to plan only. Authorization for one change does not authorize adjacent
@@ -90,6 +91,9 @@ Define an exact rollback procedure containing:
 Do not apply a consequential change when the current state cannot be captured or
 restored and the user has not explicitly accepted that risk.
 
+Planning a rollback does not authorize executing it. Record the separate
+rollback execution authorization in the change plan.
+
 ### 5. Present the execution plan
 
 Before mutation, state:
@@ -134,8 +138,10 @@ Account for propagation delay. Do not interpret a delayed cleanup process,
 cached value, or stale dashboard as immediate failure without checking the
 system's documented timing.
 
-If verification fails or the result is partial, stop, preserve evidence, and
-execute the approved rollback when its trigger conditions are met.
+If verification fails or the result is partial, stop and preserve evidence.
+Execute the rollback only when its trigger conditions are met and rollback
+execution authorization is `EXECUTE WHEN TRIGGERED`. Otherwise request the
+missing approval.
 
 ### 8. Close out the change
 

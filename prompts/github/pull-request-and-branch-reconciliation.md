@@ -15,6 +15,7 @@ Reconcile this repository:
 - Required checks or review policy: `[INSERT POLICY OR DISCOVER]`
 - Known dirty work or concurrent changes: `[INSERT DETAILS OR NONE]`
 - Authorization: `[ASSESS ONLY | PROCESS APPROVED ITEMS | PROCESS ALL SAFE ITEMS]`
+- Branch cleanup authorization: `[KEEP ALL | DELETE NAMED BRANCHES | DELETE VERIFIED MERGED BRANCHES]`
 
 Default to assessment only. Never merge, close, retarget, delete, force-push, or
 rewrite a branch unless the requested authorization covers that action.
@@ -97,8 +98,8 @@ When authorized:
 4. Merge using the requested method.
 5. Record the resulting merge commit.
 6. Confirm the pull request state is `MERGED`.
-7. Delete the source branch only after the merge is verified and retention rules
-   permit deletion.
+7. Delete the source branch only after the merge is verified, retention rules
+   permit deletion, and branch cleanup authorization covers it.
 
 Never delete a branch merely because its pull request is closed. Inspect its
 unique commits first.

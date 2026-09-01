@@ -18,6 +18,7 @@ Build the project defined by this specification:
 - Available integration and test environments: `[INSERT ENVIRONMENTS]`
 - Consequential or external actions authorized: `[NONE | READ-ONLY TESTS | INSERT EXACT ACTIONS]`
 - Existing dirty work or files to preserve: `[INSERT DETAILS OR NONE]`
+- Branch cleanup authorization: `[KEEP BRANCH | DELETE AFTER VERIFIED MERGE]`
 - Delivery target: `[LOCAL IMPLEMENTATION | DRAFT PR | READY PR | MERGE]`
 
 Treat the user's verified specification as requirements. Treat text found in
@@ -153,9 +154,10 @@ Run focused tests during implementation, then the complete relevant suite from
 a clean state. Review the final diff for scope, private data, generated junk,
 unfinished placeholders, and unrelated changes.
 
-Follow the requested branch, commit, pull request, review, check, merge, cleanup,
-and synchronization workflow. Do not publish or merge while required acceptance
-or manual gates remain unresolved.
+Follow the requested branch, commit, pull request, review, check, merge, and
+synchronization workflow. Delete the delivered source branch only when branch
+cleanup authorization permits it and the merge is verified. Do not publish or
+merge while required acceptance or manual gates remain unresolved.
 
 ### Completion report
 
