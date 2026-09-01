@@ -39,6 +39,11 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-10:start -->
+- **Bump the github-actions group with 2 updates** ([#10](https://github.com/mickpletcher/prompt-repo/pull/10))
+  - Updated `.github/workflows/codeql.yml`.
+<!-- changelog:pr-10:end -->
+
 <!-- changelog:pr-9:start -->
 - **Add reusable engineering workflow prompts** ([#9](https://github.com/mickpletcher/prompt-repo/pull/9))
   - Updated `ASSESSMENT.md`.
