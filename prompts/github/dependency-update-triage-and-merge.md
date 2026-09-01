@@ -141,8 +141,9 @@ Include the evidence and required next action for every non-merge result.
 
 ### 7. Process and clean up when authorized
 
-Before any `UPDATE`, `REBASE`, `RETARGET`, or `MERGE` changes a branch or base,
-inspect every workflow and external integration that the operation will trigger.
+Before any `UPDATE`, `REBASE`, `RETARGET`, `MERGE`, `CLOSE`, or `DELETE BRANCH`
+operation changes pull-request or branch state, inspect every workflow and
+external integration that the operation will trigger.
 Require disposable workers, no secrets, a least-privilege token, no privileged
 self-hosted runner, restricted network and filesystem access, and no privileged
 event that executes untrusted content. A separately approved privileged

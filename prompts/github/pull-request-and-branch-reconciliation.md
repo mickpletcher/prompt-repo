@@ -103,8 +103,9 @@ then report the unexecuted validation.
 
 ### 5. Process approved pull requests
 
-Before any `UPDATE`, `REBASE`, `RETARGET`, or `MERGE` changes a source branch or
-base, inspect every workflow and external integration the operation will trigger.
+Before any `UPDATE`, `REBASE`, `RETARGET`, `MERGE`, `CLOSE`, or `DELETE BRANCH`
+operation changes pull-request or branch state, inspect every workflow and
+external integration the operation will trigger.
 Require disposable workers, no secrets, a least-privilege token, no privileged
 self-hosted runner, restricted network and filesystem access, and no privileged
 event that executes untrusted content. A separately approved privileged
