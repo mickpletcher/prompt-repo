@@ -75,9 +75,10 @@ Capture the command, exit code, and relevant output. If the failure is
 platform-specific, use the applicable runner or a representative environment.
 Do not claim local success proves another operating system passed.
 
-When local reproduction is impossible, create a focused diagnostic change or
-manual workflow that exposes only sanitized state. Never print secrets or full
-private payloads.
+When local reproduction is impossible, report the missing evidence. Only when
+repair authority explicitly permits repository or workflow changes may you
+create a focused diagnostic change or manual workflow that exposes sanitized
+state. Never print secrets or full private payloads.
 
 ### 4. Inspect workflow security
 

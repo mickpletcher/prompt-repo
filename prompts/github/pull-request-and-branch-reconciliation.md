@@ -105,7 +105,7 @@ unique commits first.
 
 ### 6. Reconcile final branch state
 
-After processing:
+After processing approved items:
 
 - fetch and prune remote-tracking refs;
 - switch to the expected default branch;
@@ -117,6 +117,10 @@ After processing:
 
 Do not claim cleanup is complete until remote branch deletion is checked
 directly.
+
+In `ASSESS ONLY` mode, do not switch branches, pull, fetch, prune, or change
+refs. Report the observed local and remote state and the synchronization or
+cleanup operations that would be needed.
 
 ### Completion report
 
