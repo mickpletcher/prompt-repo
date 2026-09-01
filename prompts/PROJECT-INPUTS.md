@@ -167,6 +167,8 @@ Required inputs:
 - Repository URL or path, expected default branch, and reconciliation scope.
 - Preferred merge method, protected branches, required checks, and review policy.
 - Known dirty work, worktrees, concurrent changes, and branches that must be retained.
+- A disposable credential-free reproduction environment before executing
+  proposed pull-request code.
 - Named approved pull requests, branches, and permitted operations, or explicit
   authorization to process all safe items, plus separate branch-cleanup
   authorization.
@@ -241,6 +243,8 @@ Required inputs:
 - Windows client version and network, client application, service type, and sanitized target host and port.
 - Expected route, VPN, proxy, or tunnel and the authentication method without secrets.
 - Exact sanitized error, last known working state, relevant recent changes, and available server-side access.
+- An approved local configuration reference or direct client access to the real
+  endpoint when endpoint-specific tests are required.
 - Authorization for diagnosis only or the exact approved client-side action and target.
 
 Missing from the prompt: the real endpoint, route, DNS result, certificate chain, listener state, authentication capability, server logs, and any exact authorized client fix.
@@ -276,7 +280,8 @@ Required inputs:
 - Repository URL or path, package ecosystems, and dependency pull request scope.
 - Supported runtime and platform matrix, compatibility policy, required checks, and merge method.
 - Security advisories, release constraints, and a credential-free isolated
-  validation environment when installation is required.
+  validation environment for every command that loads or executes proposed
+  dependency content.
 - Named approved dependency pull requests and permitted operations, or explicit
   authorization to process all safe updates, plus separate branch-cleanup
   authorization.

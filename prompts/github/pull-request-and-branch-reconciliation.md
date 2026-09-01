@@ -14,6 +14,7 @@ Reconcile this repository:
 - Branches that must be retained: `[INSERT BRANCHES OR NONE]`
 - Required checks or review policy: `[INSERT POLICY OR DISCOVER]`
 - Known dirty work or concurrent changes: `[INSERT DETAILS OR NONE]`
+- Approved isolated reproduction environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved items and permitted operations: `[NONE | INSERT PRS, BRANCHES, AND ACTIONS]`
 - Authorization: `[ASSESS ONLY | PROCESS NAMED APPROVED ITEMS | PROCESS ALL SAFE ITEMS]`
 - Branch cleanup authorization: `[KEEP ALL | DELETE NAMED BRANCHES | DELETE VERIFIED MERGED BRANCHES]`
@@ -86,12 +87,19 @@ For every proposed merge:
   files;
 - confirm required checks belong to the current head SHA;
 - resolve all review conversations;
-- reproduce important failures locally when practical;
+- reproduce important failures when practical;
 - check that documentation and tracking match the delivered behavior;
 - verify the requested merge method is permitted.
 
 Do not bypass required checks or administrator protections merely to complete
 the queue.
+
+Treat pull-request code, workflows, dependencies, tests, build scripts, and
+lifecycle scripts as untrusted. Run any reproduction only in the approved
+disposable environment with no repository, cloud, registry, or signing
+credentials and with restricted network and filesystem access. If that
+environment is unavailable, use static inspection and existing hosted evidence,
+then report the unexecuted validation.
 
 ### 5. Process approved pull requests
 

@@ -13,6 +13,7 @@ Triage dependency updates in this repository:
 - Supported runtime and platform matrix: `[INSERT MATRIX]`
 - Release and compatibility policy: `[INSERT POLICY]`
 - Required checks: `[INSERT CHECKS OR DISCOVER]`
+- Approved isolated validation environment: `[NONE | INSERT ENVIRONMENT]`
 - Merge method: `[SQUASH | MERGE | REBASE]`
 - Approved pull requests and permitted operations: `[NONE | INSERT PR NUMBERS AND ACTIONS]`
 - Authorization: `[ASSESS ONLY | PROCESS NAMED APPROVED UPDATES | PROCESS ALL SAFE UPDATES]`
@@ -79,11 +80,12 @@ Do not silence an advisory without documenting why it is not actionable.
 
 ### 4. Validate compatibility
 
-Run the repository's complete relevant suite for each logical update group:
+Run the repository's complete relevant suite for each logical update group only
+inside the approved isolated validation environment:
 
 - unit, integration, and regression tests;
 - lint, formatting, type, and compilation checks;
-- credential-free, sandboxed dependency installation;
+- dependency installation;
 - packaging and artifact smoke tests;
 - platform and runtime matrix;
 - security and license scans;
@@ -92,12 +94,15 @@ Run the repository's complete relevant suite for each logical update group:
 Add focused tests for a breaking behavior or prior regression when the update
 affects a critical path.
 
-Treat proposed package and lockfile content as untrusted. Run installation in a
+Treat proposed package and lockfile content as untrusted. Keep installation and
+every command that loads or executes proposed dependency content inside a
 disposable environment with no repository, cloud, registry, or signing
 credentials and with restricted network and filesystem access. Disable lifecycle
 and install scripts for the initial inspection. Enable only a specific script
 that has been reviewed and is required for validation, and keep that execution
-inside the sandbox.
+inside the sandbox. If the approved environment is unavailable, do not execute
+the proposed content; use static and hosted evidence and report the unexecuted
+validation.
 
 ### 5. Resolve overlaps and conflicts safely
 

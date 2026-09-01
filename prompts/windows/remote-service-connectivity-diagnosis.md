@@ -11,6 +11,7 @@ Diagnose this connection:
 - Client application or command: `[INSERT CLIENT]`
 - Service type: `[HTTPS | API | WEBSOCKET | SSH | DATABASE | OTHER]`
 - Sanitized hostname and port: `[INSERT TARGET]`
+- Real endpoint source for local tests: `[NONE | APPROVED LOCAL CONFIG REFERENCE | DIRECT CLIENT ACCESS]`
 - Expected route or tunnel: `[DIRECT | VPN | TAILSCALE | SSH TUNNEL | PROXY | OTHER]`
 - Authentication method: `[INSERT METHOD WITHOUT SECRET]`
 - Exact sanitized error: `[INSERT ERROR]`
@@ -38,8 +39,13 @@ Map the path from client to service:
 9. application endpoint or resource.
 
 Confirm the intended scheme, host, port, path, protocol, and tunnel endpoint.
-Do not share real tokens, passwords, cookies, private keys, internal hostnames,
-or full private URLs.
+Resolve the exact endpoint only from the approved local configuration reference
+or direct client access. Use it for read-only local tests, but sanitize it from
+commands, logs, screenshots, and the final report before sharing. If real
+endpoint access is unavailable, do not substitute the sanitized host for
+endpoint-specific DNS, route, certificate-name, or path verification. Mark those
+tests unverified. Do not share real tokens, passwords, cookies, private keys,
+internal hostnames, or full private URLs.
 
 ### 2. Preserve the original failure
 
