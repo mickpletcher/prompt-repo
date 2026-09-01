@@ -182,7 +182,8 @@ Required inputs:
 
 - Repository path or URL, application stack, release version, and target operating systems and architectures.
 - Required artifact formats, signing and notarization requirements, supported integrations, and upgrade paths.
-- Available physical test systems, manual acceptance criteria, and known platform constraints.
+- Available physical test systems, approved build and test scope, manual
+  acceptance criteria, and known platform constraints.
 - Approved repair, build, signing, publication, and release scope.
 
 Missing from the prompt: the verified platform matrix, real build environment, certificates, signing-provider access, notarization credentials, physical-system evidence, and publication authority.
@@ -217,8 +218,9 @@ Required inputs:
 
 - Exact target system, environment, management interface, and requested configuration change.
 - Reason, expected outcome, current known state, affected scope, and maintenance window.
-- Nonsecret description of approved credentials and permissions, rollback
-  method, rollback execution authorization, and change-control requirements.
+- Nonsecret description of approved credentials and permissions, exact rollback
+  action, target, trigger, execution authorization, and change-control
+  requirements.
 - Explicit authorization to plan only or apply the exact change.
 
 Missing from the prompt: verified target identity, authoritative current state, blast radius, permission capability, maintenance approval, rollback proof, and live-write authorization.

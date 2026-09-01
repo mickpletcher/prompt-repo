@@ -16,6 +16,7 @@ Assess this desktop release:
 - Signing and notarization requirements: `[INSERT REQUIREMENTS]`
 - Supported data sources or integrations: `[INSERT DETAILS]`
 - Available physical test systems: `[INSERT SYSTEMS]`
+- Approved build and test scope: `[NONE | EXISTING ARTIFACTS ONLY | INSERT EXACT BUILDS AND TESTS]`
 - Approved repair and release scope: `[NONE | INSERT SCOPE]`
 - Requested outcome: `[ASSESSMENT | RELEASE CANDIDATE PR | PUBLISH RELEASE]`
 
@@ -39,7 +40,12 @@ unverified combinations explicitly.
 
 ### 2. Validate source quality
 
-Run the complete applicable suite:
+Run only commands covered by the approved build and test scope. When that scope
+is `NONE`, inspect existing configuration, reports, and artifacts without
+executing tests, builds, installers, or packaging hooks. Report the missing
+runtime evidence.
+
+When authorized, run the complete applicable suite:
 
 - unit and integration tests;
 - GUI or headless construction tests;
@@ -56,8 +62,10 @@ it.
 
 ### 3. Build every release target
 
-Build from a clean checkout or controlled release environment. Pin toolchains
-and dependencies where practical. Verify:
+Build only the targets named in the approved build and test scope. With
+`EXISTING ARTIFACTS ONLY`, inspect available artifacts without rebuilding them.
+When building is authorized, use a clean checkout or controlled release
+environment and pin toolchains and dependencies where practical. Verify:
 
 - each target and architecture produces the expected artifact;
 - filenames and versions are correct;
@@ -73,7 +81,11 @@ replace physical-platform acceptance.
 
 ### 4. Inspect and smoke-test artifacts
 
-For every artifact:
+Install or execute artifacts only when the approved build and test scope covers
+that exact target and test environment. Otherwise perform static inspection of
+existing artifacts and report installation and smoke testing as outstanding.
+
+For every authorized artifact test:
 
 1. Verify size, checksum, archive structure, and expected files.
 2. Install or extract it using a clean test account or machine.

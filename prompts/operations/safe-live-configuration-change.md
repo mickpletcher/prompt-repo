@@ -15,8 +15,8 @@ Handle this live configuration change:
 - Scope of affected users, devices, or services: `[INSERT SCOPE]`
 - Maintenance window: `[INSERT WINDOW OR NONE]`
 - Approved credentials and permissions: `[INSERT NONSECRET DESCRIPTION]`
-- Rollback mechanism: `[INSERT METHOD OR UNKNOWN]`
-- Rollback execution authorization: `[PLAN ONLY | EXECUTE WHEN TRIGGERED]`
+- Exact rollback action, target, and trigger: `[UNKNOWN | INSERT EXACT DETAILS]`
+- Rollback execution authorization: `[PLAN ONLY | EXECUTE EXACT ROLLBACK WHEN TRIGGERED]`
 - Requested mode: `[PLAN ONLY | APPLY EXACT CHANGE]`
 
 Default to plan only. Authorization for one change does not authorize adjacent
@@ -91,8 +91,10 @@ Define an exact rollback procedure containing:
 Do not apply a consequential change when the current state cannot be captured or
 restored and the user has not explicitly accepted that risk.
 
-Planning a rollback does not authorize executing it. Record the separate
-rollback execution authorization in the change plan.
+Planning a rollback does not authorize executing it. Advance execution
+authorization is valid only when the exact rollback action, target, and trigger
+were defined when authorization was given. If they remain unknown or change
+during planning, present the exact operation and obtain new approval.
 
 ### 5. Present the execution plan
 
@@ -139,9 +141,9 @@ cached value, or stale dashboard as immediate failure without checking the
 system's documented timing.
 
 If verification fails or the result is partial, stop and preserve evidence.
-Execute the rollback only when its trigger conditions are met and rollback
-execution authorization is `EXECUTE WHEN TRIGGERED`. Otherwise request the
-missing approval.
+Execute the rollback only when its exact approved trigger conditions are met and
+rollback execution authorization is `EXECUTE EXACT ROLLBACK WHEN TRIGGERED`.
+Otherwise request the missing approval.
 
 ### 8. Close out the change
 
