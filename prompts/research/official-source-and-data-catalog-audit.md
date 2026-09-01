@@ -52,8 +52,12 @@ cookies or repository, cloud, registry, proxy, or signing credentials. Restrict
 filesystem access, response size, duration, redirects, and outbound network
 destinations. Reject loopback, private, link-local, metadata-service, and other
 reserved destinations. Re-resolve and revalidate every initial and redirected
-destination immediately before connecting to prevent DNS rebinding and redirect
-bypass. If this environment is unavailable, use static and existing hosted
+destination immediately before connecting. Pin the request to that validated IP
+while preserving the original hostname for the HTTP `Host` header, TLS SNI, and
+certificate validation so the client cannot perform a second DNS lookup. Repeat
+the resolution, validation, and IP pinning for every redirect. Route browser
+checks through an enforcing proxy when the browser cannot pin destinations
+itself. If this environment is unavailable, use static and existing hosted
 evidence and report live source validation as unexecuted.
 
 For each source, check:
