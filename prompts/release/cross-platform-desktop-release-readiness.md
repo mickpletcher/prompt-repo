@@ -139,6 +139,34 @@ Never declare the release complete while documented browser imports, physical
 macOS tests, live integrations, signing, notarization, or installer smoke tests
 remain unfinished.
 
+### 8. Deliver the authorized outcome
+
+In `ASSESSMENT` mode, stop after the readiness verdict. Do not change files,
+publish a branch, open a pull request, create a tag, or create a release.
+
+For `RELEASE CANDIDATE PR`, proceed only when the approved repair and release
+scope covers the required file changes and pull-request publication:
+
+1. Apply only approved repairs needed for the candidate.
+2. Update version, release notes, checksums, and documentation as required.
+3. Rebuild and rerun all applicable automated gates.
+4. Commit and push the focused branch.
+5. Open the pull request with the remaining manual and platform gates stated
+   explicitly.
+6. Do not publish a release from this mode.
+
+For `PUBLISH RELEASE`, proceed only when the approved release scope explicitly
+covers publication and the verdict is `READY`:
+
+1. Confirm the exact commit, version, tag, artifacts, checksums, signatures,
+   release notes, and target repository.
+2. Create the authorized tag and release using only verified artifacts.
+3. Read back the published release, asset set, sizes, and checksums.
+4. Verify post-release workflows and installation links.
+
+If any required gate is incomplete, do not publish. Report the release as
+blocked and identify the missing evidence or authorization.
+
 ### Completion report
 
 Provide:

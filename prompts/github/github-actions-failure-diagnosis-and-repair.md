@@ -118,8 +118,13 @@ protected settings unless separately authorized.
 
 ### 6. Verify the correction
 
-Run the full relevant local suite, then verify a GitHub run on the corrected
-commit. Confirm:
+Run the full relevant local suite. When the requested delivery is `PULL REQUEST`
+or `MERGE`, verify the automatically triggered GitHub run on the corrected
+commit. In `LOCAL FIX` mode, do not publish the commit or trigger a hosted
+workflow; report hosted verification as an outstanding gate. Rerun an existing
+workflow only when the approved repair scope covers that exact rerun.
+
+For every available verification layer, confirm:
 
 - the original failed step now passes;
 - later steps also run and pass;
