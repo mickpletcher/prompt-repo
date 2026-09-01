@@ -127,7 +127,13 @@ protected settings unless separately authorized.
 
 ### 6. Verify the correction locally
 
-Run the full relevant local suite. Confirm:
+Keep every validation command that loads or executes failed-head content inside
+the same approved disposable, credential-free, network-restricted, and
+filesystem-restricted environment used for reproduction. Repairing one defect
+does not make the remaining checkout trusted. If the environment is unavailable,
+do not run the suite and report validation as outstanding.
+
+In that environment, run the full relevant suite. Confirm:
 
 - the locally reproducible failed step now passes;
 - later local validation also passes;

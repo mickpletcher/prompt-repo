@@ -16,6 +16,7 @@ Build the project defined by this specification:
 - Explicit non-goals: `[INSERT NON-GOALS]`
 - Required external services: `[INSERT SERVICES OR NONE]`
 - Available integration and test environments: `[INSERT ENVIRONMENTS]`
+- Approved disposable repository execution environment: `[NONE | INSERT ENVIRONMENT]`
 - Consequential or external actions authorized: `[NONE | READ-ONLY TESTS | INSERT EXACT ACTIONS]`
 - Existing dirty work or files to preserve: `[INSERT DETAILS OR NONE]`
 - Branch cleanup authorization: `[KEEP BRANCH | DELETE AFTER VERIFIED MERGE]`
@@ -150,9 +151,15 @@ a generic checklist.
 
 ### 8. Validate and deliver
 
-Run focused tests during implementation, then the complete relevant suite from
-a clean state. Review the final diff for scope, private data, generated junk,
-unfinished placeholders, and unrelated changes.
+Treat existing repository code, dependencies, build scripts, packaging hooks,
+and generated executables as untrusted. Run focused tests and the complete
+relevant suite only in the approved disposable environment with no repository,
+cloud, registry, or signing credentials and with restricted network and
+filesystem access. If that environment is unavailable, do not execute repository
+content and report validation as outstanding.
+
+After isolated validation, review the final diff for scope, private data,
+generated junk, unfinished placeholders, and unrelated changes.
 
 Follow the requested branch, commit, pull request, review, check, merge, and
 synchronization workflow. Delete the delivered source branch only when branch

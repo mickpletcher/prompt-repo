@@ -189,6 +189,8 @@ Required inputs:
 - Required artifact formats, signing and notarization requirements, supported integrations, and upgrade paths.
 - Available physical test systems, approved build and test scope, manual
   acceptance criteria, and known platform constraints.
+- A disposable credential-free build and artifact-test environment with
+  restricted network and filesystem access.
 - Approved repair, build, signing, publication, and release scope.
 
 Missing from the prompt: the verified platform matrix, real build environment, certificates, signing-provider access, notarization credentials, physical-system evidence, and publication authority.
@@ -206,6 +208,8 @@ Required inputs:
 - Repository path or URL and the approved specification path or attachment.
 - Project purpose, intended users, required stack and platforms, explicit non-goals, and acceptance criteria.
 - External services, integration environments, existing files or dirty work to preserve, and repository instructions.
+- A disposable credential-free repository execution environment with restricted
+  network and filesystem access.
 - Delivery target, external-system authorization, and separate branch-cleanup
   authorization.
 
@@ -261,7 +265,8 @@ Required inputs:
 
 - Repository path or URL, intended users, supported operating systems, and primary user workflow.
 - Available installers or artifacts, required permissions or external accounts, and known limitations.
-- Approved execution and test scope with an isolated representative environment.
+- Approved execution and test scope with a disposable credential-free
+  representative environment and restricted network and filesystem access.
 - Approved documentation, screenshot, packaging, and release changes.
 - Requested assessment, README update, or README and distribution pull request.
 
@@ -301,6 +306,8 @@ Required inputs:
 - Repository URL or path, project name, purpose, required text, and intended audience.
 - Existing logo or brand assets, preferred style, required image format, size limit, and destination path.
 - Trademark, licensing, privacy, and accessibility constraints.
+- A disposable credential-free environment before repository validation
+  executes project code.
 - Separate authorization for local file creation, adding it to the worktree,
   committing it, opening a pull request, and configuring the GitHub setting.
 

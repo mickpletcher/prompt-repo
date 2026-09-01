@@ -16,6 +16,7 @@ Assess this desktop release:
 - Signing and notarization requirements: `[INSERT REQUIREMENTS]`
 - Supported data sources or integrations: `[INSERT DETAILS]`
 - Available physical test systems: `[INSERT SYSTEMS]`
+- Approved disposable build and artifact-test environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved build and test scope: `[NONE | EXISTING ARTIFACTS ONLY | INSERT EXACT BUILDS AND TESTS]`
 - Approved repair and release scope: `[NONE | INSERT SCOPE]`
 - Requested outcome: `[ASSESSMENT | RELEASE CANDIDATE PR | PUBLISH RELEASE]`
@@ -45,6 +46,13 @@ is `NONE`, inspect existing configuration, reports, and artifacts without
 executing tests, builds, installers, or packaging hooks. Report the missing
 runtime evidence.
 
+Treat repository code, dependencies, packaging hooks, release candidates, and
+artifacts as untrusted. Run every command that loads or executes them only in the
+approved disposable environment with no repository, cloud, registry, or signing
+credentials and with restricted network and filesystem access. If that
+environment is unavailable, use static and hosted evidence and report execution
+as outstanding.
+
 When authorized, run the complete applicable suite:
 
 - unit and integration tests;
@@ -65,7 +73,8 @@ it.
 Build only the targets named in the approved build and test scope. With
 `EXISTING ARTIFACTS ONLY`, inspect available artifacts without rebuilding them.
 When building is authorized, use a clean checkout or controlled release
-environment and pin toolchains and dependencies where practical. Verify:
+environment that satisfies the disposable isolation requirements, and pin
+toolchains and dependencies where practical. Verify:
 
 - each target and architecture produces the expected artifact;
 - filenames and versions are correct;
@@ -82,13 +91,14 @@ replace physical-platform acceptance.
 ### 4. Inspect and smoke-test artifacts
 
 Install or execute artifacts only when the approved build and test scope covers
-that exact target and test environment. Otherwise perform static inspection of
-existing artifacts and report installation and smoke testing as outstanding.
+that exact target and the approved disposable test environment. Otherwise
+perform static inspection of existing artifacts and report installation and
+smoke testing as outstanding.
 
 For every authorized artifact test:
 
 1. Verify size, checksum, archive structure, and expected files.
-2. Install or extract it using a clean test account or machine.
+2. Install or extract it using a clean account in the disposable test machine.
 3. Launch the packaged entry point, not only the source command.
 4. Test first run, routine use, failure messages, upgrade, and uninstall.
 5. Verify local data remains in documented locations.

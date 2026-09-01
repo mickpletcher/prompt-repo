@@ -14,7 +14,8 @@ Review and improve this project's public onboarding:
 - Primary user workflow: `[INSERT WORKFLOW]`
 - Required permissions or external accounts: `[INSERT REQUIREMENTS]`
 - Known limitations: `[INSERT LIMITATIONS]`
-- Approved execution and test scope: `[NONE | EXISTING EVIDENCE ONLY | INSERT EXACT TESTS AND ENVIRONMENT]`
+- Approved disposable execution environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved execution and test scope: `[NONE | EXISTING EVIDENCE ONLY | INSERT EXACT TESTS]`
 - Approved file and packaging changes: `[NONE | INSERT SCOPE]`
 - Requested outcome: `[ASSESSMENT | README UPDATE | README AND DISTRIBUTION PR]`
 
@@ -38,8 +39,11 @@ clickable artifact and state when one does not exist.
 ### 2. Verify every documented instruction
 
 Execute project code, installers, or artifacts only when the approved execution
-and test scope covers the exact test and environment. Otherwise inspect the
-README and existing evidence, then mark runtime steps unverified.
+and test scope covers the exact test and the approved environment is disposable,
+credential-free, and restricted in network and filesystem access. Treat the
+repository, dependencies, lifecycle scripts, installers, and artifacts as
+untrusted. Otherwise inspect the README and existing evidence, then mark runtime
+steps unverified.
 
 When authorized, test the README from a clean or representative environment.
 Confirm:

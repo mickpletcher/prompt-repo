@@ -16,6 +16,7 @@ Create a social preview for this repository:
 - Required format: `[PNG | JPG]`
 - Maximum file size: `[INSERT LIMIT OR NONE]`
 - Approved destination path: `[INSERT PATH]`
+- Approved isolated repository validation environment: `[NONE | INSERT ENVIRONMENT]`
 - Repository delivery: `[LOCAL FILE ONLY | ADD TO WORKTREE | COMMIT | PULL REQUEST]`
 - GitHub preview configuration: `[DO NOT CONFIGURE | CONFIGURE ON GITHUB]`
 
@@ -98,8 +99,13 @@ path unless it is explicitly needed and approved.
 If adding the file to the worktree is requested:
 
 - place the asset at the approved tracked path;
-- run repository validation;
+- run static validation directly, and run validation that executes repository
+  code only in the approved disposable credential-free environment with
+  restricted network and filesystem access;
 - review licensing and private-data concerns.
+
+If the isolated environment is unavailable, do not execute repository code and
+report those validation gates as outstanding.
 
 Commit only when `COMMIT` or `PULL REQUEST` delivery is selected. Push and open
 a pull request only when `PULL REQUEST` is selected.
