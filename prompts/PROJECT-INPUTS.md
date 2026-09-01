@@ -149,6 +149,8 @@ Required inputs:
 - Workflow and job name, reported symptom, supported runners, and known environment constraints.
 - A disposable credential-free reproduction environment when failed-head code
   must be executed.
+- A constrained Git publishing environment with repository-controlled hooks,
+  filters, and local configuration disabled.
 - Repair authorization and requested delivery target.
 - Access to complete logs, annotations, repository files, checks, and relevant settings.
 
@@ -169,6 +171,8 @@ Required inputs:
 - Known dirty work, worktrees, concurrent changes, and branches that must be retained.
 - A disposable credential-free reproduction environment before executing
   proposed pull-request code.
+- A constrained Git publishing environment with repository-controlled hooks,
+  filters, and local configuration disabled.
 - Named approved pull requests, branches, and permitted operations, or explicit
   authorization to process all safe items, plus separate branch-cleanup
   authorization.
@@ -191,6 +195,8 @@ Required inputs:
   acceptance criteria, and known platform constraints.
 - A disposable credential-free build and artifact-test environment with
   restricted network and filesystem access.
+- A constrained Git publishing environment with repository-controlled hooks,
+  filters, and local configuration disabled.
 - A separately approved least-privilege signing or notarization stage, provider,
   identity scope, and exact artifact targets without secret values.
 - Approved repair, build, signing, publication, and release scope.
@@ -212,6 +218,8 @@ Required inputs:
 - External services, integration environments, existing files or dirty work to preserve, and repository instructions.
 - A disposable credential-free repository execution environment with restricted
   network and filesystem access.
+- A constrained Git publishing environment with repository-controlled hooks,
+  filters, and local configuration disabled.
 - Delivery target, external-system authorization, and separate branch-cleanup
   authorization.
 
@@ -271,6 +279,8 @@ Required inputs:
 - Available installers or artifacts, required permissions or external accounts, and known limitations.
 - Approved execution and test scope with a disposable credential-free
   representative environment and restricted network and filesystem access.
+- A constrained Git publishing environment with repository-controlled hooks,
+  filters, and local configuration disabled.
 - Approved documentation, screenshot, packaging, and release changes.
 - Requested assessment, README update, or README and distribution pull request.
 
@@ -291,6 +301,8 @@ Required inputs:
 - Security advisories, release constraints, and a credential-free isolated
   validation environment for every command that loads or executes proposed
   dependency content.
+- A constrained Git publishing environment with repository-controlled hooks,
+  filters, and local configuration disabled.
 - Named approved dependency pull requests and permitted operations, or explicit
   authorization to process all safe updates, plus separate branch-cleanup
   authorization.
@@ -312,6 +324,8 @@ Required inputs:
 - Trademark, licensing, privacy, and accessibility constraints.
 - A disposable credential-free environment before repository validation
   executes project code.
+- A constrained Git publishing environment with repository-controlled hooks,
+  filters, and local configuration disabled.
 - Separate authorization for local file creation, adding it to the worktree,
   committing it, opening a pull request, and configuring the GitHub setting.
 

@@ -17,6 +17,7 @@ Build the project defined by this specification:
 - Required external services: `[INSERT SERVICES OR NONE]`
 - Available integration and test environments: `[INSERT ENVIRONMENTS]`
 - Approved disposable repository execution environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved constrained Git publishing environment: `[NONE | INSERT ENVIRONMENT]`
 - Consequential or external actions authorized: `[NONE | READ-ONLY TESTS | INSERT EXACT ACTIONS]`
 - Existing dirty work or files to preserve: `[INSERT DETAILS OR NONE]`
 - Branch cleanup authorization: `[KEEP BRANCH | DELETE AFTER VERIFIED MERGE]`
@@ -160,6 +161,14 @@ content and report validation as outstanding.
 
 After isolated validation, review the final diff for scope, private data,
 generated junk, unfinished placeholders, and unrelated changes.
+
+Perform staging, commits, and pushes only in the approved constrained publishing
+environment. Inspect and neutralize repository-controlled hooks,
+`core.hooksPath`, local Git configuration, clean and smudge filters, aliases, and
+signing helpers so Git delivery cannot execute project or hook code. Validate in
+the disposable test environment first, disable hooks for delivery, and provide
+only a target-repository, branch-scoped credential for the authenticated network
+step. If this boundary is unavailable, leave Git delivery outstanding.
 
 Before pushing a branch or opening either pull-request type, inspect every
 workflow or external integration triggered by branch publication or pull-request

@@ -15,6 +15,7 @@ Reconcile this repository:
 - Required checks or review policy: `[INSERT POLICY OR DISCOVER]`
 - Known dirty work or concurrent changes: `[INSERT DETAILS OR NONE]`
 - Approved isolated reproduction environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved constrained Git publishing environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved items and permitted operations: `[NONE | INSERT PRS, BRANCHES, AND ACTIONS]`
 - Authorization: `[ASSESS ONLY | PROCESS NAMED APPROVED ITEMS | PROCESS ALL SAFE ITEMS]`
 - Branch cleanup authorization: `[KEEP ALL | DELETE NAMED BRANCHES | DELETE VERIFIED MERGED BRANCHES]`
@@ -102,6 +103,14 @@ environment is unavailable, use static inspection and existing hosted evidence,
 then report the unexecuted validation.
 
 ### 5. Process approved pull requests
+
+Perform staging, commits, rebases, and pushes only in the approved constrained
+publishing environment. Inspect and neutralize repository-controlled hooks,
+`core.hooksPath`, local Git configuration, clean and smudge filters, aliases, and
+signing helpers so Git delivery cannot execute project or hook code. Validate in
+the disposable test environment first, disable hooks for delivery, and provide
+only a target-repository, branch-scoped credential for the authenticated network
+step. If this boundary is unavailable, leave the Git operation outstanding.
 
 Before any `UPDATE`, `REBASE`, `RETARGET`, `MERGE`, `CLOSE`, or `DELETE BRANCH`
 operation changes pull-request or branch state, inspect every workflow and

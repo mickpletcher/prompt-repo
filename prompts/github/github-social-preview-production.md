@@ -17,6 +17,7 @@ Create a social preview for this repository:
 - Maximum file size: `[INSERT LIMIT OR NONE]`
 - Approved destination path: `[INSERT PATH]`
 - Approved isolated repository validation environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved constrained Git publishing environment: `[NONE | INSERT ENVIRONMENT]`
 - Repository delivery: `[LOCAL FILE ONLY | ADD TO WORKTREE | COMMIT | PULL REQUEST]`
 - GitHub preview configuration: `[DO NOT CONFIGURE | CONFIGURE ON GITHUB]`
 
@@ -95,6 +96,14 @@ Confirm the file exists before providing a link. Do not disclose a full host
 path unless it is explicitly needed and approved.
 
 ### 6. Publish only when authorized
+
+Perform staging, commits, and pushes only in the approved constrained publishing
+environment. Inspect and neutralize repository-controlled hooks,
+`core.hooksPath`, local Git configuration, clean and smudge filters, aliases, and
+signing helpers so Git delivery cannot execute project or hook code. Validate in
+the disposable test environment first, disable hooks for delivery, and provide
+only a target-repository, branch-scoped credential for the authenticated network
+step. If this boundary is unavailable, leave Git delivery outstanding.
 
 If adding the file to the worktree is requested:
 

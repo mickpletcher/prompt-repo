@@ -15,6 +15,7 @@ Review and improve this project's public onboarding:
 - Required permissions or external accounts: `[INSERT REQUIREMENTS]`
 - Known limitations: `[INSERT LIMITATIONS]`
 - Approved disposable execution environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved constrained Git publishing environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved execution and test scope: `[NONE | EXISTING EVIDENCE ONLY | INSERT EXACT TESTS]`
 - Approved file and packaging changes: `[NONE | INSERT SCOPE]`
 - Requested outcome: `[ASSESSMENT | README UPDATE | README AND DISTRIBUTION PR]`
@@ -151,6 +152,14 @@ Have a reviewer follow the instructions without relying on undocumented project
 knowledge when practical.
 
 ### 8. Deliver the authorized outcome
+
+Perform staging, commits, and pushes only in the approved constrained publishing
+environment. Inspect and neutralize repository-controlled hooks,
+`core.hooksPath`, local Git configuration, clean and smudge filters, aliases, and
+signing helpers so Git delivery cannot execute project or hook code. Validate in
+the disposable test environment first, disable hooks for delivery, and provide
+only a target-repository, branch-scoped credential for the authenticated network
+step. If this boundary is unavailable, leave Git delivery outstanding.
 
 In `ASSESSMENT` mode, report findings and proposed content only. Do not edit
 repository files, commit, push, or open a pull request. A separate execution and

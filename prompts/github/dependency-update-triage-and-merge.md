@@ -14,6 +14,7 @@ Triage dependency updates in this repository:
 - Release and compatibility policy: `[INSERT POLICY]`
 - Required checks: `[INSERT CHECKS OR DISCOVER]`
 - Approved isolated validation environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved constrained Git publishing environment: `[NONE | INSERT ENVIRONMENT]`
 - Merge method: `[SQUASH | MERGE | REBASE]`
 - Approved pull requests and permitted operations: `[NONE | INSERT PR NUMBERS AND ACTIONS]`
 - Authorization: `[ASSESS ONLY | PROCESS NAMED APPROVED UPDATES | PROCESS ALL SAFE UPDATES]`
@@ -140,6 +141,14 @@ Classify each update as:
 Include the evidence and required next action for every non-merge result.
 
 ### 7. Process and clean up when authorized
+
+Perform staging, commits, rebases, and pushes only in the approved constrained
+publishing environment. Inspect and neutralize repository-controlled hooks,
+`core.hooksPath`, local Git configuration, clean and smudge filters, aliases, and
+signing helpers so Git delivery cannot execute project or hook code. Validate in
+the disposable test environment first, disable hooks for delivery, and provide
+only a target-repository, branch-scoped credential for the authenticated network
+step. If this boundary is unavailable, leave the Git operation outstanding.
 
 Before any `UPDATE`, `REBASE`, `RETARGET`, `MERGE`, `CLOSE`, or `DELETE BRANCH`
 operation changes pull-request or branch state, inspect every workflow and

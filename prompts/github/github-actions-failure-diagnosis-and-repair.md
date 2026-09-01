@@ -16,6 +16,7 @@ Diagnose this GitHub Actions failure:
 - Supported runner platforms: `[INSERT PLATFORMS]`
 - Known environment constraints: `[INSERT CONSTRAINTS]`
 - Approved isolated reproduction environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved constrained Git publishing environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved repair scope: `[NONE | INSERT SCOPE]`
 - Requested delivery: `[DIAGNOSIS ONLY | LOCAL FIX | PULL REQUEST | MERGE]`
 
@@ -145,6 +146,15 @@ Do not present local success as proof that a GitHub runner or another operating
 system passed.
 
 ### 7. Deliver and verify the authorized outcome
+
+Perform staging, commits, and pushes only in the approved constrained publishing
+environment. Before Git delivery, inspect and neutralize repository-controlled
+hooks, `core.hooksPath`, local Git configuration, clean and smudge filters,
+aliases, and signing helpers. Do not let delivery execute project or hook code.
+Run required validation in the disposable test environment first, disable hooks
+for delivery, and provide only a target-repository, branch-scoped credential for
+the authenticated network step. If this boundary is unavailable, leave Git
+delivery outstanding.
 
 In `DIAGNOSIS ONLY` mode, report the root cause and proposed repair. Do not edit,
 commit, push, open a pull request, rerun a workflow, or merge.

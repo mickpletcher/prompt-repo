@@ -17,6 +17,7 @@ Assess this desktop release:
 - Supported data sources or integrations: `[INSERT DETAILS]`
 - Available physical test systems: `[INSERT SYSTEMS]`
 - Approved disposable build and artifact-test environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved constrained Git publishing environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved build and test scope: `[NONE | EXISTING ARTIFACTS ONLY | INSERT EXACT BUILDS AND TESTS]`
 - Approved signing and notarization stage: `[NONE | INSERT PROVIDER, IDENTITY SCOPE, AND TARGETS WITHOUT SECRETS]`
 - Approved repair and release scope: `[NONE | INSERT SCOPE]`
@@ -170,6 +171,15 @@ macOS tests, live integrations, signing, notarization, or installer smoke tests
 remain unfinished.
 
 ### 8. Deliver the authorized outcome
+
+Perform staging, commits, pushes, and tag creation only in the approved
+constrained publishing environment. Inspect and neutralize
+repository-controlled hooks, `core.hooksPath`, local Git configuration, clean
+and smudge filters, aliases, and signing helpers so Git delivery cannot execute
+project or hook code. Validate in the disposable test environment first, disable
+hooks for delivery, and provide only target-repository and operation-scoped
+credentials for the authenticated network steps. If this boundary is
+unavailable, leave Git delivery outstanding.
 
 Before the first branch push, pull request, tag, or release publication, inspect
 every workflow and external integration triggered by each planned event. Require
