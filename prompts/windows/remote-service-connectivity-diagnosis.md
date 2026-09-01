@@ -16,7 +16,8 @@ Diagnose this connection:
 - Exact sanitized error: `[INSERT ERROR]`
 - Last known working time or change: `[INSERT DETAILS OR UNKNOWN]`
 - Available server-side access: `[NONE | READ ONLY | ADMIN]`
-- Requested mode: `[DIAGNOSIS ONLY | APPLY APPROVED CLIENT FIX]`
+- Exact approved client fix and target: `[NONE | INSERT EXACT ACTION AND TARGET]`
+- Requested mode: `[DIAGNOSIS ONLY | APPLY EXACT APPROVED CLIENT FIX]`
 
 Default to diagnosis only. Do not restart services, change firewalls, open ports,
 modify DNS, alter certificates, rotate credentials, or change server
@@ -124,11 +125,13 @@ Prefer client-side or configuration corrections when the service is healthy.
 Do not disable TLS validation, antivirus, firewall, or authentication as a
 permanent fix.
 
-### 6. Apply only an approved client fix
+### 6. Apply only the exact approved client fix
 
-In `APPLY APPROVED CLIENT FIX` mode, change only the approved client setting,
-tunnel, or local configuration. Preserve its previous value and verify the
-connection through the original application afterward.
+In `APPLY EXACT APPROVED CLIENT FIX` mode, change only the client setting,
+tunnel, or local configuration named in the exact approved action. If diagnosis
+shows that another correction is needed, present it and obtain separate approval
+before applying it. Preserve the previous value and verify the connection through
+the original application afterward.
 
 Remote service, firewall, DNS, identity, and certificate changes require
 separate authorization.

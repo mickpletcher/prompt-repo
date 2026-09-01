@@ -233,9 +233,9 @@ Required inputs:
 - Windows client version and network, client application, service type, and sanitized target host and port.
 - Expected route, VPN, proxy, or tunnel and the authentication method without secrets.
 - Exact sanitized error, last known working state, relevant recent changes, and available server-side access.
-- Authorization for diagnosis only or an approved client-side repair.
+- Authorization for diagnosis only or the exact approved client-side action and target.
 
-Missing from the prompt: the real endpoint, route, DNS result, certificate chain, listener state, authentication capability, server logs, and authority to change either endpoint.
+Missing from the prompt: the real endpoint, route, DNS result, certificate chain, listener state, authentication capability, server logs, and any exact authorized client fix.
 
 Safe default: diagnose layer by layer, use read-only tests, redact endpoints and identities, and leave DNS, firewalls, certificates, credentials, services, and server configuration unchanged.
 

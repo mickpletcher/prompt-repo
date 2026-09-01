@@ -82,7 +82,7 @@ instructions alone.
 
 Report and verify:
 
-- absolute output path;
+- repository-relative path, attachment, or sandbox-safe file link;
 - dimensions;
 - file type;
 - file size;
@@ -90,8 +90,8 @@ Report and verify:
 - repository diff when the file is added;
 - Markdown or configuration references if applicable.
 
-Confirm the file exists before providing a link. Use an application-compatible
-absolute file link for local delivery.
+Confirm the file exists before providing a link. Do not disclose a full host
+path unless it is explicitly needed and approved.
 
 ### 6. Publish only when authorized
 
