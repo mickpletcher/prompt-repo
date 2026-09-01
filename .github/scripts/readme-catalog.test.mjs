@@ -74,6 +74,22 @@ test("replaceCatalog updates only the generated marker block", () => {
   assert.equal(replaceCatalog(updated, resources), updated);
 });
 
+test("replaceCatalog preserves CRLF line endings", () => {
+  const readme = [
+    "# Repository",
+    "",
+    CATALOG_START,
+    "old catalog",
+    CATALOG_END,
+    "",
+    "Keep this content.",
+  ].join("\r\n");
+  const updated = replaceCatalog(readme, resources);
+
+  assert.equal(replaceCatalog(updated, resources), updated);
+  assert.doesNotMatch(updated, /(?<!\r)\n/);
+});
+
 test("removed resources disappear from the generated catalog", () => {
   const withoutHvac = resources.filter(
     (resource) => resource.path !== "openai/instruction-sets/hvac/hvac-troubleshooting.md",
