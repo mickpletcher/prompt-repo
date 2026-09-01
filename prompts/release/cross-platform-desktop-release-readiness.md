@@ -171,6 +171,15 @@ remain unfinished.
 
 ### 8. Deliver the authorized outcome
 
+Before the first branch push, pull request, tag, or release publication, inspect
+every workflow and external integration triggered by each planned event. Require
+disposable workers, no secrets, a least-privilege token, no privileged
+self-hosted runner, restricted network and filesystem access, and no privileged
+event that executes untrusted repository content. A separately approved
+privileged signing or promotion job may consume verified inert artifacts but
+must not execute repository code. Leave the publication action and hosted
+verification blocked when this boundary fails.
+
 In `ASSESSMENT` mode, stop after the readiness verdict. Do not change repository
 or source files, publish a branch, open a pull request, create a tag, or create a
 release. Exact authorized builds and artifact tests may create temporary files

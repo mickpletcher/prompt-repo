@@ -141,6 +141,15 @@ Include the evidence and required next action for every non-merge result.
 
 ### 7. Process and clean up when authorized
 
+Before any `UPDATE`, `REBASE`, `RETARGET`, or `MERGE` changes a branch or base,
+inspect every workflow and external integration that the operation will trigger.
+Require disposable workers, no secrets, a least-privilege token, no privileged
+self-hosted runner, restricted network and filesystem access, and no privileged
+event that executes untrusted content. A separately approved privileged
+promotion job may consume verified inert artifacts but must not execute
+repository code. Leave the operation and hosted verification blocked when this
+boundary fails.
+
 For each pull request covered by the named approval input or
 `PROCESS ALL SAFE UPDATES`, identify its permitted operation and run only the
 matching procedure:

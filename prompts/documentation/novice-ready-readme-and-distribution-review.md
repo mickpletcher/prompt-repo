@@ -153,9 +153,10 @@ knowledge when practical.
 ### 8. Deliver the authorized outcome
 
 In `ASSESSMENT` mode, report findings and proposed content only. Do not edit
-files, execute project code or installers, build artifacts, commit, push, or
-open a pull request unless the separate execution and test scope explicitly
-permits the named tests.
+repository files, commit, push, or open a pull request. A separate execution and
+test scope may permit only the named tests and temporary files inside the
+approved disposable environment. Do not copy those files into the worktree or
+publish them.
 
 In `README UPDATE` mode, apply only the approved documentation changes and run
 the applicable validation. Leave the result as a local change unless separate
@@ -166,8 +167,13 @@ In `README AND DISTRIBUTION PR` mode:
 1. Apply only the approved documentation and packaging changes.
 2. Run documentation, clean-install, artifact, privacy, and platform validation
    applicable to the changed scope.
-3. Commit and push the focused branch.
-4. Open the pull request with unsigned, untested, manual, and platform-specific
+3. Before pushing, inspect every branch- and pull-request-triggered workflow and
+   external integration. Require disposable workers, no secrets, a
+   least-privilege token, no privileged self-hosted runner, restricted network
+   and filesystem access, and no privileged event that executes untrusted
+   content. If that boundary fails, leave pull-request delivery outstanding.
+4. Commit and push the focused branch only after that gate passes.
+5. Open the pull request with unsigned, untested, manual, and platform-specific
    limitations stated explicitly.
 
 Do not publish a release, installer, screenshot, or external documentation from

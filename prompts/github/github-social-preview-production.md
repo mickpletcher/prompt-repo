@@ -108,7 +108,12 @@ If the isolated environment is unavailable, do not execute repository code and
 report those validation gates as outstanding.
 
 Commit only when `COMMIT` or `PULL REQUEST` delivery is selected. Push and open
-a pull request only when `PULL REQUEST` is selected.
+a pull request only when `PULL REQUEST` is selected. Before pushing, inspect
+every branch- and pull-request-triggered workflow and external integration.
+Require disposable workers, no secrets, a least-privilege token, no privileged
+self-hosted runner, restricted network and filesystem access, and no privileged
+event that executes untrusted content. If that boundary fails, keep the commit
+local and report pull-request delivery as outstanding.
 
 If `CONFIGURE ON GITHUB` is separately selected, verify the repository identity
 and current preview before changing it. Read back or visually confirm the

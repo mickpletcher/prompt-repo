@@ -103,6 +103,15 @@ then report the unexecuted validation.
 
 ### 5. Process approved pull requests
 
+Before any `UPDATE`, `REBASE`, `RETARGET`, or `MERGE` changes a source branch or
+base, inspect every workflow and external integration the operation will trigger.
+Require disposable workers, no secrets, a least-privilege token, no privileged
+self-hosted runner, restricted network and filesystem access, and no privileged
+event that executes untrusted content. A separately approved privileged
+promotion job may consume verified inert artifacts but must not execute
+repository code. Leave the operation and hosted verification blocked when this
+boundary fails.
+
 For each item covered by the named approval input or `PROCESS ALL SAFE ITEMS`,
 identify its permitted operation and run only the matching procedure:
 
