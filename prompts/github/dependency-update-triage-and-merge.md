@@ -107,13 +107,21 @@ validation.
 ### 5. Resolve overlaps and conflicts safely
 
 Process shared workflow and base dependency changes before updates that touch
-the same lines. After each merge:
+the same lines. After each merge, recalculate the read-only status of every
+remaining pull request. Modify a remaining pull request only when
+`PROCESS ALL SAFE UPDATES` applies or its named approval explicitly permits
+`UPDATE`, `REBASE`, or `RETARGET`.
 
-- refresh each remaining PR against its verified target base branch;
+For each remaining pull request with that permission:
+
+- refresh that pull request against its verified target base branch;
 - re-evaluate superseded versions;
 - resolve conflicts explicitly;
 - preserve all intended action or package versions;
 - rerun checks on the new head SHA.
+
+For every other pull request, leave its branch and base unchanged and report any
+needed refresh as outstanding.
 
 Do not delete a conflicting branch until its pull request and unique commits are
 understood.
@@ -131,17 +139,28 @@ Classify each update as:
 
 Include the evidence and required next action for every non-merge result.
 
-### 7. Merge and clean up when authorized
+### 7. Process and clean up when authorized
 
-For each merge covered by the named approval input or `PROCESS ALL SAFE UPDATES`:
+For each pull request covered by the named approval input or
+`PROCESS ALL SAFE UPDATES`, identify its permitted operation and run only the
+matching procedure:
 
-1. Confirm current head SHA and checks.
-2. Resolve review conversations.
-3. Merge with the requested method.
-4. Verify the merge commit and post-merge workflows.
-5. Delete the source branch only when the branch cleanup authorization covers
-   it and the merge is verified.
-6. Refresh the remaining dependency queue.
+- `MERGE`: confirm the current head SHA and checks, resolve review conversations,
+  merge with the requested method, and verify the merge commit and post-merge
+  workflows;
+- `UPDATE`: apply only the approved compatibility, configuration, lockfile, or
+  documentation changes, validate them in the isolated environment, and update
+  the pull-request branch without merging;
+- `REBASE` or `RETARGET`: perform only that branch or base operation, then wait
+  for fresh mergeability and checks without merging;
+- `CLOSE`: verify the superseding pull request or documented rejection reason,
+  then close without merging;
+- `DELETE BRANCH`: delete only when the branch cleanup authorization covers the
+  exact branch and its merge or other safe disposition is verified.
+
+Do not infer one permitted operation from another. Refresh the read-only status
+of the remaining dependency queue after each processed item, but do not modify
+an unapproved pull request.
 
 After authorized processing, synchronize each processed pull request's verified
 base branch only when the processing scope includes local checkout

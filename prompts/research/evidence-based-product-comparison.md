@@ -16,8 +16,13 @@ Compare these options:
 - Location and market: `[INSERT LOCATION]`
 - Purchase deadline: `[INSERT DATE OR NONE]`
 - Existing equipment or ecosystem: `[INSERT DETAILS OR NONE]`
-- Physical, medical, accessibility, installation, or compatibility constraints: `[INSERT CONSTRAINTS]`
+- Physical, medical, accessibility, installation, or compatibility constraints: `[INSERT MINIMUM NON-IDENTIFYING FUNCTIONAL CONSTRAINTS]`
 - New, used, rental, or subscription acceptable: `[INSERT OPTIONS]`
+
+Do not provide diagnoses, medical history, records, medication lists, account
+identifiers, or other health information. State only the minimum non-identifying
+functional requirement needed for comparison, such as a temperature range,
+weight limit, control type, or accessibility feature.
 
 Do not recommend a product until the requirements and disqualifying constraints
 are clear. Ask only for missing information that would materially change the
