@@ -272,7 +272,8 @@ Required inputs:
 
 - Repository URL or path, package ecosystems, and dependency pull request scope.
 - Supported runtime and platform matrix, compatibility policy, required checks, and merge method.
-- Security advisories, release constraints, and available integration environments when relevant.
+- Security advisories, release constraints, and a credential-free isolated
+  validation environment when installation is required.
 - Named approved dependency pull requests and permitted operations, or explicit
   authorization to process all safe updates, plus separate branch-cleanup
   authorization.

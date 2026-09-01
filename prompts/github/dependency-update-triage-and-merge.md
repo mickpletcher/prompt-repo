@@ -83,7 +83,7 @@ Run the repository's complete relevant suite for each logical update group:
 
 - unit, integration, and regression tests;
 - lint, formatting, type, and compilation checks;
-- clean dependency installation;
+- credential-free, sandboxed dependency installation;
 - packaging and artifact smoke tests;
 - platform and runtime matrix;
 - security and license scans;
@@ -91,6 +91,13 @@ Run the repository's complete relevant suite for each logical update group:
 
 Add focused tests for a breaking behavior or prior regression when the update
 affects a critical path.
+
+Treat proposed package and lockfile content as untrusted. Run installation in a
+disposable environment with no repository, cloud, registry, or signing
+credentials and with restricted network and filesystem access. Disable lifecycle
+and install scripts for the initial inspection. Enable only a specific script
+that has been reviewed and is required for validation, and keep that execution
+inside the sandbox.
 
 ### 5. Resolve overlaps and conflicts safely
 
