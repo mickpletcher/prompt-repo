@@ -15,6 +15,7 @@ Audit this source catalog:
 - Update frequency: `[INSERT EXPECTATION]`
 - Allow, deny, include, or exclude policy: `[INSERT POLICY]`
 - Licensing requirements: `[INSERT REQUIREMENTS]`
+- Approved isolated parser environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved changes: `[ASSESS ONLY | UPDATE CATALOG | UPDATE AND PUBLISH]`
 
 Default to assessment only. Do not contact private systems, upload local data,
@@ -56,8 +57,17 @@ parseable, safe, or licensed.
 
 ### 3. Validate parsed output
 
-Run the actual project parser with bounded timeouts and controlled storage.
-Measure:
+Run the actual project parser only in the approved disposable environment with
+no repository, cloud, registry, or signing credentials, controlled storage, and
+network access restricted to explicitly approved catalog sources. Treat the
+repository, parser, dependencies, source content, and generated files as
+untrusted. Use bounded timeouts and resource limits.
+
+If the approved environment is unavailable, do not execute project code. Use
+static inspection and existing hosted evidence, report parser validation as
+unexecuted, and do not infer healthy output from source reachability.
+
+When execution is authorized, measure:
 
 - valid records;
 - invalid or ignored lines;

@@ -319,6 +319,8 @@ Required inputs:
 - Repository or catalog path, source list or schema, and intended use.
 - Required geographic or subject coverage, data formats, update frequency, and allow or deny policy.
 - Licensing, ownership, normalization, output, and failure-handling requirements.
+- A disposable credential-free parser environment with storage limits and
+  allowlisted network access before executing project code.
 - Authorization to assess, update the catalog, or update and publish it.
 
 Missing from the prompt: the current source inventory, official-source evidence, live availability, parser behavior, coverage gaps, licensing status, generated outputs, and publication authority.
@@ -336,6 +338,8 @@ Required inputs:
 - Screenshot or image and the user's separately stated request.
 - Application, service, or repository context and approximate capture time.
 - Expected behavior, available live-system access, and approved change scope.
+- Exact approved reproduction tests and a disposable credential-free
+  environment before executing untrusted content.
 - A redacted replacement when the image contains information that should not be processed or shared.
 
 Missing from the prompt: the complete error context, current system state, text hidden by clipping, exact timestamp, live logs, reproduction steps, and repair authority.

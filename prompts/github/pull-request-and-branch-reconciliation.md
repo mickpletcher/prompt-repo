@@ -103,16 +103,24 @@ then report the unexecuted validation.
 
 ### 5. Process approved pull requests
 
-For items covered by the named approval input or `PROCESS ALL SAFE ITEMS`:
+For each item covered by the named approval input or `PROCESS ALL SAFE ITEMS`,
+identify its permitted operation and run only the matching procedure:
 
-1. Update or rebase a source branch only when necessary and safe.
-2. Resolve conflicts explicitly, retaining all intended changes.
-3. Wait for fresh checks after changing the head SHA.
-4. Merge using the requested method.
-5. Record the resulting merge commit.
-6. Confirm the pull request state is `MERGED`.
-7. Delete the source branch only after the merge is verified, retention rules
-   permit deletion, and branch cleanup authorization covers it.
+- `MERGE`: update or rebase only when approved and necessary, resolve conflicts,
+  wait for fresh checks, merge using the requested method, record the merge
+  commit, and confirm the pull request state is `MERGED`;
+- `CLOSE`: verify the pull request's unique commits and reason, then close it
+  without merging;
+- `RETARGET`: verify the requested base branch and compatibility, retarget the
+  pull request, then wait for fresh mergeability and checks;
+- `UPDATE` or `REBASE`: change only the source branch, preserve intended work,
+  and wait for fresh checks without merging;
+- `DELETE BRANCH`: delete only after the merge or other safe disposition is
+  verified, retention rules permit deletion, and branch cleanup authorization
+  covers the exact branch.
+
+Do not infer one permitted operation from another. In particular, approval to
+close, retarget, update, rebase, or delete is not approval to merge.
 
 Never delete a branch merely because its pull request is closed. Inspect its
 unique commits first.
