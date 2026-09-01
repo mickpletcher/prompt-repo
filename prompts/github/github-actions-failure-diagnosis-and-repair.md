@@ -155,10 +155,17 @@ or trigger a hosted workflow. Report hosted verification as outstanding.
 For `PULL REQUEST`, proceed only when the approved repair scope covers the file
 changes and pull-request publication:
 
-1. Commit the focused change and push its branch.
-2. Open the pull request against the verified base branch.
-3. Confirm the required checks attach to the expected pull request and head SHA.
-4. Wait for the automatically triggered run and inspect the original failed
+1. Before pushing, inspect every workflow the branch or pull request will
+   trigger. Require disposable workers, no repository or environment secrets, no
+   privileged self-hosted runner, a least-privilege `GITHUB_TOKEN`, restricted
+   network and filesystem access equivalent to local isolation, and no
+   `pull_request_target` execution of untrusted head code.
+2. If every triggered job satisfies that boundary, commit the focused change and
+   push its branch. Otherwise do not trigger hosted execution and report hosted
+   verification and pull-request delivery as blocked.
+3. Open the pull request against the verified base branch.
+4. Confirm the required checks attach to the expected pull request and head SHA.
+5. Wait for the automatically triggered run and inspect the original failed
    step, later steps, generated output, and artifacts.
 
 For `MERGE`, complete the pull-request steps first, resolve review conversations,
@@ -167,10 +174,11 @@ repository's permitted method. Delete the source branch only when separately
 authorized.
 
 Rerun an existing hosted workflow only when the approved repair scope covers
-that exact rerun. If GitHub reports `action_required`, determine whether
-approval, policy, permissions, or an event restriction is responsible. Do not
-call the workflow successful because a separate manual run passed unless
-required-check behavior is also understood and documented.
+that exact rerun and the job satisfies the same untrusted-head isolation
+boundary. If GitHub reports `action_required`, determine whether approval,
+policy, permissions, or an event restriction is responsible. Do not call the
+workflow successful because a separate manual run passed unless required-check
+behavior is also understood and documented.
 
 ### Completion report
 

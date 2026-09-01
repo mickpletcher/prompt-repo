@@ -15,7 +15,7 @@ Audit this source catalog:
 - Update frequency: `[INSERT EXPECTATION]`
 - Allow, deny, include, or exclude policy: `[INSERT POLICY]`
 - Licensing requirements: `[INSERT REQUIREMENTS]`
-- Approved isolated parser environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved isolated source and parser environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved source and policy mutations: `[NONE | INSERT EXACT CHANGES]`
 - Approved changes: `[ASSESS ONLY | UPDATE CATALOG | UPDATE AND PUBLISH]`
 
@@ -45,6 +45,16 @@ Do not merge allow and deny sources into one ambiguous category. Preserve
 explicit policy distinctions and documented exceptions.
 
 ### 2. Validate every source
+
+Perform DNS resolution, HTTP and TLS probes, redirects, downloads, and browser
+checks only inside the approved disposable environment. It must have no ambient
+cookies or repository, cloud, registry, proxy, or signing credentials. Restrict
+filesystem access, response size, duration, redirects, and outbound network
+destinations. Reject loopback, private, link-local, metadata-service, and other
+reserved destinations. Re-resolve and revalidate every initial and redirected
+destination immediately before connecting to prevent DNS rebinding and redirect
+bypass. If this environment is unavailable, use static and existing hosted
+evidence and report live source validation as unexecuted.
 
 For each source, check:
 
