@@ -153,8 +153,10 @@ For each exact catalog mutation named in the approved input:
 3. Regenerate outputs in a new directory.
 4. Validate schema, counts, overlap, and representative records.
 5. Compare against the previous output.
-6. In `UPDATE AND PUBLISH` mode only, replace published output after validation
-   succeeds.
+6. In `UPDATE AND PUBLISH` mode only, replace a published output after validation
+   succeeds and only when that exact output target and replacement are named in
+   the approved mutation input. Otherwise retain the regenerated output locally
+   and report publication as outstanding.
 7. Update README, assessment, changelog, and policy documentation as required.
 
 In `UPDATE CATALOG` mode, keep regenerated output in a separate local location

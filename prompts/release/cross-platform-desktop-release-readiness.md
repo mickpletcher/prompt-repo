@@ -171,8 +171,11 @@ remain unfinished.
 
 ### 8. Deliver the authorized outcome
 
-In `ASSESSMENT` mode, stop after the readiness verdict. Do not change files,
-publish a branch, open a pull request, create a tag, or create a release.
+In `ASSESSMENT` mode, stop after the readiness verdict. Do not change repository
+or source files, publish a branch, open a pull request, create a tag, or create a
+release. Exact authorized builds and artifact tests may create temporary files
+inside the approved disposable environment. Do not copy those files into the
+worktree or publish them, and discard them after collecting sanitized evidence.
 
 For `RELEASE CANDIDATE PR`, proceed only when the approved repair and release
 scope covers the required file changes and pull-request publication:
