@@ -229,6 +229,8 @@ Required inputs:
 
 - Exact target system, environment, management interface, and requested configuration change.
 - Reason, expected outcome, current known state, affected scope, and maintenance window.
+- A read-only verification plan or the exact approved consequential functional
+  probe and target.
 - Nonsecret description of approved credentials and permissions, exact rollback
   action, target, trigger, execution authorization, and change-control
   requirements.

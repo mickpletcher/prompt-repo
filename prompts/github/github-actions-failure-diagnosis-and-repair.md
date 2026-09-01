@@ -169,7 +169,12 @@ changes and pull-request publication:
    step, later steps, generated output, and artifacts.
 
 For `MERGE`, complete the pull-request steps first, resolve review conversations,
-wait for all required checks on the current head SHA, and merge using the
+wait for all required checks on the current head SHA, and inspect every workflow
+or external integration triggered by the target-branch update. Require the same
+credential-free isolation for any job that executes merged code. A separately
+approved privileged promotion job may consume verified inert artifacts but must
+not execute repository code. If target-branch automation violates this boundary,
+leave the merge and hosted verification outstanding. Otherwise merge using the
 repository's permitted method. Delete the source branch only when separately
 authorized.
 

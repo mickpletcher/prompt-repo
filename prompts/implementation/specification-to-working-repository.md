@@ -166,7 +166,11 @@ synchronization workflow. Delete the delivered source branch only when branch
 cleanup authorization permits it and the merge is verified. A `DRAFT PR` may be
 opened while acceptance or manual gates remain unresolved when its description
 lists every open gate and does not claim readiness. Do not open a `READY PR` or
-merge while required gates remain unresolved.
+merge while required gates remain unresolved. Before `MERGE`, inspect every
+workflow or external integration triggered by the target-branch update. Require
+credential-free isolation for jobs that execute merged content; a separately
+approved privileged promotion job may consume verified inert artifacts but must
+not execute repository code. Leave the merge blocked if that boundary fails.
 
 ### Completion report
 

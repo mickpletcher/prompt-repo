@@ -146,8 +146,12 @@ For each pull request covered by the named approval input or
 matching procedure:
 
 - `MERGE`: confirm the current head SHA and checks, resolve review conversations,
-  merge with the requested method, and verify the merge commit and post-merge
-  workflows;
+  and inspect every workflow or external integration triggered by the base-branch
+  update. Require credential-free isolation for jobs that execute merged content;
+  a separately approved privileged promotion job may consume verified inert
+  artifacts but must not execute repository code. If that boundary fails, leave
+  the merge and hosted verification blocked. Otherwise merge with the requested
+  method and verify the merge commit and post-merge workflows;
 - `UPDATE`: apply only the approved compatibility, configuration, lockfile, or
   documentation changes, validate them in the isolated environment, and update
   the pull-request branch without merging;

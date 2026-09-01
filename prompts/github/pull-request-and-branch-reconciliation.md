@@ -107,8 +107,13 @@ For each item covered by the named approval input or `PROCESS ALL SAFE ITEMS`,
 identify its permitted operation and run only the matching procedure:
 
 - `MERGE`: update or rebase only when approved and necessary, resolve conflicts,
-  wait for fresh checks, merge using the requested method, record the merge
-  commit, and confirm the pull request state is `MERGED`;
+  wait for fresh checks, and inspect every workflow or external integration
+  triggered by the target-branch update. Require credential-free isolation for
+  jobs that execute merged content; a separately approved privileged promotion
+  job may consume verified inert artifacts but must not execute repository code.
+  If that boundary fails, leave the merge blocked. Otherwise merge using the
+  requested method, record the merge commit, and confirm the pull request state
+  is `MERGED`;
 - `CLOSE`: verify the pull request's unique commits and reason, then close it
   without merging;
 - `RETARGET`: verify the requested base branch and compatibility, retarget the

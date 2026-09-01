@@ -15,6 +15,7 @@ Handle this live configuration change:
 - Scope of affected users, devices, or services: `[INSERT SCOPE]`
 - Maintenance window: `[INSERT WINDOW OR NONE]`
 - Approved credentials and permissions: `[INSERT NONSECRET DESCRIPTION]`
+- Approved functional probe and target: `[NONE | READ-ONLY PROBES ONLY | INSERT EXACT PROBE AND TARGET]`
 - Exact rollback action, target, and trigger: `[UNKNOWN | INSERT EXACT DETAILS]`
 - Rollback execution authorization: `[PLAN ONLY | EXECUTE EXACT ROLLBACK WHEN TRIGGERED]`
 - Requested mode: `[PLAN ONLY | APPLY EXACT CHANGE]`
@@ -135,6 +136,13 @@ Verify through at least two applicable layers:
 - controlled functional probe;
 - representative client or endpoint state;
 - monitoring or audit event.
+
+Run a functional probe without separate approval only when it is demonstrably
+read-only. A probe that sends notifications, provisions resources, incurs cost,
+writes data, changes device behavior, or creates another external effect requires
+the exact probe and target in the approved functional-probe input. If that
+approval is absent, use other read-only verification layers and report the
+functional result as unverified.
 
 Account for propagation delay. Do not interpret a delayed cleanup process,
 cached value, or stale dashboard as immediate failure without checking the
