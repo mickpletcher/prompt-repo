@@ -15,6 +15,7 @@ Triage dependency updates in this repository:
 - Required checks: `[INSERT CHECKS OR DISCOVER]`
 - Merge method: `[SQUASH | MERGE | REBASE]`
 - Authorization: `[ASSESS ONLY | MERGE APPROVED UPDATES | PROCESS ALL SAFE UPDATES]`
+- Branch cleanup authorization: `[KEEP ALL | DELETE NAMED BRANCHES | DELETE MERGED UPDATE BRANCHES]`
 
 Default to assessment only. Do not assume an automated update is safe because
 it was opened by Dependabot, Renovate, or another trusted bot.
@@ -121,7 +122,8 @@ For each approved merge:
 2. Resolve review conversations.
 3. Merge with the requested method.
 4. Verify the merge commit and post-merge workflows.
-5. Delete the source branch when safe.
+5. Delete the source branch only when the branch cleanup authorization covers
+   it and the merge is verified.
 6. Refresh the remaining dependency queue.
 
 Finish with clean synchronized `main`, an explicit list of remaining dependency

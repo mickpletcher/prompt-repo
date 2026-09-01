@@ -16,10 +16,12 @@ Create a social preview for this repository:
 - Required format: `[PNG | JPG]`
 - Maximum file size: `[INSERT LIMIT OR NONE]`
 - Approved destination path: `[INSERT PATH]`
-- Requested scope: `[CREATE FILE ONLY | ADD TO REPOSITORY | CONFIGURE ON GITHUB]`
+- Repository delivery: `[LOCAL FILE ONLY | ADD TO WORKTREE | COMMIT | PULL REQUEST]`
+- GitHub preview configuration: `[DO NOT CONFIGURE | CONFIGURE ON GITHUB]`
 
-Do not change the GitHub social preview setting or publish the asset unless the
-requested scope authorizes it.
+Repository delivery and GitHub configuration are separate authorizations.
+Adding the asset to a worktree does not authorize a commit, push, pull request,
+or GitHub setting change.
 
 ### 1. Understand the repository
 
@@ -93,15 +95,18 @@ absolute file link for local delivery.
 
 ### 6. Publish only when authorized
 
-If repository publication is requested:
+If adding the file to the worktree is requested:
 
 - place the asset at the approved tracked path;
 - run repository validation;
-- review licensing and private-data concerns;
-- commit and open the requested pull request.
+- review licensing and private-data concerns.
 
-If configuring GitHub is requested, verify the repository identity and current
-preview before changing it. Read back or visually confirm the applied preview.
+Commit only when `COMMIT` or `PULL REQUEST` delivery is selected. Push and open
+a pull request only when `PULL REQUEST` is selected.
+
+If `CONFIGURE ON GITHUB` is separately selected, verify the repository identity
+and current preview before changing it. Read back or visually confirm the
+applied preview.
 
 ### Completion report
 

@@ -267,7 +267,8 @@ Required inputs:
 - Repository URL or path, package ecosystems, and dependency pull request scope.
 - Supported runtime and platform matrix, compatibility policy, required checks, and merge method.
 - Security advisories, release constraints, and available integration environments when relevant.
-- Authorization to assess, merge named updates, or process all safe updates.
+- Authorization to assess, merge named updates, or process all safe updates,
+  plus separate branch-cleanup authorization.
 
 Missing from the prompt: the complete current update set, changelogs, lockfile state, transitive impact, check results, integration evidence, protection rules, and merge authority.
 
@@ -284,7 +285,8 @@ Required inputs:
 - Repository URL or path, project name, purpose, required text, and intended audience.
 - Existing logo or brand assets, preferred style, required image format, size limit, and destination path.
 - Trademark, licensing, privacy, and accessibility constraints.
-- Authorization to create the file, add it to the repository, or configure the GitHub setting.
+- Separate authorization for local file creation, adding it to the worktree,
+  committing it, opening a pull request, and configuring the GitHub setting.
 
 Missing from the prompt: the approved visual identity, usable source assets, exact GitHub constraints, repository-specific concept, upload access, and publication authority.
 
