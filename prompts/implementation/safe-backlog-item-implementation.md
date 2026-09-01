@@ -14,6 +14,9 @@ Implement this approved backlog item:
 - Acceptance criteria: `[INSERT COMPLETE ACCEPTANCE CRITERIA]`
 - Explicitly out of scope: `[INSERT EXCLUSIONS]`
 - Required platforms or integrations: `[INSERT REQUIREMENTS]`
+- Available test and integration environments: `[INSERT ENVIRONMENTS]`
+- Existing dirty work or concurrent changes: `[NONE | INSERT DETAILS]`
+- Approval for consequential or external actions: `[NONE | INSERT EXACT SCOPE]`
 - Delivery target: `[LOCAL CHANGE | DRAFT PR | READY PR | MERGE]`
 - Base branch: `[INSERT BASE BRANCH]`
 

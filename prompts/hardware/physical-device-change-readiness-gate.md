@@ -16,7 +16,10 @@ Assess readiness for this physical-device change:
 - Official vendor documentation: `[INSERT URL OR NONE]`
 - Available physical test device: `[YES | NO]`
 - Current backup and recovery method: `[INSERT METHOD OR NONE]`
-- Authorization to perform physical writes: `[YES | NO]`
+- Independent verifier or existing recovery evidence: `[INSERT DETAILS OR NONE]`
+- Authorization for vendor access and read-only physical testing: `[YES | NO]`
+- Authorization for a recovery rehearsal: `[NO | INSERT EXACT APPROVED SCOPE]`
+- Authorization to perform configuration writes: `[NO | INSERT EXACT APPROVED SCOPE]`
 
 Physical writes are unavailable by default. Planning, simulation, fake-device
 tests, UI prototypes, and successful read-only discovery do not authorize or
@@ -24,11 +27,22 @@ prove a physical write workflow.
 
 ### Hard boundary
 
-Do not add, expose, invoke, or test a physical write command unless every gate
-below is satisfied and the user explicitly authorizes the exact operation on
-the identified device.
+Do not add, expose, invoke, or test the intended configuration write unless
+every gate below is satisfied and the user explicitly authorizes the exact
+operation on the identified device.
 
-This restriction includes indirect writes such as:
+A narrowly scoped recovery rehearsal may occur before every later gate passes
+when physical restoration is the only valid way to prove recovery. It requires
+separate explicit authorization, a noncritical test device, validated backup
+input, a vendor-supported or independently reviewed recovery method, defined
+stop conditions, and an independent fallback if the rehearsal fails. Existing
+physical recovery evidence is acceptable only when it matches the device,
+firmware, backup format, and proposed recovery path and can be verified.
+This exception authorizes recovery testing only. It does not authorize the
+intended configuration change or any broader device write.
+
+Except for that separately authorized recovery rehearsal, this restriction
+includes indirect writes such as:
 
 - pairing, enrollment, registration, or trust establishment;
 - installing a helper, application, profile, driver, or certificate;
@@ -118,7 +132,9 @@ Before any write:
 3. Record firmware, tool version, format, hashes, and device compatibility.
 4. Validate backup integrity.
 5. Rehearse restoration using an isolated, vendor-supported, or otherwise safe
-   method.
+   method. If this requires a physical write before the later gates pass, use
+   only the separately authorized noncritical-device exception in the hard
+   boundary above.
 6. Define recovery for disconnect, timeout, partial write, invalid state, power
    loss, and application crash.
 7. Prove that rollback does not depend on the same failed step without an

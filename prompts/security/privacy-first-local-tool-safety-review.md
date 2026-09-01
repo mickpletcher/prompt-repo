@@ -8,12 +8,16 @@ backs up, synchronizes, or reports on private user data.
 Review this local tool:
 
 - Repository path or URL: `[INSERT REPOSITORY PATH OR URL]`
+- Supported operating systems: `[INSERT PLATFORMS]`
 - Private data types handled: `[INSERT DATA TYPES]`
 - Default input locations: `[INSERT GENERAL LOCATIONS]`
 - Supported read operations: `[INSERT OPERATIONS]`
 - Supported write operations: `[INSERT OPERATIONS OR NONE]`
 - Reports, logs, backups, and exports: `[INSERT OUTPUTS]`
+- Retention and deletion requirements: `[INSERT REQUIREMENTS]`
 - External services or telemetry: `[INSERT SERVICES OR NONE]`
+- Approved remediation scope: `[NONE | INSERT APPROVED CHANGES]`
+- Safe isolated test data: `[INSERT FIXTURE OR TEST-DATA SOURCE]`
 - Requested mode: `[ASSESSMENT ONLY | IMPLEMENT APPROVED FIXES]`
 
 Do not provide real private files, credentials, account identifiers, URLs,

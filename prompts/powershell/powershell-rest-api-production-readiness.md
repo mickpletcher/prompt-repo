@@ -10,12 +10,17 @@ Review this PowerShell REST API project:
 - Repository path or URL: `[INSERT REPOSITORY PATH OR URL]`
 - Official API documentation: `[INSERT DOCUMENTATION URL]`
 - API base URL pattern: `[INSERT NONSECRET EXAMPLE]`
+- API version: `[INSERT VERSION]`
 - Authentication method: `[API KEY | OAUTH | MANAGED IDENTITY | OTHER]`
+- Required credential scopes or permissions: `[INSERT SCOPES]`
+- Observed failure or assessment goal: `[INSERT DETAILS]`
+- Expected request volume and published rate limits: `[INSERT DETAILS]`
 - Supported PowerShell versions: `[INSERT VERSIONS]`
 - Supported operating systems: `[INSERT PLATFORMS]`
 - Read operations: `[INSERT COMMANDS OR ENDPOINTS]`
 - Mutating operations: `[INSERT COMMANDS OR ENDPOINTS]`
 - Integration environment available: `[YES | NO]`
+- Authorization for live mutations: `[NONE | INSERT EXACT APPROVED SCOPE]`
 - Requested mode: `[ASSESSMENT ONLY | IMPLEMENT APPROVED FIXES]`
 
 Never request or place passwords, tokens, API keys, certificates, private URLs,

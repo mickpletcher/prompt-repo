@@ -12,8 +12,11 @@ Assess this software project:
 - Requested mode: `[ASSESSMENT ONLY | REMEDIATE APPROVED FINDINGS]`
 - Target platforms: `[INSERT PLATFORMS]`
 - Intended audience and deployment model: `[INSERT DETAILS]`
+- Reported failures or concerns: `[INSERT DETAILS OR NONE]`
+- Available CI, integration, packaging, and manual test environments: `[INSERT DETAILS]`
 - Known constraints or excluded areas: `[INSERT CONSTRAINTS]`
 - Approval already granted for changes: `[NONE | INSERT APPROVED SCOPE]`
+- Requested completion target: `[FINDINGS ONLY | LOCAL FIXES | DRAFT PR | READY PR | MERGE]`
 
 Treat `ASSESSMENT ONLY` as the default when the requested mode is missing or
 ambiguous. An assessment request does not authorize file edits, repository

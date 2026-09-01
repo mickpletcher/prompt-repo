@@ -44,9 +44,9 @@ File: `prompts/automation/unattended-automation-reliability-audit.md`
 Required inputs:
 
 - Repository or automation location and workflow, task, or job name.
-- Actual trigger or schedule, time zone, source, destination, and execution environment.
+- Actual trigger or schedule, time zone, source, destination, execution environment, permissions, and credentials model.
 - A measurable business outcome and acceptable source or artifact freshness.
-- Notification channel, privacy limits, repair authorization, and access to representative run history.
+- Notification channel, privacy and retention limits, repair authorization, and access to representative run history.
 
 Missing from the prompt: the target automation, scheduler, credentials model, normal record counts, freshness threshold, notification policy, recent run evidence, and permission to change a live schedule or destination.
 
@@ -62,8 +62,8 @@ Required inputs:
 
 - Device type, model, firmware or operating-system version, and intended change.
 - Proposed transport, official vendor documentation, and available test hardware.
-- Current backup, restore, recovery, and independent verification methods.
-- Authorization for vendor access, physical testing, and the exact proposed write.
+- Current backup, restore, recovery, and independent verification methods or evidence.
+- Separate authorization for vendor access, read-only testing, recovery rehearsal, and the exact proposed configuration write.
 
 Missing from the prompt: verified device identity, supported capabilities, current firmware behavior, vendor authorization, physical evidence, backup integrity, recovery proof, and explicit write approval.
 
@@ -80,7 +80,7 @@ Required inputs:
 - Repository path or URL, base branch, item identifier, and source tracking file.
 - Complete acceptance criteria, explicit exclusions, required platforms, and integration gates.
 - Requested delivery target such as a local change, draft pull request, ready pull request, or merge.
-- Existing dirty-worktree or concurrent-work constraints.
+- Existing dirty-worktree or concurrent-work constraints, available test environments, and approval for consequential or external actions.
 
 Missing from the prompt: the actual backlog item, current tracker state, repository instructions, approval for consequential behavior, available test environments, and publication authority.
 
@@ -94,10 +94,10 @@ File: `prompts/powershell/powershell-rest-api-production-readiness.md`
 
 Required inputs:
 
-- Repository path or URL and current official API documentation.
+- Repository path or URL, current official API documentation, and the observed failure or assessment goal.
 - Sanitized base URL pattern, API version, authentication method, and required scopes.
 - Supported PowerShell versions, operating systems, read commands, and mutating commands.
-- Integration environment availability and authorization to implement fixes or perform live mutations.
+- Expected request volume, published rate limits, integration environment availability, and authorization to implement fixes or perform live mutations.
 
 Missing from the prompt: the real API contract, current credentials capability, controller or service version, observed failure, scale, rate limits, and live integration evidence.
 
@@ -112,8 +112,8 @@ File: `prompts/project-review/software-project-assessment-and-remediation.md`
 Required inputs:
 
 - Repository path or URL, intended audience, deployment model, and supported platforms.
-- Requested mode, known constraints, excluded areas, and any fixes already approved.
-- Access to relevant source, tests, documentation, Git state, CI, packaging, and integration environments.
+- Requested mode, reported concerns, known constraints, excluded areas, and any fixes already approved.
+- Access to relevant source, tests, documentation, Git state, CI, packaging, integration, and manual test environments.
 - Required completion target such as findings only, local fixes, pull request, or merge.
 
 Missing from the prompt: the target project, current repository state, production evidence, available permissions, exact remediation scope, and manual acceptance environments.
@@ -128,7 +128,7 @@ File: `prompts/security/privacy-first-local-tool-safety-review.md`
 
 Required inputs:
 
-- Repository path or URL and the categories of private data handled.
+- Repository path or URL, supported operating systems, and the categories of private data handled.
 - General input locations, supported read and write operations, and data retention expectations.
 - Logs, reports, backups, exports, notifications, external services, and telemetry behavior.
 - Approved remediation scope and safe isolated test data.

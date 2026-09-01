@@ -10,11 +10,18 @@ Audit this unattended automation:
 - Repository or automation location: `[INSERT PATH OR URL]`
 - Workflow, task, or job name: `[INSERT NAME]`
 - Trigger or schedule: `[INSERT TRIGGER]`
+- Schedule time zone: `[INSERT TIME ZONE]`
+- Execution environment and identity: `[INSERT ENVIRONMENT]`
+- Permissions and credentials model: `[INSERT NONSECRET DESCRIPTION]`
 - Intended business outcome: `[INSERT MEASURABLE RESULT]`
 - Source system or data: `[INSERT SOURCE]`
 - Destination or artifact: `[INSERT DESTINATION]`
 - Freshness requirement: `[INSERT MAXIMUM AGE OR EXPECTED CADENCE]`
 - Notification channel, if any: `[INSERT CHANNEL OR NONE]`
+- Privacy limits for health records and notifications: `[INSERT LIMITS]`
+- Health-record retention: `[INSERT LIMIT OR NONE]`
+- Representative run history available: `[YES | NO]`
+- Approved repair scope: `[NONE | INSERT APPROVED CHANGES]`
 - Requested mode: `[ASSESSMENT ONLY | REPAIR APPROVED ISSUES]`
 
 Default to `ASSESSMENT ONLY`. A green scheduler, process, or workflow status is
@@ -110,6 +117,9 @@ Require a concise health record containing only approved fields such as:
 - source freshness;
 - sanitized error category;
 - run or correlation identifier.
+
+Keep health history within the approved record-count or age limit. Define safe
+pruning behavior and preserve only the minimum evidence needed for operations.
 
 Exclude credentials, tokens, private URLs, record contents, user data, local
 paths, configuration contents, and raw responses.
