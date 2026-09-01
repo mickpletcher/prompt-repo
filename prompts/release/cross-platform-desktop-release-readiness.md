@@ -191,11 +191,17 @@ scope covers the required file changes and pull-request publication:
 For `PUBLISH RELEASE`, proceed only when the approved release scope explicitly
 covers publication and the verdict is `READY`:
 
-1. Confirm the exact commit, version, tag, artifacts, checksums, signatures,
-   release notes, and target repository.
-2. Create the authorized tag and release using only verified artifacts.
-3. Read back the published release, asset set, sizes, and checksums.
-4. Verify post-release workflows and installation links.
+1. Confirm the exact commit, version, tag, release notes, target repository, and
+   intended artifact set.
+2. Rebuild any artifact not preserved from the verified candidate, then complete
+   every approved signing or notarization stage that changes artifact bytes.
+3. Rerun applicable artifact gates on the final downloadable files and generate
+   fresh checksums after all byte-changing stages. Never reuse a pre-signing
+   checksum.
+4. Confirm the final artifacts, checksums, signatures, and notarization results.
+5. Create the authorized tag and release using only those verified files.
+6. Read back the published release, asset set, sizes, and checksums.
+7. Verify post-release workflows and installation links.
 
 If any required gate is incomplete, do not publish. Report the release as
 blocked and identify the missing evidence or authorization.
