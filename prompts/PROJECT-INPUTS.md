@@ -191,6 +191,8 @@ Required inputs:
   acceptance criteria, and known platform constraints.
 - A disposable credential-free build and artifact-test environment with
   restricted network and filesystem access.
+- A separately approved least-privilege signing or notarization stage, provider,
+  identity scope, and exact artifact targets without secret values.
 - Approved repair, build, signing, publication, and release scope.
 
 Missing from the prompt: the verified platform matrix, real build environment, certificates, signing-provider access, notarization credentials, physical-system evidence, and publication authority.

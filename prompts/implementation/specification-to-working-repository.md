@@ -163,8 +163,10 @@ generated junk, unfinished placeholders, and unrelated changes.
 
 Follow the requested branch, commit, pull request, review, check, merge, and
 synchronization workflow. Delete the delivered source branch only when branch
-cleanup authorization permits it and the merge is verified. Do not publish or
-merge while required acceptance or manual gates remain unresolved.
+cleanup authorization permits it and the merge is verified. A `DRAFT PR` may be
+opened while acceptance or manual gates remain unresolved when its description
+lists every open gate and does not claim readiness. Do not open a `READY PR` or
+merge while required gates remain unresolved.
 
 ### Completion report
 

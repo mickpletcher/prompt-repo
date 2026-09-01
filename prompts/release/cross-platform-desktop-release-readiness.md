@@ -18,6 +18,7 @@ Assess this desktop release:
 - Available physical test systems: `[INSERT SYSTEMS]`
 - Approved disposable build and artifact-test environment: `[NONE | INSERT ENVIRONMENT]`
 - Approved build and test scope: `[NONE | EXISTING ARTIFACTS ONLY | INSERT EXACT BUILDS AND TESTS]`
+- Approved signing and notarization stage: `[NONE | INSERT PROVIDER, IDENTITY SCOPE, AND TARGETS WITHOUT SECRETS]`
 - Approved repair and release scope: `[NONE | INSERT SCOPE]`
 - Requested outcome: `[ASSESSMENT | RELEASE CANDIDATE PR | PUBLISH RELEASE]`
 
@@ -47,11 +48,18 @@ executing tests, builds, installers, or packaging hooks. Report the missing
 runtime evidence.
 
 Treat repository code, dependencies, packaging hooks, release candidates, and
-artifacts as untrusted. Run every command that loads or executes them only in the
-approved disposable environment with no repository, cloud, registry, or signing
-credentials and with restricted network and filesystem access. If that
-environment is unavailable, use static and hosted evidence and report execution
-as outstanding.
+artifacts as untrusted. Except for the separately approved signing stage, run
+every command that loads or executes them only in the approved disposable
+environment with no repository, cloud, registry, or signing credentials and with
+restricted network and filesystem access. If that environment is unavailable,
+use static and hosted evidence and report execution as outstanding.
+
+An approved signing or notarization stage may access only the dedicated,
+least-privilege signing identity and provider permissions required for the named
+artifacts. Isolate that stage from general repository, cloud, and registry
+credentials. It may sign, submit, staple, and verify the final artifact, but must
+not run project build scripts, lifecycle hooks, installers, or the application.
+Do not expose or export the signing identity in logs or artifacts.
 
 When authorized, run the complete applicable suite:
 
@@ -170,12 +178,15 @@ For `RELEASE CANDIDATE PR`, proceed only when the approved repair and release
 scope covers the required file changes and pull-request publication:
 
 1. Apply only approved repairs needed for the candidate.
-2. Update version, release notes, checksums, and documentation as required.
-3. Rebuild and rerun all applicable automated gates.
-4. Commit and push the focused branch.
-5. Open the pull request with the remaining manual and platform gates stated
+2. Update version, release notes, and documentation as required.
+3. Rebuild the final candidate and complete any approved signing or notarization
+   stage that changes its bytes.
+4. Rerun applicable artifact gates on the final candidate, then generate and
+   record its checksums.
+5. Commit and push the focused branch.
+6. Open the pull request with the remaining manual and platform gates stated
    explicitly.
-6. Do not publish a release from this mode.
+7. Do not publish a release from this mode.
 
 For `PUBLISH RELEASE`, proceed only when the approved release scope explicitly
 covers publication and the verdict is `READY`:
