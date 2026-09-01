@@ -1,10 +1,10 @@
 # Assessment
 
-Updated: 2026-08-13
+Updated: 2026-08-31
 
 ## Purpose
 
-Prompt Repo is a Markdown library of reusable prompts and OpenAI ChatGPT Project instruction sets for development, automation, planning, content, fitness, construction, legal, career, and other workflows.
+Prompt Repo is a Markdown library of reusable prompts and OpenAI ChatGPT Project instruction sets for development, automation, planning, content, fitness, construction, legal, career, and other workflows. Its engineering prompts cover repository governance, project assessment, PowerShell REST APIs, backlog implementation, unattended automation, privacy-first local tools, and physical-device safety.
 
 ## Structure
 
