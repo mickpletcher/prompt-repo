@@ -122,8 +122,13 @@ When catalog changes are approved:
 3. Regenerate outputs in a new directory.
 4. Validate schema, counts, overlap, and representative records.
 5. Compare against the previous output.
-6. Replace published output only after validation succeeds.
+6. In `UPDATE AND PUBLISH` mode only, replace published output after validation
+   succeeds.
 7. Update README, assessment, changelog, and policy documentation as required.
+
+In `UPDATE CATALOG` mode, keep regenerated output in a separate local location
+for validation and report publication as outstanding. Do not replace external or
+live published output.
 
 Do not commit private reports, live query exports, credentials, or local-only
 allow and deny files.

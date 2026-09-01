@@ -51,7 +51,8 @@ Do not copy historical commands without verifying the current project.
 
 ### 3. Use a novice-first README structure
 
-Write or revise the README in this order when applicable:
+Use this order for the proposed README. Write or revise repository files only
+when the approved scope and requested outcome include a README change:
 
 1. Project name and one-sentence purpose.
 2. Who it is for.
@@ -134,6 +135,27 @@ Run:
 
 Have a reviewer follow the instructions without relying on undocumented project
 knowledge when practical.
+
+### 8. Deliver the authorized outcome
+
+In `ASSESSMENT` mode, report findings and proposed content only. Do not edit
+files, build artifacts, commit, push, or open a pull request.
+
+In `README UPDATE` mode, apply only the approved documentation changes and run
+the applicable validation. Leave the result as a local change unless separate
+Git delivery authority is provided.
+
+In `README AND DISTRIBUTION PR` mode:
+
+1. Apply only the approved documentation and packaging changes.
+2. Run documentation, clean-install, artifact, privacy, and platform validation
+   applicable to the changed scope.
+3. Commit and push the focused branch.
+4. Open the pull request with unsigned, untested, manual, and platform-specific
+   limitations stated explicitly.
+
+Do not publish a release, installer, screenshot, or external documentation from
+this mode unless separately authorized.
 
 ### Completion report
 
