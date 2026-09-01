@@ -39,6 +39,25 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-11:start -->
+- **Add 12 reusable workflow prompts** ([#11](https://github.com/mickpletcher/prompt-repo/pull/11))
+  - Updated `ASSESSMENT.md`.
+  - Added `prompts/diagnostics/screenshot-evidence-triage.md`.
+  - Added `prompts/documentation/novice-ready-readme-and-distribution-review.md`.
+  - Added `prompts/github/dependency-update-triage-and-merge.md`.
+  - Added `prompts/github/github-actions-failure-diagnosis-and-repair.md`.
+  - Added `prompts/github/github-social-preview-production.md`.
+  - Added `prompts/github/pull-request-and-branch-reconciliation.md`.
+  - Added `prompts/implementation/specification-to-working-repository.md`.
+  - Added `prompts/operations/safe-live-configuration-change.md`.
+  - Updated `prompts/PROJECT-INPUTS.md`.
+  - Added `prompts/release/cross-platform-desktop-release-readiness.md`.
+  - Added `prompts/research/evidence-based-product-comparison.md`.
+  - Added `prompts/research/official-source-and-data-catalog-audit.md`.
+  - Added `prompts/windows/remote-service-connectivity-diagnosis.md`.
+  - Updated `README.md`.
+<!-- changelog:pr-11:end -->
+
 <!-- changelog:pr-9:start -->
 - **Add reusable engineering workflow prompts** ([#9](https://github.com/mickpletcher/prompt-repo/pull/9))
   - Updated `ASSESSMENT.md`.
