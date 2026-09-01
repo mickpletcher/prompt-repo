@@ -39,6 +39,12 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-12:start -->
+- **Preserve README catalog line endings** ([#12](https://github.com/mickpletcher/prompt-repo/pull/12))
+  - Updated `.github/scripts/readme-catalog.mjs`.
+  - Updated `.github/scripts/readme-catalog.test.mjs`.
+<!-- changelog:pr-12:end -->
+
 <!-- changelog:pr-11:start -->
 - **Add 12 reusable workflow prompts** ([#11](https://github.com/mickpletcher/prompt-repo/pull/11))
   - Updated `ASSESSMENT.md`.

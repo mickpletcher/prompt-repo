@@ -162,9 +162,13 @@ export function replaceCatalog(readme, resources) {
     );
   }
 
+  const markerEndIndex = startIndex + CATALOG_START.length;
+  const lineEnding = readme.startsWith("\r\n", markerEndIndex) ? "\r\n" : "\n";
+  const catalog = renderCatalog(resources).replaceAll("\n", lineEnding);
+
   return (
     readme.slice(0, startIndex) +
-    renderCatalog(resources) +
+    catalog +
     readme.slice(endIndex + CATALOG_END.length)
   );
 }
