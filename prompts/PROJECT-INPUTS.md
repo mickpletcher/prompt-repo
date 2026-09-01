@@ -328,6 +328,8 @@ Required inputs:
 - Licensing, ownership, normalization, output, and failure-handling requirements.
 - A disposable credential-free parser environment with storage limits and
   allowlisted network access before executing project code.
+- The exact approved source additions, removals, replacements, enablement
+  changes, policy changes, and output replacements.
 - Authorization to assess, update the catalog, or update and publish it.
 
 Missing from the prompt: the current source inventory, official-source evidence, live availability, parser behavior, coverage gaps, licensing status, generated outputs, and publication authority.

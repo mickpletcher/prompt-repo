@@ -16,10 +16,17 @@ Audit this source catalog:
 - Allow, deny, include, or exclude policy: `[INSERT POLICY]`
 - Licensing requirements: `[INSERT REQUIREMENTS]`
 - Approved isolated parser environment: `[NONE | INSERT ENVIRONMENT]`
+- Approved source and policy mutations: `[NONE | INSERT EXACT CHANGES]`
 - Approved changes: `[ASSESS ONLY | UPDATE CATALOG | UPDATE AND PUBLISH]`
 
 Default to assessment only. Do not contact private systems, upload local data,
 change live filtering policy, or publish generated outputs unless authorized.
+
+The update mode controls the delivery path. It does not authorize the
+recommended dispositions. Apply only source additions, removals, replacements,
+enablement changes, policy changes, and output replacements named in the
+approved mutation input. If none are named, report recommendations and stop
+before editing or publishing.
 
 ### 1. Understand the catalog contract
 
@@ -125,7 +132,7 @@ effect on derived output.
 
 ### 7. Update safely when authorized
 
-When catalog changes are approved:
+For each exact catalog mutation named in the approved input:
 
 1. Modify the source metadata and policy explicitly.
 2. Preserve documented exceptions.
