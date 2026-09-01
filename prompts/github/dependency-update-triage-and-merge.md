@@ -92,7 +92,7 @@ affects a critical path.
 Process shared workflow and base dependency changes before updates that touch
 the same lines. After each merge:
 
-- refresh remaining PRs against current `main`;
+- refresh each remaining PR against its verified target base branch;
 - re-evaluate superseded versions;
 - resolve conflicts explicitly;
 - preserve all intended action or package versions;
@@ -126,9 +126,10 @@ For each approved merge:
    it and the merge is verified.
 6. Refresh the remaining dependency queue.
 
-After authorized processing, synchronize `main` only when the processing scope
-includes local checkout reconciliation. Delete branches only as allowed by the
-branch cleanup authorization.
+After authorized processing, synchronize each processed pull request's verified
+base branch only when the processing scope includes local checkout
+reconciliation. Delete branches only as allowed by the branch cleanup
+authorization.
 
 In `ASSESS ONLY` mode, do not switch branches, pull, fetch, prune, or change
 refs. Report observed divergence, remaining dependency pull requests, and stale
