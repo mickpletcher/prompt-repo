@@ -10,12 +10,12 @@ Required inputs:
 
 - Complete GitHub repository URL.
 - Access level and available permissions for repository contents, settings, Actions, security, branches, rulesets, webhooks, deploy keys, collaborators, and organization policies.
-- Desired scope, approval limits, default branch, visibility constraints, and whether the repository is solo-maintained.
+- Requested assessment/apply mode, approved file/setting scope, local or pull-request delivery, default branch, visibility constraints, and whether the repository is solo-maintained.
 - Any settings that cannot be changed and any existing issues, pull requests, releases, environments, or deployment targets that matter.
 
 Missing from the prompt: the target repository URL, current GitHub access, organization policy, subscription or plan limits, approval decisions, and known operational constraints.
 
-Safe default: inspect first, report unavailable settings explicitly, make only reversible low-risk changes, and ask before consequential configuration changes. Never claim a GitHub setting was verified without access.
+Safe default: assess only with local delivery. Apply mode requires a defined file/setting scope; use existing authorization and ask only for missing scope. Local changes remain uncommitted; pull-request publication must be selected. Never claim a setting was verified without access.
 
 Sensitive information warning: never paste tokens, private keys, passwords, private repository content, collaborator lists, webhook secrets, or undisclosed vulnerabilities into the prompt or public output.
 
@@ -25,7 +25,7 @@ File: `prompts/automation/automation-project-agent-kickoff-prompt.md`
 
 Required inputs:
 
-- Repository path and project purpose.
+- Repository path, process, measurable outcome, and approved local implementation scope.
 - Existing root documentation and preferred filenames.
 - Automation scope, target process, trigger, inputs, outputs, permissions, dependencies, error handling, reporting channel, and approval boundaries.
 - Existing `CHANGELOG.md`, `ASSESSMENT.md`, `FUTURE-UPGRADES.md`, and `COMPLETED-UPGRADES.md` files, or approval to create them.
@@ -33,7 +33,7 @@ Required inputs:
 
 Missing from the prompt: the target project, current files, automation platform, system dependencies, data classification, owners, schedule, success criteria, and deployment permissions.
 
-Safe default: inspect the project before changing it, use least privilege, create drafts and tests before activation, preserve existing filenames, and ask before external actions or destructive automation.
+Safe default: assess when implementation scope is missing. Complete authorized local work, preserve existing documentation authorities, and update only stale content. Keep partial upgrades open and do not invent replacement backlog ideas. Activation and external actions require authorization.
 
 Sensitive information warning: do not include credentials, tokens, private paths, customer data, account identifiers, or proprietary process details in shared prompt output.
 
@@ -46,11 +46,11 @@ Required inputs:
 - Repository or automation location and workflow, task, or job name.
 - Actual trigger or schedule, time zone, source, destination, execution environment, permissions, and credentials model.
 - A measurable business outcome and acceptable source or artifact freshness.
-- Notification channel, privacy and retention limits, repair authorization, and access to representative run history.
+- Notification channel, privacy and retention limits, repair authorization, representative run history, and exact test scope with an isolated environment.
 
 Missing from the prompt: the target automation, scheduler, credentials model, normal record counts, freshness threshold, notification policy, recent run evidence, and permission to change a live schedule or destination.
 
-Safe default: assess only, treat the business result rather than exit code as success, preserve the last known good destination, and leave production schedules, credentials, notifications, and live data unchanged.
+Safe default: inspect source and existing evidence without worktree edits. Test only within the approved isolated scope; do not trigger live jobs or notifications for assessment. Treat the business result as success and preserve the last known good destination.
 
 Sensitive information warning: do not paste secrets, private source or destination URLs, record contents, customer data, local paths, configuration files, or raw status artifacts into public output.
 
@@ -84,7 +84,7 @@ Required inputs:
 
 Missing from the prompt: the actual backlog item, current tracker state, repository instructions, approval for consequential behavior, available test environments, and publication authority.
 
-Safe default: implement only the named item, preserve unrelated work, keep partial items open, stage explicit paths, and stop before unapproved external or destructive actions.
+Safe default: implement only the named item, preserve unrelated work, keep partial items open, and leave unspecified delivery local and uncommitted. Draft publication still requires publication/security gates; ready PRs and merges require their applicable checks and reviews. Cleanup requires authority covering those operations.
 
 Sensitive information warning: remove private paths, credentials, local reports, account data, customer-specific acceptance criteria, and identifying environment details before sharing the prompt or its output.
 
@@ -97,11 +97,11 @@ Required inputs:
 - Repository path or URL, current official API documentation, and the observed failure or assessment goal.
 - Sanitized base URL pattern, API version, authentication method, and required scopes.
 - Supported PowerShell versions, operating systems, read commands, and mutating commands.
-- Expected request volume, published rate limits, integration environment availability, and authorization to implement fixes or perform live mutations.
+- Expected request volume, published rate limits, integration environment, approved local fix scope, and separate live mutation authorization.
 
 Missing from the prompt: the real API contract, current credentials capability, controller or service version, observed failure, scale, rate limits, and live integration evidence.
 
-Safe default: assess first, retain TLS validation, use bounded timeouts and safe retries, keep integration tests opt-in, and do not perform remote mutations.
+Safe default: assess without file edits and propose tests in the report. Implement only approved local fixes; preserve TLS, bounded retries, and opt-in integration checks. Git publication and live mutations are separately authorized.
 
 Sensitive information warning: never paste passwords, API keys, bearer tokens, certificates, private tenant or controller URLs, customer exports, raw request bodies, or production logs.
 
@@ -135,7 +135,7 @@ Required inputs:
 
 Missing from the prompt: the real data inventory, operating-system permission model, storage locations, write and recovery guarantees, telemetry state, and authorization to inspect private data.
 
-Safe default: use sanitized fixtures, keep processing local, produce count-only allowlisted output, keep transformative writes opt-in, and rehearse recovery without opening live data.
+Safe default: assess without worktree edits or live private-data access. Propose tests and controls; implement only approved local fixes with isolated fixtures. Keep processing local, output allowlisted, publication separate, and live writes opt-in.
 
 Sensitive information warning: never include real private files, credentials, account identifiers, URLs, titles, messages, browser profiles, customer data, local paths, backups, screenshots, or generated detailed reports.
 
@@ -391,6 +391,49 @@ Missing from the prompt: disqualifying requirements, current regional pricing an
 Safe default: clarify material constraints, research current primary sources, separate facts from inference, show uncertainty, and avoid a recommendation when the evidence does not support one.
 
 Sensitive information warning: do not include payment details, precise home address, medical records, account credentials, private quotes, serial numbers, or identifying information unnecessary for the comparison.
+
+## Repository AI Context Pack Generation and Refresh
+
+File: `prompts/project-governance/repository-ai-context-pack.md`
+
+Required inputs:
+
+- Repository path or URL, base branch, expected revision, and existing documentation authorities.
+- Desired detailed and quick context paths, token budgets, exclusions, and any agent entry file to update.
+- Approved disposable execution environment, exact validation scope, approved file changes, and requested delivery mode.
+- A constrained Git publishing environment when a pull request is requested.
+
+Missing from the prompt: the target repository, current commit, authoritative documentation map, sensitive-data boundaries, execution permissions, output budgets, and publication authority.
+
+Safe default: assess only, treat context files as derived routing aids, preserve existing documentation authorities, verify task-relevant source files, and do not create or publish files.
+
+Sensitive information warning: do not include secret values, private source, customer data, personal records, private URLs, machine-specific paths, raw logs, browsing history, account identifiers, or confidential system details.
+
+## OpenClaw secure setup runbook
+
+File: `prompts/automation/openclaw-secure-setup-runbook.md`
+
+Required inputs: supported macOS host, installed runtime/CLI versions, existing configuration, private backup location, chosen plugin version and provenance, dedicated repository, and approved setup/activation scope.
+
+Missing from repository: the actual host, private configuration, installed-version compatibility, and executed authentication, isolation, or recovery evidence.
+
+Safe default: work one phase at a time, retain loopback authentication and dedicated coding authority, and leave messaging disabled until acceptance tests pass. Use configured secret sources, never real token arguments. The pinned example is historical and requires a fresh compatibility review.
+
+Sensitive information warning: keep backups, Gateway/provider/channel tokens, private paths, and host logs out of shared output.
+
+## Software project living documentation standard
+
+File: `prompts/project-governance/software-project-living-documentation-standard.md`
+
+Required inputs: repository and applicable rules, tier/lifecycle rationale, existing authority mapping, change scope, normal review workflow, validation tools, and any accepted risk decisions.
+
+Missing from repository: the adopting project's authorities, governing agreements, validation evidence, and tier/mapping review.
+
+Safe default: map before creating files, preserve existing authorities, update only stale content, and keep contractual history. Required repository checks still apply to small changes. Refresh integrated assessments through the normal review workflow. The sample checker tests declared paths and age only; it cannot establish full compliance. Recording a limitation does not waive a consequential gate.
+
+Tier 0 keeps its declaration and short mapping in the existing README; higher-tier authorities, the manifest, and checker are not required solely to fill a template.
+
+Sensitive information warning: use placeholders for credentials, private topology, customer records, and commercial terms.
 
 ## Prompts Directory Guide
 

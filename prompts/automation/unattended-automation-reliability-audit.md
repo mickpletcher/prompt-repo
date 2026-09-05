@@ -21,11 +21,18 @@ Audit this unattended automation:
 - Privacy limits for health records and notifications: `[INSERT LIMITS]`
 - Health-record retention: `[INSERT LIMIT OR NONE]`
 - Representative run history available: `[YES | NO]`
+- Approved test execution and environment: `[NONE | INSERT TESTS AND ISOLATED ENVIRONMENT]`
 - Approved repair scope: `[NONE | INSERT APPROVED CHANGES]`
 - Requested mode: `[ASSESSMENT ONLY | REPAIR APPROVED ISSUES]`
 
 Default to `ASSESSMENT ONLY`. A green scheduler, process, or workflow status is
 not proof that the intended business outcome occurred.
+
+In assessment mode, inspect source and existing run evidence without editing the
+worktree. Run failure injection, replay, or end-to-end tests only within the
+approved test scope using isolated data and destinations. Do not trigger the live
+automation or send test notifications merely to assess it. If execution is
+unavailable, report those checks as unexecuted and continue static review.
 
 ### 1. Define success before inspecting implementation
 

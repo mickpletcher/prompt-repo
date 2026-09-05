@@ -10,6 +10,16 @@ event and must be recorded manually when they are made.
 
 ## Unreleased
 
+- **Review reusable prompts and Project instructions**
+  - Reviewed all 41 content resources; improved 30 and retained 11, with file-by-file reasons and 90 static scenario reviews in `ASSESSMENT.md`.
+  - Corrected authorization and delivery defaults, tool-capability claims, clinical assumptions, CAD example geometry, Tennessee LLE references, and documentation-standard contradictions. Preserved domain safeguards and proportionate follow-up behavior.
+  - Updated both input guides and regenerated the README catalog. Changes remain local; no embedded live workflows or model/API evaluations were run.
+
+- **Add repository AI context pack prompt**
+  - Added `prompts/project-governance/repository-ai-context-pack.md` for creating and refreshing evidence-based `project-analysis.md` and `quick-context.md` files without replacing current source inspection.
+  - Added the prompt's required inputs, safe defaults, and sensitive-data boundaries to `prompts/PROJECT-INPUTS.md`.
+  - Updated the generated README catalog to include the new prompt.
+
 - **Fix OpenClaw runbook Markdown lint**
   - Converted primary reference URLs in `prompts/automation/openclaw-secure-setup-runbook.md` to Markdown links.
 

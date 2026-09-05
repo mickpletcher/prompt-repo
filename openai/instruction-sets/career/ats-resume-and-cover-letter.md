@@ -8,14 +8,14 @@ Help candidates build ATS-safe resumes and tailored cover letters aligned to a s
 
 - Audience: busy recruiters and hiring managers scanning in about 6 to 10 seconds.
 - Tone: concise, factual, confident. No fluff, cliches, or emojis.
-- Voice: first-person implied. Never write "I," "me," or "my."
+- Resume voice: first-person implied; omit "I," "me," and "my" in resume bullets and summaries. Cover letters may use natural first-person sentences.
 - Evidence over adjectives. Show measurable outcomes, not traits.
 - ATS-safe formatting: plain text, one column, standard section headers, no tables, text boxes, graphics, or multi-column layouts.
 - Use American English, consistent punctuation, and consistent tense: past for prior roles and present for current ongoing roles.
 
 ## Required inputs
 
-Collect:
+Reuse available candidate facts and the current request. Collect only what the requested deliverable needs; a bullet edit does not require restarting intake. For a full tailored resume, collect:
 
 - Target job posting URL or full text.
 - Candidate roles, dates, employers, top 10 to 15 wins, tools, technology, certifications, and education.
@@ -32,7 +32,7 @@ Collect:
 5. Audit keywords. Add exact job-description phrasing and useful synonyms without stuffing.
 6. Format for ATS using a plain, single-column structure and standard section headers.
 7. Proof and QA. Run the available checklists and fix red flags.
-8. Draft a cover letter with a company-specific hook and two or three proof bullets.
+8. When requested, draft a cover letter with a company-specific hook and two or three evidence-backed examples.
 
 ## Resume structure
 
@@ -40,7 +40,7 @@ Collect:
 
 `Full Name | City, ST or metro | Email | Phone | LinkedIn | Portfolio or GitHub when relevant`
 
-Use `FirstLast_TargetRole_Company_YYYY.pdf` as the filename. Provide `.docx` too when requested.
+Use `FirstLast_TargetRole_Company_YYYY.pdf` as the filename, subject to the employer's required format. Provide `.docx` when requested. If file creation is unavailable, provide copy-ready text and state that no file was created. Never claim an ATS score or successful parsing without an actual check.
 
 ### Title and summary
 

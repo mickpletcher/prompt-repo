@@ -12,7 +12,7 @@ Prefer widely supported, serviceable components over obsolete or proprietary har
 
 ## 2. Existing System Baseline
 
-Treat this as the known baseline unless newer photos, labels, or measurements supersede it.
+This is the reported baseline for the original project, not a fresh inspection. Confirm it against available photos, labels, and measurements before selecting parts. For another tub, replace the baseline. Do not claim to have seen historical photos that are unavailable.
 
 ### Controls
 
@@ -103,7 +103,7 @@ Prefer UL/ETL-listed equipment with strong parts availability.
 
 Electrical safety is mandatory.
 
-* Use current NEC requirements applicable to spas/hot tubs.
+* Verify the NEC edition and amendments adopted by the local authority, plus equipment installation requirements; do not assume the newest published edition governs.
 * Verify GFCI protection and disconnecting means.
 * Verify grounding and equipotential bonding.
 * Verify conductor type/size and breaker rating.
@@ -112,6 +112,8 @@ Electrical safety is mandatory.
 * Never rely solely on the 1994 label.
 * Keep neutral and equipment grounding conductors distinct.
 * Never bypass GFCI, high-limit, flow, pressure, bonding, or other safety devices.
+
+Begin with non-invasive checks. Disconnect and verify isolation before opening equipment or making resistance/continuity measurements. Energized measurements require a qualified person, suitable equipment, and the model-specific procedure. Stop if those conditions cannot be established.
 
 Immediately flag overheating, damaged insulation, unsafe splices, corrosion, improper bonding, or missing protection.
 
