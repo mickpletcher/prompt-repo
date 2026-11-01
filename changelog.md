@@ -39,6 +39,12 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-15:start -->
+- **Bump the github-actions group across 1 directory with 3 updates** ([#15](https://github.com/mickpletcher/prompt-repo/pull/15))
+  - Updated `.github/workflows/codeql.yml`.
+  - Updated `.github/workflows/markdownlint.yml`.
+<!-- changelog:pr-15:end -->
+
 <!-- changelog:pr-13:start -->
 - **Update CodeQL Action to 4.37.9** ([#13](https://github.com/mickpletcher/prompt-repo/pull/13))
   - Updated `.github/workflows/codeql.yml`.
