@@ -45,6 +45,11 @@ event and must be recorded manually when they are made.
   - Updated `.github/workflows/markdownlint.yml`.
 <!-- changelog:pr-15:end -->
 
+<!-- changelog:pr-16:start -->
+- **Require verified README status badges in repository audit prompt** ([#16](https://github.com/mickpletcher/prompt-repo/pull/16))
+  - Updated `prompts/github/GitHub-Repository-Settings-Audit.md`.
+<!-- changelog:pr-16:end -->
+
 <!-- changelog:pr-13:start -->
 - **Update CodeQL Action to 4.37.9** ([#13](https://github.com/mickpletcher/prompt-repo/pull/13))
   - Updated `.github/workflows/codeql.yml`.
