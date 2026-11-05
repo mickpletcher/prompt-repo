@@ -20,6 +20,12 @@ Review this local tool:
 - Safe isolated test data: `[INSERT FIXTURE OR TEST-DATA SOURCE]`
 - Requested mode: `[ASSESSMENT ONLY | IMPLEMENT APPROVED FIXES]`
 
+Default to `ASSESSMENT ONLY`: review source, configuration, and existing evidence
+without editing the worktree or opening live private data. Propose controls and
+tests in the report. In `IMPLEMENT APPROVED FIXES`, complete the approved local
+changes and relevant tests with isolated fixtures. Git publication and live-data
+operations require their own authorization. Report unavailable checks honestly.
+
 Do not provide real private files, credentials, account identifiers, URLs,
 titles, messages, browser profiles, local paths, customer data, or generated
 reports. Use sanitized fixtures and placeholders.
@@ -149,7 +155,7 @@ use.
 
 ### 8. Test privacy and failure behavior
 
-Add tests for:
+In implementation mode, add relevant tests for:
 
 - allowlisted serialized logs, reports, errors, and notifications;
 - credential-like strings, URLs with user information, IPv6 hosts, query values,

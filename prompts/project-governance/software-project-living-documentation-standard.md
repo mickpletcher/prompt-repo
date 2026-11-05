@@ -3,7 +3,7 @@
 # Software Project Living Documentation Standard
 
 ```text
-Living Documentation Standard: 2.2
+Living Documentation Standard: 2.3
 ```
 
 ## Purpose
@@ -17,6 +17,13 @@ The standard depends on no CI platform, no repository administration permissions
 ---
 
 ## Version History
+
+### 2.3 — Consistent execution and evidence boundaries
+
+Clarifies integrated-state documentation updates through the normal repository
+workflow, required checks for small changes, waiver authority, preservation of
+required documents, and the limits of the sample age checker. Aligns the agent
+template and bootstrap with those rules.
 
 ### 2.2 — Operational precision
 
@@ -77,7 +84,7 @@ Four corollaries carry equal weight:
 
 > Agreed scope is never quietly rewritten to match what was built. Divergence is a finding, not an error to be corrected in the document.
 
-> A requirement that cannot be met is waived on the record, not skipped in silence.
+> An unmet requirement is recorded with its risk and follow-up. Recording it does not authorize bypassing the requirement.
 
 ---
 
@@ -117,7 +124,7 @@ What is not permitted is leaving a responsibility partially covered by several d
 
 ### Authority Mapping
 
-Declared in PROJECT-STANDARD.md, maintained alongside `.docs-authority.json` (see Compliance). This table is the resolution layer: **everything else in the standard, including the routing table and the agent rules, refers to responsibilities and resolves them through this table.**
+At Tier 1 and above, declare the mapping in the development-rules authority and maintain `.docs-authority.json` alongside it (see Compliance). At Tier 0, keep a short tier declaration and mapping in the existing README; the manifest and checker are optional. This table is the resolution layer: **everything else in the standard, including the routing table and the agent rules, refers to responsibilities and resolves them through this table.**
 
 ```markdown
 ## Authority Mapping
@@ -234,13 +241,17 @@ An internal automation repository with no client and no agreed scope does not us
 ### Tier Declaration
 
 ```markdown
-**Standard version:** 2.2
+**Standard version:** 2.3
 **Project tier:** 2C
 **Tier rationale:** Client engagement with agreed scope, deployed integration, delivery sign-off required.
 **Promotion trigger:** N/A — highest tier.
 ```
 
 Promotion is additive. Demotion requires archiving, not deleting, the documents no longer maintained, with a header noting the date maintenance stopped.
+
+The tier table governs all later templates, routing, assessment, and bootstrap
+requirements. At Tier 0, report review evidence in the task completion report;
+do not create higher-tier authorities solely to fill a template.
 
 ---
 
@@ -285,12 +296,17 @@ Classes determine **how much process** a change requires. Change types determine
 | Read routed documents | No | Target only | Yes | Yes | Yes |
 | Read agent handoff | No | No | Yes | Yes | Yes |
 | Identify governing requirement (2C) | No | No | If applicable | Yes | Yes |
-| Validation | None | None | Basic | Per matrix | Full per matrix |
+| Validation | Required repo checks | Relevant docs checks | Basic | Per matrix | Full per matrix |
 | Changelog fragment | No | If meaningful | Yes | Yes | Yes |
 | Update traceability (2C) | No | No | If mapping changed | Yes | Yes |
 | ADR required | No | No | No | If a decision is made | Presumed yes |
 | Assessment refresh on merge | No | No | Yes | Yes | Yes |
 | Second reviewer | No | No | No | Recommended | Required where practical |
+
+Classify by behavioral impact, not filename. An executable prompt, configuration,
+or security-sensitive ignore rule is not automatically Class 0 or 1 because it
+is text. Every class still follows repository instructions, authorized scope,
+required checks, and a final diff review.
 
 Class 4 presumes an ADR. Not writing one is a decision that should be stated, not a default.
 
@@ -319,9 +335,7 @@ Read lists name **responsibilities**, resolved through the Authority Mapping. An
 
 ## Meaningful Change
 
-Class 0 changes are not meaningful and skip the lifecycle entirely. Everything Class 1 and above is meaningful.
-
-If you find yourself arguing that a change is technically Class 2 rather than Class 0, it is Class 2. If you find yourself arguing that it is technically Class 0, ship it and move on.
+Class 0 skips the documentation lifecycle, not repository checks or authorization boundaries. Class 1 and above requires a proportional impact review. When classification is uncertain, use the affected behavior and risk to choose the appropriate class.
 
 ---
 
@@ -392,7 +406,12 @@ Real projects cannot always follow the rule. The alternative to a waiver mechani
 
 ### Grounds
 
-A requirement may be waived when required tooling is unavailable, validation cannot execute safely, repository permissions prevent an action, an external dependency is unavailable, or the environment cannot reproduce the conditions the check requires.
+A validation limitation may be recorded when tooling is unavailable, execution
+is unsafe, permissions prevent an action, an external dependency is unavailable,
+or the environment cannot reproduce the check. Recording a limitation does not
+waive a release, acceptance, legal, security, or physical-safety gate. Only the
+authorized decision-maker may accept that risk; otherwise the gate stays blocked.
+Continue independent authorized work and report the unfinished requirement.
 
 Not grounds: time pressure, inconvenience, or a judgment that the check is unnecessary.
 
@@ -408,7 +427,7 @@ WAIVED  Integration suite
   Follow-up:   Run before merge to main
 ```
 
-**Standing waiver** — the condition will not resolve on its own. A transient waiver recorded three times is a standing waiver that nobody promoted.
+**Standing waiver** — an authorized acceptance of an ongoing validation limitation. Three occurrences trigger review for standing treatment; repetition alone does not accept the risk.
 
 Standing waivers live in one of two places and must be visible in the assessment:
 
@@ -427,13 +446,13 @@ START TASK
     ▼
 Read agent rules; classify the change (Class 0-4)
     │
-    ├── Class 0 ──► Implement. Done.
+    ├── Class 0 ──► Implement; run required checks; review diff; report.
     │
     ▼
 Resolve routed responsibilities through the Authority Mapping
     │
     ▼
-Read only those authorities, plus the assessment's Agent Handoff
+Read routed authorities; read assessment Agent Handoff for Class 2+
     │
     ▼
 [Tier 2C] Identify the governing requirement, or state that none exists
@@ -453,7 +472,7 @@ Implement smallest coherent change
     ▼
 Run validation per class and matrix
     │
-    ├── Cannot run? ──► Record a waiver. Do not skip silently.
+    ├── Cannot run? ──► Record limitation; preserve mandatory gates.
     │
     ▼
 Review documentation impact for routed authorities only
@@ -499,19 +518,23 @@ changelog.d/2026-08-27-fix-token-refresh.md
 
 Fragments are concatenated into the changelog at release, or on a monthly cadence for repositories that never release, and then deleted.
 
-**The assessment authority is updated on the main branch only.** A feature branch does not touch it. This is the single most important change for making the standard survivable in a team, and it means the assessment reflects a real integrated state rather than an in-flight one.
+**The assessment describes the integrated base-branch state.** Feature work
+records changed health claims and evidence in its completion report. Refresh the
+assessment after integration through a focused maintenance change based on the
+updated base branch, using the repository's normal review workflow. This rule
+does not authorize a direct push to the default branch.
 
 **Traceability is updated on the branch** implementing the requirement, since the mapping is only knowable there. Conflicts are rare because rows are keyed by REQ identifier and do not overlap.
 
-**Contractual authorities are never edited on a feature branch.** Amendments are a deliberate act with their own commit and their own approval.
+**Contractual baselines are never rewritten to fit implementation.** Approved amendments use a dedicated change and the normal review workflow, preserving the prior agreement and its history.
 
-**Documentation updates travel in the same commit as the change that made them necessary.**
+**Affected living documentation and changelog fragments travel with the implementation.** Integrated-state assessment refresh and changelog aggregation follow the explicit integration/release rules above and remain outstanding until completed.
 
 ---
 
 ## Compliance and Staleness Detection
 
-A discipline-based standard with no detection mechanism decays silently, and a self-reported compliance table becomes checkbox theater within two months. **Compliance status is derived, never asserted.**
+Combine mechanical checks with evidence-based review. **A file's existence or age does not prove compliance or semantic accuracy.**
 
 ### `.docs-authority.json`
 
@@ -519,7 +542,7 @@ The machine-readable form of the Authority Mapping. Maintained alongside PROJECT
 
 ```json
 {
-  "standardVersion": "2.2",
+  "standardVersion": "2.3",
   "tier": "2C",
   "sourcePaths": ["src", "lib", "scripts"],
   "maxDriftDays": 30,
@@ -544,7 +567,12 @@ The machine-readable form of the Authority Mapping. Maintained alongside PROJECT
 
 ### `scripts/docs-check.ps1`
 
-Verifies that every required responsibility has a resolvable authority, and reports drift for living authorities only. Contractual documents are frozen by design; flagging them as drifted would train everyone to ignore the warnings.
+This sample checks declared paths and commit-age differences when run from the
+repository root. It is not a full compliance validator: it does not detect tier
+responsibilities omitted from the map, compare the Markdown and JSON mappings,
+verify external trackers, inspect dirty content, or establish semantic freshness.
+Review those items separately before reporting compliance. Contractual documents
+are excluded from age warnings because they are frozen by design.
 
 ```powershell
 #Requires -Version 7.0
@@ -560,13 +588,21 @@ if (-not (Test-Path $ConfigPath)) {
     exit 1
 }
 
-$config = Get-Content $ConfigPath -Raw | ConvertFrom-Json
+try {
+    $config = Get-Content -LiteralPath $ConfigPath -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop
+    if (-not $config.responsibilities -or $config.responsibilities.PSObject.Properties.Name.Count -eq 0) {
+        throw 'No responsibilities are declared.'
+    }
+} catch {
+    Write-Error "Cannot check authority map: $_"
+    exit 1
+}
 $maxDrift = if ($config.maxDriftDays) { [int]$config.maxDriftDays } else { 30 }
 
 function Get-LastCommitDate {
     param([string]$Path)
     $iso = git log -1 --format=%cI -- $Path 2>$null
-    if ([string]::IsNullOrWhiteSpace($iso)) { return $null }
+    if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($iso)) { return $null }
     return [datetime]::Parse($iso)
 }
 
@@ -582,11 +618,11 @@ $rows = foreach ($name in $config.responsibilities.PSObject.Properties.Name) {
     $class     = $entry.class
 
     if ($authority -in @('Not required at this tier', 'External tracker')) {
-        [pscustomobject]@{ Responsibility = $name; Authority = $authority; Status = 'N/A'; LastUpdated = '' }
+        [pscustomobject]@{ Responsibility = $name; Authority = $authority; Status = 'REVIEW MAPPING'; LastUpdated = '' }
         continue
     }
 
-    if (-not (Test-Path $authority)) {
+    if ([string]::IsNullOrWhiteSpace($authority) -or -not (Test-Path -LiteralPath $authority)) {
         [pscustomobject]@{ Responsibility = $name; Authority = $authority; Status = 'MISSING'; LastUpdated = '' }
         continue
     }
@@ -594,14 +630,17 @@ $rows = foreach ($name in $config.responsibilities.PSObject.Properties.Name) {
     $docDate = Get-LastCommitDate -Path $authority
     $updated = if ($docDate) { $docDate.ToString('yyyy-MM-dd') } else { 'uncommitted' }
 
-    # Contractual and governance documents are frozen by design; drift is expected.
-    if ($class -ne 'living' -or -not $sourceDate -or -not $docDate) {
-        [pscustomobject]@{ Responsibility = $name; Authority = $authority; Status = 'Current'; LastUpdated = $updated }
+    if ($class -ne 'living') {
+        [pscustomobject]@{ Responsibility = $name; Authority = $authority; Status = 'PRESENT; review class and content'; LastUpdated = $updated }
+        continue
+    }
+    if (-not $sourceDate -or -not $docDate) {
+        [pscustomobject]@{ Responsibility = $name; Authority = $authority; Status = 'NOT ASSESSED'; LastUpdated = $updated }
         continue
     }
 
     $drift  = [int]($sourceDate - $docDate).TotalDays
-    $status = if ($drift -gt $maxDrift) { "REVIEW (${drift}d)" } else { 'Current' }
+    $status = if ($drift -gt $maxDrift) { "REVIEW (${drift}d)" } else { 'No age flag' }
 
     [pscustomobject]@{ Responsibility = $name; Authority = $authority; Status = $status; LastUpdated = $updated }
 }
@@ -614,22 +653,22 @@ if ($Markdown) {
     $rows | Format-Table -AutoSize
 }
 
-$gaps = $rows | Where-Object { $_.Status -eq 'MISSING' -or $_.Status -like 'REVIEW*' }
+$gaps = $rows | Where-Object { $_.Status -in @('MISSING', 'NOT ASSESSED') -or $_.Status -like 'REVIEW*' }
 if ($gaps -and $FailOnGap) { exit 1 }
 ```
 
-### Compliance Table
+### Authority Check Table
 
-Generated by `docs-check -Markdown` and pasted into the assessment authority. It is never hand-written.
+Generate the mechanical rows with `scripts/docs-check.ps1 -Markdown`. Record the command, date, revision, and separate tier/mapping/content review in the assessment. A zero exit code from this sample is not a compliance verdict.
 
 ```markdown
-## Living Documentation Compliance
+## Authority Checks and Review
 
 Generated by scripts/docs-check.ps1 on 2026-08-27.
 
 | Responsibility | Authority | Last updated | Status |
 |---|---|---|---|
-| Project overview | README.md | 2026-08-20 | Current |
+| Project overview | README.md | 2026-08-20 | No age flag |
 | Architecture | docs/system-design.md | 2026-06-02 | REVIEW (86d) |
 | Operations | OPERATIONS.md | — | MISSING |
 ```
@@ -720,9 +759,9 @@ The single most important section. Read on every Class 2+ task.
 - Traps, fragile areas, non-obvious constraints
 - What the last significant change did and what it left unfinished
 
-## Living Documentation Compliance
+## Authority Checks and Review
 
-Generated by scripts/docs-check.ps1. Never hand-written.
+Mechanical rows from scripts/docs-check.ps1, with separate tier, mapping, and content review evidence.
 
 ## Current Health
 
@@ -775,7 +814,7 @@ Ordered. Reference REQ, TD, and FU identifiers rather than restating them.
 ## Repository Limitations
 ````
 
-Refresh on the main branch after merge. Rewrite stale sections rather than appending. Never a chronological diary.
+Refresh against the integrated base branch after merge through the normal review workflow. Rewrite stale sections rather than appending. Never a chronological diary.
 
 ---
 
@@ -1022,7 +1061,9 @@ Contractual. Frozen at baseline, changed only through amendments. Scaffolded at 
 **Approved by:**
 
 > Contractual document. Never edited to match what was built. Changes to agreed
-> scope are recorded in the amendments authority and increment the revision above.
+> scope are recorded in the amendments authority. Preserve the approved baseline
+> text and prior revisions. Update administrative status and amendment references
+> only to reflect approved changes; never replace the original agreement silently.
 
 ## Scope Summary
 
@@ -1229,7 +1270,7 @@ docs/archive/
 
 ### Instruction File Authority
 
-Multiple agent instruction files will diverge, and an agent faithfully following a stale copy is worse than an agent with no instructions. **The agent rules authority is single-valued like every other.** Every other instruction file contains a pointer and nothing else:
+Keep one authority for shared repository rules. Tool-specific entry files can point to it when the tool can follow that pointer. Preserve applicable directory-scoped instructions and tool-specific settings; do not replace them with pointer-only files. For a compatible tool entry file:
 
 ```markdown
 See AGENTS.md. It is the authoritative agent instruction file for this repository.
@@ -1240,7 +1281,7 @@ See AGENTS.md. It is the authoritative agent instruction file for this repositor
 ````markdown
 # AI Agent Repository Rules
 
-Standard version: 2.2
+Standard version: 2.3
 Project tier: 2C
 
 ## Authority Resolution
@@ -1269,9 +1310,9 @@ Never resolve it by editing either side to match the other.
 
 1. Read this file.
 2. Classify the change (Class 0-4).
-3. Class 0: implement and stop. No documentation lifecycle.
+3. Class 0: implement, run required repository checks, review the diff, and report. No documentation lifecycle.
 4. Class 1+: resolve routed responsibilities through the Authority Mapping.
-5. Read only those authorities, plus the assessment's Agent Handoff.
+5. Read routed authorities; read assessment Agent Handoff for Class 2+.
 6. Class 2+ at Tier 2C: identify the governing requirement, or state none exists.
 7. Inspect the relevant implementation before editing.
 
@@ -1297,20 +1338,20 @@ Do not read the full documentation set on every task.
 
 ## Waiver Rules
 
-- A requirement you cannot meet is waived on the record, never skipped silently.
+- Record an unmet requirement and its risk. This does not authorize bypassing a mandatory gate or accepting risk on the user's behalf.
 - Record: requirement not completed, reason, risk, recommended follow-up.
 - Grounds are environmental only: missing tooling, unsafe execution, permissions,
   unavailable dependency. Never time pressure or inconvenience.
-- A transient waiver you have recorded before is a standing waiver. Promote it to
-  the validation authority's limitations section or an Accepted debt entry.
+- A transient limitation recorded three times needs review as a standing waiver. Record it in
+  the validation authority's limitations section or a debt entry. Only authorized risk acceptance makes that entry Accepted.
 
 ## Documentation Rules
 
 - Never edit documentation solely to produce a diff.
 - Never invent capabilities, architecture, requirements, dependencies,
   integrations, tests, or status.
-- The assessment authority is current truth, updated on the main branch only,
-  and is never a chronological diary.
+- The assessment describes integrated base-branch state and is refreshed through
+  the normal review workflow after integration. It is never a chronological diary.
 - Resolved debt, fixed issues, and implemented upgrades are archived, not left in
   place and not deleted.
 - Accepted ADRs are immutable except for status and cross-references.
@@ -1459,7 +1500,7 @@ Create authorities only for unmapped responsibilities
       ▼
 Repair stale living content from repository evidence
       ▼
-Run docs-check; record the compliance table
+Run docs-check; record its limits and separate compliance review
       ▼
 Consistency review
 ```
@@ -1486,9 +1527,9 @@ Quarterly review, five items and nothing else:
 2. Reconcile traceability against the repository; investigate unmapped implementation.
 3. Review standing waivers; close any whose blocking condition has resolved.
 4. Archive resolved debt, fixed issues, and implemented upgrades.
-5. Delete any living documentation not read or needed since the last review.
+5. Review unused living documentation for simplification or retirement. Preserve required authorities, recovery guidance, and referenced content. Retire a document only when its responsibility is covered or no longer required, links are updated, and the change is authorized.
 
-Item five is the one people skip, and it is the reason documentation standards die. Contractual and derived documents are exempt; they are never deleted.
+Infrequent use alone is not evidence that a document is unnecessary. Contractual and derived history is retained.
 
 ---
 
@@ -1497,7 +1538,7 @@ Item five is the one people skip, and it is the reason documentation standards d
 The single bootstrap for all modes and tiers.
 
 ```text
-Apply the Software Project Living Documentation Standard 2.2 to this repository.
+Apply the Software Project Living Documentation Standard 2.3 to this repository.
 
 Step 1 — Determine the project tier.
   Tier 0:  single script or a few files, one maintainer, no integrations, no deployment.
@@ -1521,8 +1562,9 @@ This standard requires documentation RESPONSIBILITIES, not filenames. For each
 responsibility your tier requires, identify whether an existing document already
 serves it. If one does, map it and keep it. Create a new document only for
 responsibilities nothing currently covers. Exactly one authority per
-responsibility. Write the Authority Mapping into PROJECT-STANDARD.md and
-.docs-authority.json.
+responsibility. At Tier 1 and above, write the Authority Mapping into the existing
+development-rules authority (PROJECT-STANDARD.md by default) and .docs-authority.json.
+At Tier 0, use the existing README; the manifest and checker are optional.
 
 Step 5 — Create or adapt only the authorities the tier requires.
 
@@ -1538,8 +1580,9 @@ does, repository state governs. For what it should do, agreed scope governs. A
 conflict between the two is a scope finding, not a documentation error, and is
 never resolved by editing either side.
 
-In Greenfield Mode, scaffold contractual authorities as explicit placeholders
-stating that requirements have not been gathered. Do not leave them out.
+In Greenfield Mode at Tier 2C, scaffold contractual authorities as explicit
+placeholders stating that requirements have not been gathered. Do not create
+contractual authorities at tiers that do not require them.
 
 In Adoption Mode, map before creating. Preserve changelog history. Never
 reconstruct requirements by inferring them from code; if no agreement exists,
@@ -1551,15 +1594,17 @@ In all modes:
 - Record the assessment basis (commands, date, commit).
 - Run every validation command that can safely run here. Report each with its
   exact command, exit code, and counts including tests skipped and why.
-- Anything required but not run is WAIVED on the record with reason, risk, and
-  follow-up. Never skip silently.
+- Record required checks not run with reason, risk, and follow-up. A recorded
+  limitation does not waive mandatory acceptance or delivery gates.
 - Include no secrets, real hostnames, tenant identifiers, account names, or
   commercial terms.
 - Include only template sections that apply. Delete the rest rather than filling
   them with N/A.
 - Link rather than duplicate. Content appearing in two authorities is a defect.
 
-Finish by running docs-check, recording the compliance table in the assessment,
+Finish by running docs-check where adopted, recording its limited mechanical
+results and separate tier, mapping, and content review evidence in the assessment
+(or the completion report at Tier 0),
 and verifying that the repository, the validation results you actually observed,
 the traceability matrix, and the documentation agree.
 ```
@@ -1586,4 +1631,4 @@ The purpose of this structure is not to maximize documentation. It is to minimiz
 
 The standard covers authority, evidence, lifecycle, validation, exceptions, compliance, history, and agent execution. What it deliberately does not do is mandate filenames, because a repository that already answers a question well should not be made to answer it twice.
 
-Every living authority must earn its maintenance cost. Every contractual authority must survive untouched long enough to be worth having. When a living document stops being read, delete it. That is a success of the standard, not a failure of it. Contractual documents are never deleted, because the day you need them is the day nobody remembers what was agreed.
+Every living authority must earn its maintenance cost. Every contractual authority must survive untouched long enough to be worth having. When a living document stops being useful, review its responsibility and references before simplifying or retiring it. Contractual documents are never deleted, because the day you need them is the day nobody remembers what was agreed.

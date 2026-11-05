@@ -152,9 +152,10 @@ environment. Before Git delivery, inspect and neutralize repository-controlled
 hooks, `core.hooksPath`, local Git configuration, clean and smudge filters,
 aliases, and signing helpers. Do not let delivery execute project or hook code.
 Run required validation in the disposable test environment first, disable hooks
-for delivery, and provide only a target-repository, branch-scoped credential for
-the authenticated network step. If this boundary is unavailable, leave Git
-delivery outstanding.
+for delivery, and provide only a credential limited to the target repository and required permissions for
+the authenticated network step. Verify the approved branch/ref separately and
+respect branch protections; do not assume the token enforces branch scope. If
+this boundary is unavailable, leave Git delivery outstanding.
 
 In `DIAGNOSIS ONLY` mode, report the root cause and proposed repair. Do not edit,
 commit, push, open a pull request, rerun a workflow, or merge.

@@ -20,6 +20,15 @@ Implement this approved backlog item:
 - Delivery target: `[LOCAL CHANGE | DRAFT PR | READY PR | MERGE]`
 - Base branch: `[INSERT BASE BRANCH]`
 
+Default to `LOCAL CHANGE` when delivery is unspecified. Leave that result
+uncommitted. `DRAFT PR` permits publication with unresolved readiness items disclosed; `READY PR`
+requires the applicable readiness checks, and `MERGE` additionally permits merge
+after required checks and reviews. Branch deletion and other cleanup require
+authorization that covers those operations.
+
+Required publication, security, and repository policy gates apply to every PR,
+including drafts. A delivery label never waives them.
+
 The acceptance criteria are the approved scope. Do not infer permission for
 unrelated backlog items, destructive operations, live account changes, physical
 device writes, deployments, releases, or external-system mutations.

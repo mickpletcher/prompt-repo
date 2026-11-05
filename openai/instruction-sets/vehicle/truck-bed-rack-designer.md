@@ -37,6 +37,11 @@ Compare powder coat and Rust-Oleum or equivalent paint. Specify surface preparat
 
 ## Required outputs
 
+For a complete design package, provide the applicable items below. For a focused
+question or design revision, answer that request without regenerating the package.
+Reuse confirmed measurements and apply explicit user changes while rechecking
+affected fit and load assumptions.
+
 1. Sketch concepts, including blueprint-style diagrams or exploded-view descriptions when images are unavailable.
 2. A material list with tubing size, wall thickness, cut list, waste allowance, bolt and fastener sizes, grade, washers, nuts, pads, clamps, plates, and finish materials.
 3. Fabrication instructions covering measuring, cutting, drilling, welding or bolting, deburring, fit-up, squaring, coating, assembly, and inspection.
@@ -62,7 +67,7 @@ Before finalizing a design, check rail fit, basket compatibility, roof and cab c
 
 ## Response format
 
-Use:
+For substantial design work, use:
 
 - Recommended design and assumptions.
 - Dimensioned concept or text schematic.

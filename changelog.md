@@ -10,6 +10,20 @@ event and must be recorded manually when they are made.
 
 ## Unreleased
 
+- **Reconcile preserved content branch with main**
+  - Retained the context-pack prompt and library improvements alongside PR #16's verified README badge requirements.
+  - Fixed review-draft Markdown formatting and distinguished historical assessment evidence from current validation.
+
+- **Review reusable prompts and Project instructions**
+  - Reviewed all 41 content resources; improved 30 and retained 11, with file-by-file reasons and 90 static scenario reviews in `ASSESSMENT.md`.
+  - Corrected authorization and delivery defaults, tool-capability claims, clinical assumptions, CAD example geometry, Tennessee LLE references, and documentation-standard contradictions. Preserved domain safeguards and proportionate follow-up behavior.
+  - Updated both input guides and regenerated the README catalog. No embedded live workflows or model/API evaluations were run as part of the content review.
+
+- **Add repository AI context pack prompt**
+  - Added `prompts/project-governance/repository-ai-context-pack.md` for creating and refreshing evidence-based `project-analysis.md` and `quick-context.md` files without replacing current source inspection.
+  - Added the prompt's required inputs, safe defaults, and sensitive-data boundaries to `prompts/PROJECT-INPUTS.md`.
+  - Updated the generated README catalog to include the new prompt.
+
 - **Fix OpenClaw runbook Markdown lint**
   - Converted primary reference URLs in `prompts/automation/openclaw-secure-setup-runbook.md` to Markdown links.
 
@@ -38,6 +52,46 @@ event and must be recorded manually when they are made.
   - Verified the markdown lint workflow checks pass locally for the README catalog, local-link validation, and script tests.
 
 <!-- automated-changelog -->
+
+<!-- changelog:pr-17:start -->
+- **Preserve context-pack prompt and improve library execution boundaries** ([#17](https://github.com/mickpletcher/prompt-repo/pull/17))
+  - Updated `ASSESSMENT.md`.
+  - Updated `openai/instruction-sets/cad/ai-cad-design-book.md`.
+  - Updated `openai/instruction-sets/career/ats-resume-and-cover-letter.md`.
+  - Updated `openai/instruction-sets/content/ai-prompt-engineering-media-creator.md`.
+  - Updated `openai/instruction-sets/events/high-school-reunion.md`.
+  - Updated `openai/instruction-sets/fitness/ai-trainer-nutrition-health.md`.
+  - Updated `openai/instruction-sets/fitness/post-bariatric-ai-coach.md`.
+  - Updated `openai/instruction-sets/fitness/voice-strength-conditioning-coach.md`.
+  - Updated `openai/instruction-sets/hot-tub/hot-tub-project-instructions.md`.
+  - Updated `openai/instruction-sets/hvac/hvac-troubleshooting.md`.
+  - Updated `openai/instruction-sets/nutrition/bariatric-recipe-meal-planner.md`.
+  - Updated `openai/instruction-sets/personal-website/personal-website-instruction-set.md`.
+  - Updated `openai/instruction-sets/tennessee-lle/tennessee-lle-exam-prep-instructions.md`.
+  - Updated `openai/instruction-sets/trading/trading-automations-project-instructions.md`.
+  - Updated `openai/instruction-sets/vehicle/truck-bed-rack-designer.md`.
+  - Updated `openai/instruction-sets/writing/epilepsy-memoir-development.md`.
+  - Updated `openai/PROJECT-INPUTS.md`.
+  - Added `prompt-library-review-and-improvement.md`.
+  - Updated `prompts/automation/automation-project-agent-kickoff-prompt.md`.
+  - Updated `prompts/automation/openclaw-secure-setup-runbook.md`.
+  - Updated `prompts/automation/unattended-automation-reliability-audit.md`.
+  - Updated `prompts/documentation/novice-ready-readme-and-distribution-review.md`.
+  - Updated `prompts/github/dependency-update-triage-and-merge.md`.
+  - Updated `prompts/github/github-actions-failure-diagnosis-and-repair.md`.
+  - Updated `prompts/github/GitHub-Repository-Settings-Audit.md`.
+  - Updated `prompts/github/github-social-preview-production.md`.
+  - Updated `prompts/github/pull-request-and-branch-reconciliation.md`.
+  - Updated `prompts/implementation/safe-backlog-item-implementation.md`.
+  - Updated `prompts/implementation/specification-to-working-repository.md`.
+  - Updated `prompts/powershell/powershell-rest-api-production-readiness.md`.
+  - Added `prompts/project-governance/repository-ai-context-pack.md`.
+  - Updated `prompts/project-governance/software-project-living-documentation-standard.md`.
+  - Updated `prompts/PROJECT-INPUTS.md`.
+  - Updated `prompts/project-review/software-project-assessment-and-remediation.md`.
+  - Updated `prompts/security/privacy-first-local-tool-safety-review.md`.
+  - Updated `README.md`.
+<!-- changelog:pr-17:end -->
 
 <!-- changelog:pr-15:start -->
 - **Bump the github-actions group across 1 directory with 3 updates** ([#15](https://github.com/mickpletcher/prompt-repo/pull/15))

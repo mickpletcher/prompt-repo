@@ -109,8 +109,10 @@ publishing environment. Inspect and neutralize repository-controlled hooks,
 `core.hooksPath`, local Git configuration, clean and smudge filters, aliases, and
 signing helpers so Git delivery cannot execute project or hook code. Validate in
 the disposable test environment first, disable hooks for delivery, and provide
-only a target-repository, branch-scoped credential for the authenticated network
-step. If this boundary is unavailable, leave the Git operation outstanding.
+only a credential limited to the target repository and required permissions for
+the authenticated network step. Verify the approved branch/ref separately and
+respect branch protections; do not assume the token enforces branch scope. If
+this boundary is unavailable, leave Git delivery outstanding.
 
 Before any `UPDATE`, `REBASE`, `RETARGET`, `MERGE`, `CLOSE`, or `DELETE BRANCH`
 operation changes pull-request or branch state, inspect every workflow and
@@ -147,7 +149,10 @@ Do not infer one permitted operation from another. In particular, approval to
 close, retarget, update, rebase, or delete is not approval to merge.
 
 Never delete a branch merely because its pull request is closed. Inspect its
-unique commits first.
+unique commits first. For squash or rebase merges, verify the merged PR's head
+and delivered diff against the target; ancestry alone may not show the merge.
+Retain branches containing commits added after the verified merged head. Re-read
+the branch tip immediately before deletion and stop if it changed.
 
 ### 6. Reconcile final branch state
 

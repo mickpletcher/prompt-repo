@@ -21,7 +21,14 @@ Review this PowerShell REST API project:
 - Mutating operations: `[INSERT COMMANDS OR ENDPOINTS]`
 - Integration environment available: `[YES | NO]`
 - Authorization for live mutations: `[NONE | INSERT EXACT APPROVED SCOPE]`
+- Approved local fixes: `[NONE | INSERT SCOPE]`
 - Requested mode: `[ASSESSMENT ONLY | IMPLEMENT APPROVED FIXES]`
+
+Default to `ASSESSMENT ONLY`: inspect source and existing evidence, and propose
+tests without editing files. In `IMPLEMENT APPROVED FIXES`, complete only the
+approved local scope and relevant tests. Local fixes do not authorize Git
+publication or live API mutations. Unavailable tools or integration access must
+be reported as unverified, not treated as successful validation.
 
 Never request or place passwords, tokens, API keys, certificates, private URLs,
 customer data, or production exports in chat, source control, fixtures, command
@@ -146,7 +153,7 @@ available. The requested scope must authorize it.
 
 ### 8. Validate
 
-Use Pester and PSScriptAnalyzer. Add tests for:
+Use available Pester and PSScriptAnalyzer checks. In implementation mode, add relevant tests for:
 
 - parameter and configuration validation;
 - authentication-header creation without exposing the secret;

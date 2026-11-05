@@ -14,7 +14,7 @@ Show how to drive CAD from clean text using ChatGPT as a drafting partner. Use t
 
 ## Tooling
 
-Use current stable FreeCAD, Python 3.11 or newer, Git, and VS Code. OpenSCAD is optional for scripted solids. Work locally and keep files in the repository.
+Use a supported FreeCAD release and its compatible Python runtime, Git, and VS Code. Record versions; a standalone Python installation does not imply it can import FreeCAD. OpenSCAD is optional for scripted solids. Work locally and keep files in the repository.
 
 ## Repository layout
 
@@ -33,11 +33,20 @@ All geometry comes from one JSON spec per design. ChatGPT writes the JSON. Pytho
 
 ## Response contract
 
-For each design change, return the validated JSON spec, a concise change summary, validation results, affected export paths, and the next action. Label assumptions and unverified structural or code requirements. Do not overwrite approved geometry without showing the proposed change.
+For each design change, return the JSON spec, a concise change summary, actual validation results, affected export paths, and the next action. Call a spec validated or an export created only after the corresponding check or operation succeeds. If CAD or file tools are unavailable, provide the draft and report those operations unexecuted. Answer narrow follow-ups directly and reuse confirmed design inputs. Label assumptions and unverified structural or code requirements. Do not overwrite approved geometry without showing the proposed change.
 
 ## Data contract
 
 Keep the schema strict. Units are millimeters. Coordinates are nonnegative. Names use underscores.
+
+In this example, `size.x/y/z` are world-axis dimensions. `orientation` identifies
+the long horizontal axis; it does not swap dimensions. Joists repeat along the
+perpendicular axis at center-to-center `spacing_mm`. Deck boards repeat along the
+perpendicular axis using board width plus the clear gap in `spacing_mm`.
+
+The sample is a geometry exercise within a 2400 by 4800 mm footprint, not a
+structural design. A formal schema, validator, connections, and load checks must
+be supplied before producing a construction package.
 
 ```json
 {
@@ -51,10 +60,10 @@ Keep the schema strict. Units are millimeters. Coordinates are nonnegative. Name
     "deck_board": "composite"
   },
   "components": [
-    {"type":"post","size":{"x":140,"y":140,"z":1200},"positions":[{"x":0,"y":0,"z":0},{"x":2400,"y":0,"z":0},{"x":0,"y":4800,"z":0},{"x":2400,"y":4800,"z":0}]},
-    {"type":"beam","size":{"x":2400,"y":90,"z":190},"positions":[{"x":0,"y":0,"z":1200},{"x":0,"y":4800,"z":1200}],"orientation":"x"},
-    {"type":"joist","count":11,"spacing_mm":400,"size":{"x":90,"y":4800,"z":140},"origin":{"x":0,"y":0,"z":1200},"orientation":"y"},
-    {"type":"deck_board","count":30,"spacing_mm":5,"size":{"x":2400,"y":140,"z":22},"origin":{"x":0,"y":0,"z":1340},"orientation":"x"}
+    {"type":"post","size":{"x":140,"y":140,"z":1200},"positions":[{"x":0,"y":0,"z":0},{"x":2260,"y":0,"z":0},{"x":0,"y":4660,"z":0},{"x":2260,"y":4660,"z":0}]},
+    {"type":"beam","size":{"x":2400,"y":90,"z":190},"positions":[{"x":0,"y":0,"z":1200},{"x":0,"y":4710,"z":1200}],"orientation":"x"},
+    {"type":"joist","count":7,"spacing_mm":385,"size":{"x":90,"y":4800,"z":140},"origin":{"x":0,"y":0,"z":1390},"orientation":"y"},
+    {"type":"deck_board","count":33,"spacing_mm":5,"size":{"x":2400,"y":140,"z":22},"origin":{"x":0,"y":0,"z":1530},"orientation":"x"}
   ],
   "exports": {"step":"cad/exports/deck.step","stl":"cad/exports/deck.stl","dxf_top":"cad/exports/deck_top.dxf"}
 }
@@ -81,8 +90,10 @@ Return only valid JSON with no comments.
 Change:
 
 ```text
-Update the prior JSON to reach near 400 mm joist spacing across a 4800 mm span.
-Keep origins and orientations. Return only JSON.
+Use the supplied baseline JSON and schema to keep joists near 400 mm
+center-to-center across the 2400 mm width. Keep origins and orientations.
+Check the last joist edge stays within the footprint. Return only JSON.
+If the baseline or schema is unavailable, request it rather than inventing it.
 ```
 
 ## Validation checklist
@@ -91,11 +102,17 @@ Keep origins and orientations. Return only JSON.
 2. Units equal `mm`.
 3. All sizes and counts are positive.
 4. All coordinates are nonnegative.
-5. Export paths land inside the repository.
+5. Resolve export paths against the approved repository root, reject escapes through traversal or symlinks, and confirm overwrite authority.
+6. Check repeat axes, component bounds, support locations, intersections, and the last repeated edge. Distinguish intended contact from overlap.
+7. Verify every requested export was implemented and can be reopened; omitted formats remain incomplete.
 
 ## FreeCAD macro
 
-Save as `cad/macros/build_from_json.FCMacro`.
+Prototype for `cad/macros/build_from_json.FCMacro`, not a verified exporter.
+It illustrates box placement only. Schema and path validation must run before
+this code. The DXF top-view exporter is not implemented here; STEP/STL behavior
+must be tested in the selected FreeCAD version. Do not report the full export
+contract complete from this snippet. Use a disposable copy and approved paths.
 
 ```python
 import json
@@ -123,19 +140,21 @@ def build_from_spec(spec_path):
                 made.append(make_box(f"post_{p['x']}_{p['y']}", s["x"], s["y"], s["z"], p["x"], p["y"], p["z"]))
         if kind == "beam":
             for p in comp["positions"]:
-                sx, sy = (s["x"], s["y"]) if comp.get("orientation") == "x" else (s["y"], s["x"])
+                sx, sy = s["x"], s["y"]
                 made.append(make_box(f"beam_{p['x']}_{p['y']}", sx, sy, s["z"], p["x"], p["y"], p["z"]))
         if kind == "joist":
             o = comp["origin"]
             for i in range(comp["count"]):
-                x, y, z = o["x"], o["y"] + i * comp["spacing_mm"], o["z"]
-                sx, sy = (s["x"], s["y"]) if comp.get("orientation") == "y" else (s["y"], s["x"])
+                x = o["x"] + i * comp["spacing_mm"] if comp["orientation"] == "y" else o["x"]
+                y = o["y"] + i * comp["spacing_mm"] if comp["orientation"] == "x" else o["y"]
+                z = o["z"]
+                sx, sy = s["x"], s["y"]
                 made.append(make_box(f"joist_{i}", sx, sy, s["z"], x, y, z))
         if kind == "deck_board":
             o = comp["origin"]
             for i in range(comp["count"]):
-                x = o["x"] + i * (s["x"] + comp["spacing_mm"]) if comp.get("orientation") == "x" else o["x"]
-                y = o["y"] + i * (s["y"] + comp["spacing_mm"]) if comp.get("orientation") == "y" else o["y"]
+                x = o["x"] + i * (s["x"] + comp["spacing_mm"]) if comp["orientation"] == "y" else o["x"]
+                y = o["y"] + i * (s["y"] + comp["spacing_mm"]) if comp["orientation"] == "x" else o["y"]
                 made.append(make_box(f"deck_board_{i}", s["x"], s["y"], s["z"], x, y, o["z"]))
     doc.recompute()
     exports = spec["exports"]
@@ -150,7 +169,7 @@ def build_from_spec(spec_path):
 
 ## BOM script
 
-Save as `bom/make_bom.py`.
+Prototype for `bom/make_bom.py`. Run only against the generated design document. It lists box dimensions; it is not a complete procurement BOM with materials, connections, fasteners, or waste allowances.
 
 ```python
 import csv
@@ -182,7 +201,7 @@ def write_bom(csv_path="bom/deck_bom.csv"):
 
 ## Style rules
 
-Write in the user's voice. Use short sentences and concrete verbs. Use mm for dimensions. Do not add AI filler or dash characters. Code must run as shown or be labeled pseudocode. Captions are simple and clear.
+Write in the user's voice. Use short sentences and concrete verbs. Use mm for dimensions. Do not add AI filler or dash characters. Label prototype or unexecuted code and its missing pieces. Claim runnable examples only after verifying them in the stated environment. Captions are simple and clear.
 
 ## Safety note
 
@@ -190,11 +209,11 @@ This is a design guide. Loads, soil, fasteners, frost, and local code are the re
 
 ## Versioning
 
-Tag each stable chapter.
+Version stable chapters only when Git delivery is authorized. Inspect existing Git state, preserve unrelated work, and stage explicit reviewed files. These are separate actions; a local chapter edit does not authorize a commit, tag, or push.
 
 ```text
-git init
-git add .
+git status --short
+git add -- book/chapters/chapter-one.md cad/specs/container_deck_extension.json
 git commit -m "chapter one first pass"
 git tag v0.1
 git push
@@ -206,7 +225,7 @@ Text is under standard copyright. Code is under a permissive license. Offer a pa
 
 ## First live example
 
-Build a deck extension tied to the container wall. Use four posts, two beams, and joists at near 400 mm. Show the figure in FreeCAD. Ship STEP, STL, DXF, and a BOM.
+Develop a conceptual deck extension; a tie to the container wall requires a verified structural connection design. Use four posts, two beams, and joists at near 400 mm. Show the figure in FreeCAD. Ship STEP, STL, DXF, and a BOM.
 
 ## Quality bar
 

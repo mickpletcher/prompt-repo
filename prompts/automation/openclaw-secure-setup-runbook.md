@@ -1,7 +1,9 @@
 # OpenClaw on macOS — Secure Setup Runbook
 
-> Verified against upstream documentation on 2026-08-16. Re-check releases before
-> later use. Execute one phase at a time and stop on failed verification.
+> Original upstream review: 2026-08-16. Targeted documentation review: 2026-09-05.
+> Re-check installed-version help, configuration, and plugin compatibility before
+> each phase. This review did not execute a macOS installation or sandbox tests.
+> Execute one phase at a time and stop on failed verification.
 
 ## Objective and security boundary
 
@@ -142,21 +144,23 @@ openclaw security audit --deep
 openclaw dashboard --no-open
 ```
 
-The Control UI should resolve to localhost on port 18789. Test authentication with a
-real token and confirm a deliberately invalid token is rejected:
+The Control UI should resolve to localhost on port 18789. Use the configured
+local secret source rather than placing a real token in process arguments:
 
 ```bash
-read -rs "OPENCLAW_GATEWAY_TOKEN?Gateway token: "
-export OPENCLAW_GATEWAY_TOKEN
-printf '\n'
-openclaw gateway probe --url ws://127.0.0.1:18789 \
-  --token "$OPENCLAW_GATEWAY_TOKEN"
-unset OPENCLAW_GATEWAY_TOKEN
+openclaw gateway status --port 18789 --require-rpc
 ```
+
+Confirm the reported target is the intended local Gateway and the authenticated
+read probe succeeds. For the negative test, use an isolated client with no cached
+device credentials and a deliberately invalid token. Verify rejection for that
+exact target; a generic probe's exit code may reflect another reachable target.
+Do not claim the invalid-token test passed when client isolation or evidence is
+unavailable. See the [Gateway CLI reference](https://docs.openclaw.ai/cli/gateway).
 
 ## 4 — Review and pin Claw Orchestrator
 
-This is third-party executable code. The reviewed release on this runbook's date is
+This is third-party executable code. The release reviewed on 2026-08-16 is
 `4.12.1`; compare current releases before installing.
 
 ```bash
@@ -220,7 +224,7 @@ Engine sandboxing differs across Codex, Claude, Cursor, Antigravity, and OpenCod
 is not automatically a Docker boundary. Keep `danger-full-access` and
 `bypassPermissions` prohibited.
 
-If a separate workflow truly needs OpenClaw host exec, scope this modern policy to
+If a separate workflow truly needs OpenClaw host exec, verify installed-version support and scope this policy to
 the dedicated local agent:
 
 ```json5
@@ -304,7 +308,7 @@ rerun Doctor plus the deep audit.
 - [OpenClaw gateway security](https://docs.openclaw.ai/gateway/security)
 - [OpenClaw exposure runbook](https://docs.openclaw.ai/gateway/security/exposure-runbook)
 - [OpenClaw gateway tool configuration](https://docs.openclaw.ai/gateway/config-tools)
-- [OpenClaw Bash tool](https://docs.openclaw.ai/tools/bash)
+- [OpenClaw exec tool](https://docs.openclaw.ai/tools/exec)
 - [OpenClaw plugin tool](https://docs.openclaw.ai/tools/plugin)
 - [OpenClaw web dashboard](https://docs.openclaw.ai/web/dashboard)
 - [Claw orchestrator repository](https://github.com/Enderfga/claw-orchestrator)

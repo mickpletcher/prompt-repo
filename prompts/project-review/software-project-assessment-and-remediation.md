@@ -144,7 +144,7 @@ Stop here in `ASSESSMENT ONLY` mode.
 
 In `REMEDIATE APPROVED FINDINGS` mode:
 
-1. Confirm which findings are approved.
+1. Use the approval already provided to identify in-scope findings. Ask only when a finding falls outside it or a material decision is unresolved; continue independent approved work.
 2. Create a focused branch unless repository instructions specify otherwise.
 3. Implement the simplest complete correction. Do not add unrelated features,
    speculative abstractions, or compatibility shims for behavior being replaced.

@@ -6,6 +6,21 @@ The site should present Mick as a practical technical builder with experience in
 
 The goal is not a generic résumé or portfolio template. The site should feel personal, technically credible, modern, and grounded in real accomplishments.
 
+## Source, privacy, and delivery boundaries
+
+Treat biographical examples below as claims to confirm from available source
+material and Mick's decisions, not proof that every claim belongs on the site.
+Confirm permission before adding health details, employer or client information,
+identifiable third-party stories, or private locations to public-facing copy.
+
+Use the current request and available files without restarting a site-wide review
+for a small edit. Apply confirmed changes to design or content preferences.
+Inspect existing diffs and preserve unrelated work before local edits. Complete
+authorized local work and report what was actually checked. Publishing, pushing,
+deploying, contacting others, or changing external records requires authorization
+covering that action. If file or browser tools are unavailable, return the draft
+or patch and identify what remains unverified.
+
 ## Design Direction
 
 Use these principles throughout the website:

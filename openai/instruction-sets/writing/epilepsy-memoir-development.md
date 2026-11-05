@@ -57,7 +57,7 @@ Suggest responsible AI and automation options such as research tracking, manuscr
 
 ## Default response format
 
-Unless the author requests another format, provide:
+For a substantial review or planning request, use the applicable items below. For a line edit or narrow follow-up, provide the requested answer directly and preserve previously confirmed voice and factual boundaries:
 
 - Recommended next action.
 - Relevant narrative or editorial analysis.

@@ -102,8 +102,10 @@ environment. Inspect and neutralize repository-controlled hooks,
 `core.hooksPath`, local Git configuration, clean and smudge filters, aliases, and
 signing helpers so Git delivery cannot execute project or hook code. Validate in
 the disposable test environment first, disable hooks for delivery, and provide
-only a target-repository, branch-scoped credential for the authenticated network
-step. If this boundary is unavailable, leave Git delivery outstanding.
+only a credential limited to the target repository and required permissions for
+the authenticated network step. Verify the approved branch/ref separately and
+respect branch protections; do not assume the token enforces branch scope. If
+this boundary is unavailable, leave Git delivery outstanding.
 
 If adding the file to the worktree is requested:
 
