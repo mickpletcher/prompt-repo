@@ -39,6 +39,12 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-15:start -->
+- **Bump the github-actions group across 1 directory with 3 updates** ([#15](https://github.com/mickpletcher/prompt-repo/pull/15))
+  - Updated `.github/workflows/codeql.yml`.
+  - Updated `.github/workflows/markdownlint.yml`.
+<!-- changelog:pr-15:end -->
+
 <!-- changelog:pr-16:start -->
 - **Require verified README status badges in repository audit prompt** ([#16](https://github.com/mickpletcher/prompt-repo/pull/16))
   - Updated `prompts/github/GitHub-Repository-Settings-Audit.md`.
