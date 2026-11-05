@@ -10,6 +10,10 @@ event and must be recorded manually when they are made.
 
 ## Unreleased
 
+- **Check branch-publication effects in the context-pack prompt**
+  - Require reviewing push-triggered workflows and external integrations before publishing a branch or opening its PR.
+  - Keep publication outstanding when hosted effects are unverified or exceed the approved scope; local Git isolation does not constrain hosted execution.
+
 - **Reconcile preserved content branch with main**
   - Retained the context-pack prompt and library improvements alongside PR #16's verified README badge requirements.
   - Fixed review-draft Markdown formatting and distinguished historical assessment evidence from current validation.
@@ -52,6 +56,11 @@ event and must be recorded manually when they are made.
   - Verified the markdown lint workflow checks pass locally for the README catalog, local-link validation, and script tests.
 
 <!-- automated-changelog -->
+
+<!-- changelog:pr-18:start -->
+- **Check hosted effects before context-pack branch publication** ([#18](https://github.com/mickpletcher/prompt-repo/pull/18))
+  - Updated `prompts/project-governance/repository-ai-context-pack.md`.
+<!-- changelog:pr-18:end -->
 
 <!-- changelog:pr-17:start -->
 - **Preserve context-pack prompt and improve library execution boundaries** ([#17](https://github.com/mickpletcher/prompt-repo/pull/17))

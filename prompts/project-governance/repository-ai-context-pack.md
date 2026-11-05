@@ -206,9 +206,14 @@ files and run the applicable validation. Leave the result uncommitted unless Git
 delivery is separately authorized.
 
 In `CONTEXT PACK PR`, validate in the approved disposable environment, inspect
-repository-controlled hooks and pull-request workflows, stage only intended
-paths, and use the approved constrained Git environment. Do not merge or delete
-branches unless separately authorized.
+repository-controlled hooks, stage only intended paths, and use the approved
+constrained Git environment. Before pushing a branch or opening a pull request,
+inspect workflows and integrations triggered by each action, including push
+workflows, deployments, and webhooks. Local Git isolation does not constrain
+hosted execution or external effects. If those effects exceed the approved scope
+or cannot be verified, leave publication outstanding and report the missing
+evidence or authorization. Do not merge or delete branches unless separately
+authorized.
 
 ### Completion report
 
