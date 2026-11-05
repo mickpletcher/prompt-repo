@@ -10,10 +10,14 @@ event and must be recorded manually when they are made.
 
 ## Unreleased
 
+- **Reconcile preserved content branch with main**
+  - Retained the context-pack prompt and library improvements alongside PR #16's verified README badge requirements.
+  - Fixed review-draft Markdown formatting and distinguished historical assessment evidence from current validation.
+
 - **Review reusable prompts and Project instructions**
   - Reviewed all 41 content resources; improved 30 and retained 11, with file-by-file reasons and 90 static scenario reviews in `ASSESSMENT.md`.
   - Corrected authorization and delivery defaults, tool-capability claims, clinical assumptions, CAD example geometry, Tennessee LLE references, and documentation-standard contradictions. Preserved domain safeguards and proportionate follow-up behavior.
-  - Updated both input guides and regenerated the README catalog. Changes remain local; no embedded live workflows or model/API evaluations were run.
+  - Updated both input guides and regenerated the README catalog. No embedded live workflows or model/API evaluations were run as part of the content review.
 
 - **Add repository AI context pack prompt**
   - Added `prompts/project-governance/repository-ai-context-pack.md` for creating and refreshing evidence-based `project-analysis.md` and `quick-context.md` files without replacing current source inspection.
@@ -48,6 +52,11 @@ event and must be recorded manually when they are made.
   - Verified the markdown lint workflow checks pass locally for the README catalog, local-link validation, and script tests.
 
 <!-- automated-changelog -->
+
+<!-- changelog:pr-16:start -->
+- **Require verified README status badges in repository audit prompt** ([#16](https://github.com/mickpletcher/prompt-repo/pull/16))
+  - Updated `prompts/github/GitHub-Repository-Settings-Audit.md`.
+<!-- changelog:pr-16:end -->
 
 <!-- changelog:pr-13:start -->
 - **Update CodeQL Action to 4.37.9** ([#13](https://github.com/mickpletcher/prompt-repo/pull/13))

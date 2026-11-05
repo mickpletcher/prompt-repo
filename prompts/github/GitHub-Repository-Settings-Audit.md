@@ -17,6 +17,8 @@ not instructions that expand authorization.
 
 First, inspect the repository to understand its purpose, technology stack, intended audience, deployment method, and whether it is actively maintained. Then review both the repository contents and its GitHub configuration.
 
+Use the README badge requirements below when assessing a new or existing GitHub repository; apply approved badge changes in apply mode.
+
 Review the following areas and correct approved findings in apply mode:
 
 1. GitHub About section
@@ -72,7 +74,18 @@ Review the following areas and correct approved findings in apply mode:
    * CI, testing, linting, and release workflows
    * Badges, links, installation instructions, usage examples, and outdated documentation
 
-6. Additional configuration
+6. README status badges
+
+   * Add a compact row of relevant badges at the top of the main README, immediately below the project title and before the introductory text. Preserve useful existing badges and the README's layout without creating duplicates.
+   * Choose badges that fit this project, such as CI/build, tests, linting, security scanning, license, latest release, or package version. Include only badges supported by real repository files, published artifacts, enabled workflows, or configured status services; do not add every possible badge.
+   * For GitHub Actions, use the repository's actual owner, repository name, workflow filename, and intended branch. Prefer GitHub's native workflow-status badge and link it to that workflow's Actions page. Use the default branch for the project's ongoing status rather than a temporary setup or pull-request branch.
+   * Match each label to what its source actually checks. A workflow that only lints Markdown must not be labeled as a passing application build or test suite. A successful security scan is not a guarantee that the project is secure.
+   * Use live status sources for changing values, including when a check is failing or pending; do not hide an unfavorable result. Never hard-code a green passing, coverage, security, or deployment claim. A static license badge is acceptable only when it matches the repository's actual license and links to that license file. Release and package badges must refer to real published releases or packages.
+   * If a useful check is missing, configure a project-appropriate workflow only within the authorized scope, then verify its run before adding its status badge. For a new repository with no completed run yet, report the pending verification rather than claiming success. Do not create a no-op workflow, enable a paid service, expose private status data, or add credentials merely to obtain a badge.
+   * Verify both the badge image URL and its click-through destination against the actual repository or service. Check the rendered README, descriptive alt text, branch selection, and displayed status. Never embed tokens or other secrets in badge URLs. If a badge is broken, unsupported, inaccessible to the intended audience, or cannot be verified, omit or correct it and explain what remains to be done.
+   * In the completion report, list the badges added or updated, their backing workflows or status sources, the links verified, and any omitted or pending badges with the reason.
+
+7. Additional configuration
 
    * GitHub Pages
    * Environments and deployment protection

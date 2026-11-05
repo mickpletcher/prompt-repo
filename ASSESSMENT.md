@@ -1,6 +1,6 @@
 # Assessment
 
-Updated: 2026-09-05
+Updated: 2026-11-05
 
 ## Purpose
 
@@ -24,7 +24,7 @@ Prompt Repo is a Markdown library of reusable prompts and OpenAI ChatGPT Project
 
 ## Current health
 
-The repository is documentation-first. It has no application build or runtime dependency; its JavaScript maintenance scripts use only Node.js built-ins. Catalog tests and local-link validation pass. Markdown lint passes for the 55 library/support files; the full 56-file check reports 10 pre-existing formatting issues in the unchanged, untracked review-request draft. Instruction sets include domain-specific safety, approval, privacy, and professional-review boundaries where needed.
+The repository is documentation-first. It has no application build or runtime dependency; its JavaScript maintenance scripts use only Node.js built-ins. Catalog tests, local-link validation, and full-library Markdown lint pass. The review-request draft formatting issues recorded in the historical review below were corrected during branch reconciliation on 2026-11-05. Instruction sets include domain-specific safety, approval, privacy, and professional-review boundaries where needed.
 
 ## Known limitations
 
@@ -37,7 +37,7 @@ The repository is documentation-first. It has no application build or runtime de
 
 Reviewed all 41 content resources: 23 task prompts and 18 persistent Project instruction sets. Dispositions: **30 Improve, 11 Keep, 0 Defer**. Indexes and input guides are supporting documentation, excluded from those counts. Every content file was read against its actual purpose, input needs, output contract, tool assumptions, authorization, privacy, and domain boundaries. Persistent sets were also checked for startup, continuity, changed requirements, and proportionate follow-ups.
 
-This is a local, uncommitted review of the working tree based on `f92203bb13dd3d9663f13c41165c24cfb1f2e1c3`. Pre-existing tracked changes in README, changelog, and the task input guide were preserved. The existing untracked context-pack prompt and review-request draft were retained unchanged. Embedded workflows were treated as source, not executed. The library remains model-neutral.
+The following historical review was performed on 2026-09-05 against the working tree based on `f92203bb13dd3d9663f13c41165c24cfb1f2e1c3`. Pre-existing tracked changes in README, changelog, and the task input guide were preserved. The existing untracked context-pack prompt and review-request draft were retained unchanged. Embedded workflows were treated as source, not executed. The library remains model-neutral.
 
 ### Disposition ledger
 
@@ -60,7 +60,7 @@ Each Improve row records the original defect and expected practical benefit. Kee
 | [Specification implementation](prompts/implementation/specification-to-working-repository.md) | Improve | Corrects the branch-scoped-token assumption without changing acceptance criteria, isolated validation, or delivery gates. |
 | [Live configuration change](prompts/operations/safe-live-configuration-change.md) | Keep | Concrete read-only baseline, exact mutation scope, rollback, concurrency checks, and verification already govern live changes. |
 | [PowerShell REST readiness](prompts/powershell/powershell-rest-api-production-readiness.md) | Improve | Assessment could imply adding tests or fixes. Defines no-edit assessment, approved local implementation, unavailable-tool reporting, and separate live/API publication authority. |
-| [Repository context pack](prompts/project-governance/repository-ai-context-pack.md) | Keep | Existing untracked work already provides assessment/generation modes, derived-source limits, evidence routing, and explicit delivery. Preserved byte-for-byte. |
+| [Repository context pack](prompts/project-governance/repository-ai-context-pack.md) | Keep | The then-untracked work already provided assessment/generation modes, derived-source limits, evidence routing, and explicit delivery. Preserved byte-for-byte. |
 | [Living documentation standard](prompts/project-governance/software-project-living-documentation-standard.md) | Improve | Resolves conflicting small-change checks, main-only editing, waivers, tier requirements, scoped instructions, and document retirement. Version 2.3 labels the sample checker as partial evidence and preserves agreement history. |
 | [Project assessment/remediation](prompts/project-review/software-project-assessment-and-remediation.md) | Improve | Reconfirmed approval already supplied. Uses existing scoped authorization and asks only for new decisions while retaining assessment-only stopping behavior. |
 | [Desktop release readiness](prompts/release/cross-platform-desktop-release-readiness.md) | Keep | Distinguishes platform/build evidence from unexecuted browser, installer, signing, and live delivery gates. |
@@ -134,9 +134,9 @@ Compared each original and revision using the synthetic cases below: **90 scenar
 - CAD placement received a local arithmetic and syntax review only. The snippets remain prototypes: FreeCAD exports were not run, DXF is absent, and formal schema/path validation and engineering design are not implemented by this review.
 - The living-documentation checker remains a declared-path and commit-age sample. Full tier/schema/content validation is not implemented. Its output now states that limit instead of asserting compliance.
 
-No unresolved editorial decisions require user input. Environment-dependent validation above remains explicitly unexecuted; zero deferred files does not mean those runtime checks passed. No model/API evaluations, live workflows, purchases, account changes, commits, pushes, PRs, merges, or publication were performed.
+No unresolved editorial decisions require user input. Environment-dependent validation above remains explicitly unexecuted; zero deferred files does not mean those runtime checks passed. During that September review, no model/API evaluations, live workflows, purchases, account changes, commits, pushes, PRs, merges, or publication were performed. These are historical limits, not the current Git delivery status.
 
-### Supporting documentation and validation
+### Historical supporting documentation and validation (2026-09-05)
 
 - [Task inputs](prompts/PROJECT-INPUTS.md) and [Project inputs](openai/PROJECT-INPUTS.md) now match changed modes, defaults, clinical inputs, and capability limits. Added previously missing entries for OpenClaw, the documentation standard, outdoor gym, personal website, LLE, and trading.
 - [README](README.md) is regenerated through its catalog script. [Changelog](changelog.md) records this review separately from pre-existing work. Existing tracking files need no status changes because no tracked feature was shipped.
@@ -152,3 +152,9 @@ No unresolved editorial decisions require user input. Environment-dependent vali
 | `git diff --check` | 0 | No whitespace errors. |
 
 Additional local checks confirmed the 41-file ledger, both input guides' coverage, 30 scenario rows, and unchanged bytes for both pre-existing untracked files. Thirty content files plus five supporting files changed. Two CAD Python blocks parsed without execution; the example JSON parsed and all 46 boxes fit the stated 2400 by 4800 mm footprint. The PowerShell checker sample passed AST parsing without execution. The AI trainer instructions contain 5,962 characters, within their 6,000-character requirement. These checks do not establish runtime behavior, structural adequacy, or model effectiveness.
+
+## Branch reconciliation: 2026-11-05
+
+Preserved the unique context-pack prompt and library improvements from commit `0d90370`, reconciled the audit prompt with main's verified README badge requirements from PR #16, and corrected review-draft Markdown formatting. The September review above is retained as historical evidence; its external-source and scenario checks were not repeated as model evaluations.
+
+Current local validation: the generated catalog contains 44 resources, all local links resolve across 56 Markdown files, all 12 repository script tests pass, full-library Markdown lint passes without exclusions, and `git diff --check` passes. Domain-specific runtime checks remain unexecuted as described above. Git delivery and hosted validation are tracked by the reconciliation pull request.
