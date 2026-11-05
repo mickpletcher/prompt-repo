@@ -57,6 +57,11 @@ event and must be recorded manually when they are made.
 
 <!-- automated-changelog -->
 
+<!-- changelog:pr-18:start -->
+- **Check hosted effects before context-pack branch publication** ([#18](https://github.com/mickpletcher/prompt-repo/pull/18))
+  - Updated `prompts/project-governance/repository-ai-context-pack.md`.
+<!-- changelog:pr-18:end -->
+
 <!-- changelog:pr-17:start -->
 - **Preserve context-pack prompt and improve library execution boundaries** ([#17](https://github.com/mickpletcher/prompt-repo/pull/17))
   - Updated `ASSESSMENT.md`.
