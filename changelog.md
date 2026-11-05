@@ -10,6 +10,10 @@ event and must be recorded manually when they are made.
 
 ## Unreleased
 
+- **Check branch-publication effects in the context-pack prompt**
+  - Require reviewing push-triggered workflows and external integrations before publishing a branch or opening its PR.
+  - Keep publication outstanding when hosted effects are unverified or exceed the approved scope; local Git isolation does not constrain hosted execution.
+
 - **Reconcile preserved content branch with main**
   - Retained the context-pack prompt and library improvements alongside PR #16's verified README badge requirements.
   - Fixed review-draft Markdown formatting and distinguished historical assessment evidence from current validation.
